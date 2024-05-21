@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::get('/ellin', function () {
     return('<h1>Branch Punya Ellin</h1>');
 });
+
+Route::get('/halo', function () {
+    return('<h1>HALOO DUNIAA</h1>');
+});
