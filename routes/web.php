@@ -18,5 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('/ellin', function () {
-    return('<h1>Branch Ellin</h1>');
+    return('<h1>Branch Punya Ellin</h1>');
 });
