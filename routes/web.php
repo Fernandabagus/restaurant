@@ -17,7 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('/', function () {
-    return view('hello word');
+Route::get('/ellin', function () {
+    return('<h1>Branch Ellin</h1>');
 });
