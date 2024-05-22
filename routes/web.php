@@ -24,3 +24,10 @@ Route::get('/', function () {
 Route::get('/awa', function () {
     return view('hello word');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/tony', function () {
+    return view('branch tony');
+});
