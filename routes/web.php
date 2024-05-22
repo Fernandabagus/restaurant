@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Auth::routes();
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,4 +26,7 @@ Route::get('/ellin', function () {
 
 Route::get('/halo', function () {
     return('<h1>HALOO DUNIAA</h1>');
+});
+Route::get('/awa', function () {
+    return('hello word');
 });
