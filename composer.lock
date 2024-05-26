@@ -1509,6 +1509,7 @@
         },
         {
             "name": "laravel/ui",
+
             "version": "v4.5.2",
             "source": {
                 "type": "git",
