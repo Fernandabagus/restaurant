@@ -13,7 +13,7 @@
           <img src="{{asset('AdminLTE-3.1.0')}}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">#ganti ketua</a>
+          <a href="#" class="d-block">kelompok 4</a>
         </div>
       </div>
 
