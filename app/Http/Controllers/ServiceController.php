@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AboutController extends Controller
+class ServiceController extends Controller
 {
     public function index()
     {
         $data = [
-            'title'     => 'ABOUT',
-            'content'   => 'dashboard/about'
+            'title'     => 'SERVICE',
+            'content'   => 'dashboard/service'
         ];
         return view('layouts.wrapper', $data);
     }

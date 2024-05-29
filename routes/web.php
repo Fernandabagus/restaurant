@@ -6,6 +6,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\ContactController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +40,12 @@ Route::get('/home' , [DashboardController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::get('/service', [ServiceController::class, 'index'])->name('service.index');
 Route::get('/menu', [MenuController::class, 'index'])->name('menu.index');
+Route::get('/booking', [BookingController::class, 'index'])->name('booking.index');
+Route::get('/testimonial', [TestimonialController::class, 'index'])->name('testimonial.index');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+
+
+
 
 // Route::resource('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
