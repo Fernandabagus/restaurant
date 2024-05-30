@@ -83,7 +83,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <x-responsive-nav-link :href="route('orders.index')" class="nav-link">
+                        <x-responsive-nav-link href="#" class="nav-link">
                         <i class="nav-icon fas fa-table"></i>
                         <p>Orders</p>
                         </x-responsive-nav-link>
