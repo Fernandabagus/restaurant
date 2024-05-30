@@ -9,6 +9,7 @@
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
+
 <!-- jQuery -->
 <script src="{{asset('AdminLTE-3.1.0')}}/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->

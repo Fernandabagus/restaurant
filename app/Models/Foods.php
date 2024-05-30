@@ -10,17 +10,13 @@ class Foods extends Model
     use HasFactory;
 
     protected $table = 'foods';
-    protected $primaryKey = 'id_foods';
+    protected $primaryKey = 'id_food';
 
     protected $fillable = [
         'name',
+        'img_url',
         'description',
         'price',
     ];
-
-    // Accessor for formatted price
-    public function getPriceAttribute($value)
-    {
-        return number_format($value, 2, ',', '.');
-    }
+    
 }
