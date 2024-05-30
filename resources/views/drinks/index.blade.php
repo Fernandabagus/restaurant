@@ -45,6 +45,7 @@
                         <table class="table table-bordered">
                             <thead>
                               <tr>
+                                <th scope="col">No</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Description</th>
@@ -52,8 +53,12 @@
                               </tr>
                             </thead>
                             <tbody>
+                              @php
+                                    $no=1;
+                                    @endphp
                               @forelse ($drinks as $drink)
                                 <tr>
+                                    <td>{{ $no++}}</td>
                                     <td>{{ $drink->name }}</td>
                                     <td>{!! $drink->price !!}</td>
                                     <td>{!! $drink->description !!}</td>
