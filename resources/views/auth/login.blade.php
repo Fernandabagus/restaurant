@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="{{asset('AdminLTE-3.1.0')}}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('AdminLTE-3.1.0')}}/dist/css/adminlte.min.css">
+
   <style>
     body {
       background-image: url('https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=600');
@@ -23,12 +24,14 @@
       margin: 0;
   }
   </style>
+
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
+
     <a href="#" class="text-light"><b>Restaurant</b></a>
-  </div>
+
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
@@ -110,6 +113,7 @@
 </div>
 <!-- /.login-box -->
 
+
 <!-- jQuery -->
 <script src="{{asset('AdminLTE-3.1.0')}}plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -118,3 +122,4 @@
 <script src="{{asset('AdminLTE-3.1.0')}}dist/js/adminlte.min.js"></script>
 </body>
 </html>
+
