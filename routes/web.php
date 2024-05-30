@@ -39,7 +39,7 @@ Route::get('/dashboard', function () {
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/home' , [DashboardController::class, 'index']);
+Route::get('/home' , [DashboardController::class, 'index'])->name('home');
 
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::get('/service', [ServiceController::class, 'index'])->name('service.index');
