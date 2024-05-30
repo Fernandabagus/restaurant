@@ -11,6 +11,9 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\ContactController;
 
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderDetailController;
+use App\Http\Controllers\KuponDiskonController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,4 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 require __DIR__.'/auth.php';
+
+
+
 
