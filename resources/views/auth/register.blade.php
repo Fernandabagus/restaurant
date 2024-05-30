@@ -13,11 +13,21 @@
   <link rel="stylesheet" href="{{asset('AdminLTE-3.1.0')}}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('AdminLTE-3.1.0')}}/dist/css/adminlte.min.css">
+  <style>
+    body {
+      background-image: url('https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=600');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      height: 100vh;
+      margin: 0;
+  }
+  </style>
 </head>
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
-    <a href="../../index2.html"><b>Restaurant</b></a>
+    <a href="#" class="text-light"><b>Restaurant</b></a>
   </div>
 
   <div class="card">
