@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
@@ -21,21 +22,17 @@ use App\Http\Controllers\ContactController;
 |
 */
 
-Auth::routes();
-
-
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('layouts.master');
+})->middleware(['auth', 'verified'])->name('layouts.master');
 
-Route::get('/awa', function () {
-    return view('hello word');
-});
-Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+r
 Route::get('/home' , [DashboardController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::get('/service', [ServiceController::class, 'index'])->name('service.index');
@@ -45,12 +42,10 @@ Route::get('/testimonial', [TestimonialController::class, 'index'])->name('testi
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 
 
-
-
-// Route::resource('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-
-Route::resource('dashboard', DashboardController::class);
-
-Route::get('/tony', function () {
-    return view('branch tony');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+require __DIR__.'/auth.php';
+
