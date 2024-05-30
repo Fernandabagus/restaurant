@@ -37,7 +37,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <x-responsive-nav-link :href="route('layouts.master')" class="nav-link active">
+            <x-responsive-nav-link :href="route('dashboard')" class="nav-link active">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard
@@ -85,10 +85,19 @@
                         </a>
                     </li>
                     <li class="nav-item">
+
                         <x-responsive-nav-link href="#" class="nav-link">
+
                         <i class="nav-icon fas fa-table"></i>
                         <p>Orders</p>
                         </x-responsive-nav-link>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{route('daftarFoods')}}"class="nav-link">
+                        <i class="nav-icon fas fa-table"></i>
+                        <p>Foods</p>
+                        </a>
                     </li>
                 </ul>
           </li>

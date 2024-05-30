@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id('id_transaction');
-            $table->unsignedBigInteger('id_orderlist');
+            $table->integer('id_orderlist');
             $table->decimal('amount', 15, 2);
             $table->timestamp('transactions_date'); 
             $table->foreign('id_orderlist')->references('id_orderlist')->on('order_list')->onDelete('cascade');
