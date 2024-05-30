@@ -13,6 +13,13 @@
   <link rel="stylesheet" href="{{asset('AdminLTE-3.1.0')}}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('AdminLTE-3.1.0')}}/dist/css/adminlte.min.css">
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <!-- DataTables JS -->
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
