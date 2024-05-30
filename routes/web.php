@@ -10,11 +10,12 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\ContactController;
+
+use App\Http\Controllers\DrinksController;
+
 use App\Http\Controllers\FoodController;
 
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\OrderDetailController;
-use App\Http\Controllers\KuponDiskonController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,7 +38,9 @@ Route::get('/dashboard', function () {
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/home' , [DashboardController::class, 'index'])->name('home');
+
+Route::get('/home' , [DashboardController::class, 'index']);
+
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::get('/service', [ServiceController::class, 'index'])->name('service.index');
 Route::get('/menu', [MenuController::class, 'index'])->name('menu.index');
@@ -58,6 +61,5 @@ Route::post('/food/create', [App\Http\Controllers\FoodController::class, 'store'
 
 require __DIR__.'/auth.php';
 
-
-
-
+//route resource
+Route::resource('/drinks', \App\Http\Controllers\DrinksController::class);
