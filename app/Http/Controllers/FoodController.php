@@ -1,10 +1,9 @@
 <?php
 
-
 namespace App\Http\Controllers;
-use App\Models\Foods;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Foods;
 
 class FoodController extends Controller
 {
@@ -22,42 +21,82 @@ class FoodController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'food_name' => 'required|string|max:255',
+            'food_price' => 'required|integer|min:3',
+            'description' => 'required|string',
+            'img_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
-
-     public function store(Request $request)
-     {
-         $validatedData = $request->validate([
-             'food_name' => 'required|string|max:255',
-             'food_price' => 'required|integer|min:3',
-             'description' => 'required|string',
-             'img_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-         ]);
-     
-         if ($request->hasFile('img_url')) {
+        if ($request->hasFile('img_url')) {
             $image = $request->file('img_url');
             $folderPath = 'foods/' . date('Y') . '/' . date('m');
             $imagePath = $image->store($folderPath, 'public');
             $validatedData['img_url'] = 'storage/' . $imagePath;
         }
-     
-         $food = new Foods([
-             'name' => $validatedData['food_name'],
-             'price' => $validatedData['food_price'],
-             'description' => $validatedData['description'],
-             'img_url' => $validatedData['img_url'] ?? null,
-         ]);
-     
-         $food->save();
-     
-         return redirect(route('daftarFoods'));
-     }
-     
 
-   
+        $food = new Foods([
+            'name' => $validatedData['food_name'],
+            'price' => $validatedData['food_price'],
+            'description' => $validatedData['description'],
+            'img_url' => $validatedData['img_url'] ?? null,
+        ]);
 
-    public function show(Foods $food)
-    {
-        //
+        $food->save();
+
+        return redirect(route('daftarFoods'))->with('success', 'Food added successfully!');
     }
 
- }
+    public function show($id)
+    {
+        $food = Foods::findOrFail($id);
+        return view('food.show', ['food' => $food]);
+    }
+
+    public function edit($id)
+    {
+        $food = Foods::findOrFail($id);
+        return view('food.edit', ['food' => $food]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'food_name' => 'required|string|max:255',
+            'food_price' => 'required|integer|min:3',
+            'description' => 'required|string',
+            'img_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $food = Foods::findOrFail($id);
+
+        if ($request->hasFile('img_url')) {
+            $image = $request->file('img_url');
+            $folderPath = 'foods/' . date('Y') . '/' . date('m');
+            $imagePath = $image->store($folderPath, 'public');
+            $validatedData['img_url'] = 'storage/' . $imagePath;
+        }
+
+        $food->name = $validatedData['food_name'];
+        $food->price = $validatedData['food_price'];
+        $food->description = $validatedData['description'];
+        $food->img_url = $validatedData['img_url'] ?? $food->img_url;
+
+        $food->save();
+
+        return redirect(route('daftarFoods'))->with('success', 'Food updated successfully!');
+    }
+
+    public function destroy($id)
+    {
+        $food = Foods::findOrFail($id);
+        if ($food->img_url && file_exists(public_path($food->img_url))) {
+            unlink(public_path($food->img_url));
+        }
+        $food->delete();
+
+        return redirect(route('daftarFoods'))->with('success', 'Food deleted successfully!');
+    }
+}
