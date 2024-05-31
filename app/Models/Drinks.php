@@ -14,6 +14,7 @@ class Drinks extends Model
      * @var array
      */
     protected $fillable = [
+        'image',
         'name',
         'price',
         'description',
