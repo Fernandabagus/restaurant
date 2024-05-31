@@ -7,8 +7,9 @@ use App\Models\Drinks;
 
 //return type View
 use Illuminate\View\View;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 //return type redirectResponse
 use Illuminate\Http\RedirectResponse;
 
@@ -45,24 +46,32 @@ class DrinksController extends Controller
      * @param  mixed $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
-        //validate form
-        $this->validate($request, [
-            'name'     => 'required',
-            'price'     => 'required',
-            'description'   => 'required'
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|integer|min:3',
+            'description' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
-        //create post
-        Drinks::create([
-            'name'     => $request->name,
-            'price'   => $request->price,
-            'description'   => $request->description,
+    
+        if ($request->hasFile('image')) {
+           $image = $request->file('image');
+           $folderPath = 'drinks/' . date('Y') . '/' . date('m');
+           $imagePath = $image->store($folderPath, 'public');
+           $validatedData['image'] = 'storage/' . $imagePath;
+       }
+    
+        $drinks = new Drinks([
+            'name' => $validatedData['name'],
+            'price' => $validatedData['price'],
+            'description' => $validatedData['description'],
+            'image' => $validatedData['image'] ?? null,
         ]);
-
-        //redirect to index
-        return redirect()->route('drinks.index')->with(['success' => 'Data Berhasil Disimpan!']);
+    
+        $drinks->save();
+    
+        return redirect(route('drinks.index'));
     }
 
 }
