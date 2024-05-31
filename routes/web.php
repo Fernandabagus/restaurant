@@ -58,6 +58,9 @@ Route::middleware('auth')->group(function () {
 Route::get('/food', [FoodController::class, 'index'])->name('daftarFoods');
 Route::get('/food/create', [App\Http\Controllers\FoodController::class, 'create'])->name('createFoods');
 Route::post('/food/create', [App\Http\Controllers\FoodController::class, 'store'])->name('storeFoods');
+Route::get('/food/edit/{id}', [App\Http\Controllers\FoodController::class, 'edit'])->name('editFoods');
+Route::post('/food/edit/{id}', [App\Http\Controllers\FoodController::class, 'update'])->name('updateFoods');
+Route::get('/food/delete/{id}', [App\Http\Controllers\FoodController::class, 'destroy'])->name('deleteFoods');
 
 require __DIR__.'/auth.php';
 
