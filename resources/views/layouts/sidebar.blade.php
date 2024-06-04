@@ -61,9 +61,15 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{route('daftarDrinks')}}" class="nav-link">
                         <i class="nav-icon fas fa-table"></i>
-                        <p>Categories</p>
+                        <p>drink</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('daftarFoods')}}"class="nav-link">
+                        <i class="nav-icon fas fa-table"></i>
+                        <p>Foods</p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -85,18 +91,15 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <x-responsive-nav-link class="nav-link">
+
+                        <x-responsive-nav-link href="#" class="nav-link">
+
                         <i class="nav-icon fas fa-table"></i>
                         <p>Orders</p>
                         </x-responsive-nav-link>
                     </li>
 
-                    <li class="nav-item">
-                        <a href="{{route('daftarFoods')}}"class="nav-link">
-                        <i class="nav-icon fas fa-table"></i>
-                        <p>Foods</p>
-                        </a>
-                    </li>
+                   
                 </ul>
           </li>
           

@@ -7,12 +7,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Foods List</h1>
+            <h1 class="m-0">Drinks List</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-              <li class="breadcrumb-item active">Foods</li>
+              <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+              <li class="breadcrumb-item active">Drinks</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -20,44 +20,44 @@
     </div>
     <!-- /.content-header -->
 
-        <!-- Main content -->
-        <div class="content">
-            <div class="container mt-5">
-                <div class="card">
-                    <div class="card-header text-right">
-                        <a href="{{ route('createFoods') }}" class="btn btn-primary" role="button">Add Foods</a>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-hover table-bordered" id="data-table">
-                            <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Image</th>
-                                    <th>Foods</th>
-                                    <th>Price</th>
-                                    <th>Description</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+    <!-- Main content -->
+    <div class="content">
+         <div class="container mt-5">
+         <div class="card">
+         <div class="card-header text-right">
+        <a href="{{route('createDrinks')}}" class="btn btn-primary" role="button">Add Drink</a>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover table-bordered" id="data-table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Image</th>
+                    <th>Drinks</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
 
-                                @forelse ($foods as $food)
-                                    <tr>
-                                        <td> {{ $loop->index + 1 }}</td>
-                                        <td>
-                                            @if ($food->img_url)
-                                                <img src="{{ asset($food->img_url) }}" alt="{{ $food->name }}"
-                                                    width="100">
-                                            @endif
-                                        </td>
-                                        <td> {{ $food->name }}</td>
-                                        <td> {{ $food->price }}</td>
-                                        <td> {!! $food->description !!} </td>
-                                        <td cols="2">
-                                            <a href="{{ route('editFoods', ['id' => $food->id_food]) }}"
+                @forelse ($drinks as $drink)
+                
+                <tr>
+                        <td> {{ $loop->index + 1 }}</td>
+                        <td>
+                        @if($drink->image)
+                            <img src="{{ asset($drink->image) }}" alt="{{ $drink->name }}" width="100">
+                        @endif
+                        </td>
+                        <td> {{ $drink->name }}</td>
+                        <td> {{ $drink->price }}</td>
+                        <td> {!! $drink->description !!} </td>
+                        <td cols="2">
+                        <a href="{{ route('editDrinks', ['id' => $drink->id_drink]) }}"
                                                 class="btn btn-warning btn-sm" role="button">Edit</a>
-                                            <!-- Button triger modal -->
-                                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                            <!-- Button triger modal -->
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                                                 data-target="#exampleModal{{ $loop->index }}">
                                                 Delete
                                             </button>
@@ -82,34 +82,36 @@
                                                             <button type="button" class="btn btn-secondary btn-sm"
                                                                 data-dismiss="modal">Close</button>
                                                             <form
-                                                                action="{{ route('deleteFoods', ['id' => $food->id_food]) }}">
+                                                                action="{{ route('deleteDrinks', ['id' => $drink->id_drink]) }}">
                                                                 @csrf
                                                                 @method('DELETE')
 
                                                                 <button type="submit" class="btn btn-danger btn-sm"
                                                                     role="button">Hapus</button>
                                                             </form>
-                                        </td>
-                                    </tr>
-                                @empty
-                                    <div class="alert alert-danger">
-                                        There no data of food.
-                                    </div>
-
-
-                            </tbody>
-                            @endforelse
-                        </table>
-                    </div>
+                          </td>
+                </tr>
+                @empty
+                <div class="alert alert-danger">
+                    There no data of drink.
                 </div>
-            </div>
-        </div>
-        <!-- /.content -->
+                
+            
+            </tbody>
+            @endforelse
+        </table>
     </div>
-    <!-- /.content-wrapper -->
-    <script>
-        $(document).ready(function() {
-            $('#food-table').DataTable();
-        });
-    </script>
+    </div>
+         </div>
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <script>
+  $(document).ready(function() {
+    $('#drink-table').DataTable();
+  });
+  </script>
+   
 @endsection
+
