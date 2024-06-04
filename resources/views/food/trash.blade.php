@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Foods List</h1>
+                        <h1 class="m-0">Trash  List</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Foods</li>
+                            <li class="breadcrumb-item active">trash</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -25,8 +25,9 @@
             <div class="container mt-5">
                 <div class="card">
                     <div class="card-header text-right">
-                        <a href="{{ route('createFoods') }}" class="btn btn-primary" role="button">Add</a>
-                        <a href="{{ route('trashFoods') }}" class="btn btn-primary" role="button">Trash</a>
+                        <a href="{{ route('deletedFoods') }}" class="btn btn-primary" role="button">delete all</a>
+                        <a href="{{ route('restoreFoods') }}" class="btn btn-primary" role="button">restore all</a>
+                        <a href="{{ route('daftarFoods') }}" class="btn btn-primary" role="button">back</a>
                     </div>
                     <div class="card-body">
                         <table class="table table-hover table-bordered" id="data-table">
@@ -55,13 +56,9 @@
                                         <td> {{ $food->price }}</td>
                                         <td> {!! $food->description !!} </td>
                                         <td cols="2">
-                                            <a href="{{ route('editFoods', ['id' => $food->id_food]) }}"
-                                                class="btn btn-warning btn-sm" role="button">Edit</a>
+                                        <a href="{{ route('restoreFoods') }}" class="btn btn-primary" role="button">restore</a>
                                             <!-- Button triger modal -->
-                                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                                data-target="#exampleModal{{ $loop->index }}">
-                                                Delete
-                                            </button>
+                                            <a href="{{ route('deletedFoods') }}" class="btn btn-primary" role="button">delete</a>
 
                                             <!-- Modal -->
                                             <div class="modal fade" id="exampleModal{{ $loop->index }}" tabindex="-1"
@@ -83,7 +80,7 @@
                                                             <button type="button" class="btn btn-secondary btn-sm"
                                                                 data-dismiss="modal">Close</button>
                                                             <form
-                                                                action="{{ route('deleteFoods', ['id' => $food->id_food]) }}">
+                                                                action="{{ route('deletedFoods', ['id' => $food->id_food]) }}">
                                                                 @csrf
                                                                 @method('DELETE')
 
