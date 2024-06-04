@@ -11,7 +11,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
               <li class="breadcrumb-item active">Foods</li>
             </ol>
           </div><!-- /.col -->
@@ -55,9 +55,7 @@
                         <td> {!! $food->description !!} </td>
                         <td cols="2">
                             <a href="#" class="btn btn-warning btn-sm" role="button">Edit</a>
-                            <a onclick="confirmDelete(this)"
-                            data-url="#"
-                            class="btn btn-danger btn-sm" role="button">Hapus</a>
+                            <a onclick="confirmDelete(this)" data-url="#" class="btn btn-danger btn-sm" role="button">Hapus</a>
                           </td>
                 </tr>
                 @empty
