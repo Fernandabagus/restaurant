@@ -15,7 +15,7 @@ use App\Http\Controllers\DrinksController;
 
 use App\Http\Controllers\FoodController;
 
-
+use app\app\Controller\WebController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -73,3 +73,6 @@ require __DIR__.'/auth.php';
 
 // //route resource
 Route::resource('/drinks', \App\Http\Controllers\DrinksController::class);
+
+Route::get('/noe', [App\Http\Controllers\WebController::class, 'index']);
+
