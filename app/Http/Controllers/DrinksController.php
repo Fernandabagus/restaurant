@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Drinks;
-
+use RealRashid\SweetAlert\Facades\Alert as FacadesAlert;
 class DrinksController extends Controller
 {
     public function index()
@@ -45,8 +45,8 @@ class DrinksController extends Controller
         ]);
 
         $drinks->save();
-
-        return redirect(route('daftarDrinks'))->with('success', 'Drink added successfully!');
+        FacadesAlert::success('Berhasil', 'Drink added successfully!');
+        return redirect(route('daftarDrinks'));
     }
 
     public function show($id)
@@ -85,8 +85,8 @@ class DrinksController extends Controller
         $drinks->image = $validatedData['image'] ?? $drinks->image;
 
         $drinks->save();
-
-        return redirect(route('daftarDrinks'))->with('success', 'Drink updated successfully!');
+        FacadesAlert::success('Berhasil', 'Drink updated successfully!');
+        return redirect(route('daftarDrinks'));
     }
 
     public function destroy($id)
@@ -96,7 +96,7 @@ class DrinksController extends Controller
             unlink(public_path($drinks->image));
         }
         $drinks->delete();
-
-        return redirect(route('daftarDrinks'))->with('success', 'Drink deleted successfully!');
+        FacadesAlert::success('Berhasil', 'Drink deleted successfully!');
+        return redirect(route('daftarDrinks'));
     }
 }

@@ -32,5 +32,27 @@
 <script src="{{asset('AdminLTE-3.1.0')}}/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('AdminLTE-3.1.0')}}/dist/js/pages/dashboard2.js"></script>
+
+@if (Session::has('success'))
+    <script>
+        Swal({
+            title: "Success!",
+            text: "{{ Session::get('success') }}",
+            icon: "success",
+            button: "OK",
+        });
+    </script>
+@endif
+
+@if (Session::has('error'))
+    <script>
+        Swal({
+            title: "Error!",
+            text: "{{ Session::get('errorr') }}",
+            icon: "error",
+            button: "OK",
+        });
+    </script>
+@endif
 </body>
 </html>
