@@ -2,76 +2,101 @@
 
 namespace App\Http\Controllers;
 
-//import Model 
-use App\Models\Drinks;
-
-//return type View
-use Illuminate\View\View;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-
-//return type redirectResponse
-use Illuminate\Http\RedirectResponse;
+use App\Models\Drinks;
 
 class DrinksController extends Controller
 {
-    //
-    /**
-     * index
-     *
-     * @return View
-     */
-    public function index(): View
+    public function index()
     {
-        //get 
-        $drinks = Drinks::latest()->paginate(5);
-
-        //render view with 
-        return view('drinks.index', compact('drinks'));
+        $drinks = Drinks::all();
+        return view('drinks.index', ['drinks' => $drinks]);
     }
 
-    /**
-     * create
-     *
-     * @return View
-     */
-    public function create(): View
+    public function create()
     {
         return view('drinks.create');
     }
 
     /**
-     * store
-     *
-     * @param  mixed $request
-     * @return RedirectResponse
+     * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'required|integer|min:3',
+            'drink_name' => 'required|string|max:255',
+            'drink_price' => 'required|integer|min:3',
             'description' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-    
+
         if ($request->hasFile('image')) {
-           $image = $request->file('image');
-           $folderPath = 'drinks/' . date('Y') . '/' . date('m');
-           $imagePath = $image->store($folderPath, 'public');
-           $validatedData['image'] = 'storage/' . $imagePath;
-       }
-    
+            $image = $request->file('image');
+            $folderPath = 'drinks/' . date('Y') . '/' . date('m');
+            $imagePath = $image->store($folderPath, 'public');
+            $validatedData['image'] = 'storage/' . $imagePath;
+        }
+
         $drinks = new Drinks([
-            'name' => $validatedData['name'],
-            'price' => $validatedData['price'],
+            'name' => $validatedData['drink_name'],
+            'price' => $validatedData['drink_price'],
             'description' => $validatedData['description'],
             'image' => $validatedData['image'] ?? null,
         ]);
-    
-        $drinks->save();
-    
-        return redirect(route('drinks.index'));
+
+        $drink->save();
+
+        return redirect(route('daftarDrinks'))->with('success', 'Drink added successfully!');
     }
 
+    public function show($id)
+    {
+        $drink = Drinks::findOrFail($id);
+        return view('drink.show', ['drink' => $drink]);
+    }
+
+    public function edit($id)
+    {
+        $drink = Drinks::findOrFail($id);
+        return view('drink.edit', ['drink' => $drink]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'drink_name' => 'required|string|max:255',
+            'drink_price' => 'required|integer|min:3',
+            'description' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $drink = Drinks::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $folderPath = 'drinks/' . date('Y') . '/' . date('m');
+            $imagePath = $image->store($folderPath, 'public');
+            $validatedData['image'] = 'storage/' . $imagePath;
+        }
+
+        $drink->name = $validatedData['food_name'];
+        $drink->price = $validatedData['food_price'];
+        $drink->description = $validatedData['description'];
+        $drink->image = $validatedData['image'] ?? $drink->image;
+
+        $drink->save();
+
+        return redirect(route('daftarDrinks'))->with('success', 'Drink updated successfully!');
+    }
+
+    public function destroy($id)
+    {
+        $drink = Drinks::findOrFail($id);
+        if ($drink->image && file_exists(public_path($drink->image))) {
+            unlink(public_path($drink->image));
+        }
+        $drink->delete();
+
+        return redirect(route('daftarDrinks'))->with('success', 'Drink deleted successfully!');
+    }
 }

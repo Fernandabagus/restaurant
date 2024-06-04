@@ -62,7 +62,14 @@ Route::get('/food/edit/{id}', [App\Http\Controllers\FoodController::class, 'edit
 Route::post('/food/edit/{id}', [App\Http\Controllers\FoodController::class, 'update'])->name('updateFoods');
 Route::get('/food/delete/{id}', [App\Http\Controllers\FoodController::class, 'destroy'])->name('deleteFoods');
 
+Route::get('/drink', [DrinksController::class, 'index'])->name('daftarDrinks');
+Route::get('/drink/create', [App\Http\Controllers\DrinksController::class, 'create'])->name('createDrinks');
+Route::post('/drink/create', [App\Http\Controllers\DrinksController::class, 'store'])->name('storeDrinks');
+Route::get('/drink/edit/{id}', [App\Http\Controllers\DrinksController::class, 'edit'])->name('editDrinks');
+Route::post('/drink/edit/{id}', [App\Http\Controllers\DrinksController::class, 'update'])->name('updateDrinks');
+Route::get('/drink/delete/{id}', [App\Http\Controllers\DrinksController::class, 'destroy'])->name('deleteDrinks');
+
 require __DIR__.'/auth.php';
 
-//route resource
+// //route resource
 Route::resource('/drinks', \App\Http\Controllers\DrinksController::class);
