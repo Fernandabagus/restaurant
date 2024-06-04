@@ -27,9 +27,9 @@ use app\app\Controller\WebController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('layouts.master');
@@ -61,6 +61,11 @@ Route::post('/food/create', [App\Http\Controllers\FoodController::class, 'store'
 Route::get('/food/edit/{id}', [App\Http\Controllers\FoodController::class, 'edit'])->name('editFoods');
 Route::post('/food/edit/{id}', [App\Http\Controllers\FoodController::class, 'update'])->name('updateFoods');
 Route::get('/food/delete/{id}', [App\Http\Controllers\FoodController::class, 'destroy'])->name('deleteFoods');
+Route::get('/food/trash', [App\Http\Controllers\FoodController::class, 'trash'])->name('trashFoods');
+Route::get('/food/restore/{id?}', [App\Http\Controllers\FoodController::class, 'restore'])->name('restoreFoods');
+Route::get('/food/deleted/{id?}', [App\Http\Controllers\FoodController::class, 'deleted'])->name('deletedFoods');
+
+
 
 Route::get('/drink', [DrinksController::class, 'index'])->name('daftarDrinks');
 Route::get('/drink/create', [App\Http\Controllers\DrinksController::class, 'create'])->name('createDrinks');
@@ -74,5 +79,5 @@ require __DIR__.'/auth.php';
 // //route resource
 Route::resource('/drinks', \App\Http\Controllers\DrinksController::class);
 
-Route::get('/noe', [App\Http\Controllers\WebController::class, 'index']);
+Route::get('/', [App\Http\Controllers\WebController::class, 'index']);
 

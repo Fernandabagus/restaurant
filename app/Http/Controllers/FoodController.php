@@ -99,4 +99,29 @@ class FoodController extends Controller
 
         return redirect(route('daftarFoods'))->with('success', 'Food deleted successfully!');
     }
+
+    public function trash()
+    {
+        $foods = Foods::onlyTrashed()->get();
+        return view('food.trash', compact('foods'));
+    }
+
+    
+    public function restore()
+    {
+                
+            $food = Foods::onlyTrashed();
+            $food->restore();
+     
+            return redirect('/food/trash');
+    }
+
+public function deleted()
+{
+    	// hapus permanen data guru
+    	$food = Foods::onlyTrashed();
+    	$food->forceDelete();
+ 
+    	return redirect('/food/trash');
+}
 }
