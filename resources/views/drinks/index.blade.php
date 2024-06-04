@@ -25,7 +25,7 @@
          <div class="container mt-5">
          <div class="card">
          <div class="card-header text-right">
-        <a href="{{route('drinks.create')}}" class="btn btn-primary" role="button">Add Drink</a>
+        <a href="{{route('createDrinks')}}" class="btn btn-primary" role="button">Add Drink</a>
     </div>
     <div class="card-body">
         <table class="table table-hover table-bordered" id="data-table">
@@ -54,10 +54,41 @@
                         <td> {{ $drink->price }}</td>
                         <td> {!! $drink->description !!} </td>
                         <td cols="2">
-                            <a href="#" class="btn btn-warning btn-sm" role="button">Edit</a>
-                            <a onclick="confirmDelete(this)"
-                            data-url="#"
-                            class="btn btn-danger btn-sm" role="button">Hapus</a>
+                        <a href="{{ route('editDrinks', ['id' => $drink->id_drink]) }}"
+                                                class="btn btn-warning btn-sm" role="button">Edit</a>
+                            <!-- Button triger modal -->
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                                data-target="#exampleModal{{ $loop->index }}">
+                                                Delete
+                                            </button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal{{ $loop->index }}" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">DELETE</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>Are you sure want to delete this data?</p>
+                                                            <p></p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary btn-sm"
+                                                                data-dismiss="modal">Close</button>
+                                                            <form
+                                                                action="{{ route('deleteDrinks', ['id' => $drink->id_drink]) }}">
+                                                                @csrf
+                                                                @method('DELETE')
+
+                                                                <button type="submit" class="btn btn-danger btn-sm"
+                                                                    role="button">Hapus</button>
+                                                            </form>
                           </td>
                 </tr>
                 @empty
