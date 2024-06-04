@@ -58,7 +58,7 @@ class DrinksController extends Controller
     public function edit($id)
     {
         $drink = Drinks::findOrFail($id);
-        return view('drink.edit', ['drink' => $drink]);
+        return view('drinks.edit', ['drink' => $drink]);
     }
 
     public function update(Request $request, $id)
