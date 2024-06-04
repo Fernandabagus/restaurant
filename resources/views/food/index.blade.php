@@ -51,7 +51,7 @@
                                             @endif
                                         </td>
                                         <td> {{ $food->name }}</td>
-                                        <td> {{ $food->price }}</td>
+                                        <td> @currency($food->price)</td>
                                         <td> {!! $food->description !!} </td>
                                         <td cols="2">
                                             <a href="{{ route('editFoods', ['id' => $food->id_food]) }}"
