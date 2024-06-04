@@ -8,19 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Drinks extends Model
 {
     use HasFactory;
-
-    protected $table = 'drinks';
-    protected $primaryKey = 'id_drinks';
-
+     /**
+     * fillable
+     *
+     * @var array
+     */
     protected $fillable = [
+        'image',
         'name',
-        'description',
         'price',
+        'description',
     ];
-
-    // Accessor for formatted price
-    public function getPriceAttribute($value)
-    {
-        return number_format($value, 2, ',', '.');
-    }
 }

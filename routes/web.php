@@ -11,6 +11,11 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\ContactController;
 
+use App\Http\Controllers\DrinksController;
+
+use App\Http\Controllers\FoodController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,12 +33,14 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('layouts.master');
-})->middleware(['auth', 'verified'])->name('layouts.master');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-r
-Route::get('/home' , [DashboardController::class, 'index']);
+
+
+Route::get('/home' , [DashboardController::class, 'index'])->name('home');
+
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::get('/service', [ServiceController::class, 'index'])->name('service.index');
 Route::get('/menu', [MenuController::class, 'index'])->name('menu.index');
@@ -47,5 +54,15 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/food', [FoodController::class, 'index'])->name('daftarFoods');
+Route::get('/food/create', [App\Http\Controllers\FoodController::class, 'create'])->name('createFoods');
+Route::post('/food/create', [App\Http\Controllers\FoodController::class, 'store'])->name('storeFoods');
+Route::get('/food/edit/{id}', [App\Http\Controllers\FoodController::class, 'edit'])->name('editFoods');
+Route::post('/food/edit/{id}', [App\Http\Controllers\FoodController::class, 'update'])->name('updateFoods');
+Route::get('/food/delete/{id}', [App\Http\Controllers\FoodController::class, 'destroy'])->name('deleteFoods');
+
 require __DIR__.'/auth.php';
 
+//route resource
+Route::resource('/drinks', \App\Http\Controllers\DrinksController::class);

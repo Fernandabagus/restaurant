@@ -13,7 +13,9 @@
           <img src="{{asset('AdminLTE-3.1.0')}}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">kelompok 4</a>
+
+          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+
         </div>
       </div>
 
@@ -35,12 +37,12 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <x-responsive-nav-link :href="route('dashboard')" class="nav-link active">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard
               </p>
-            </a>
+            </x-responsive-nav-link>
           </li>
 
           <li class="nav-item">
@@ -59,9 +61,15 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="drinks" class="nav-link">
                         <i class="nav-icon fas fa-table"></i>
-                        <p>Categories</p>
+                        <p>drink</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('daftarFoods')}}"class="nav-link">
+                        <i class="nav-icon fas fa-table"></i>
+                        <p>Foods</p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -83,11 +91,15 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+
+                        <x-responsive-nav-link href="#" class="nav-link">
+
                         <i class="nav-icon fas fa-table"></i>
                         <p>Orders</p>
-                        </a>
+                        </x-responsive-nav-link>
                     </li>
+
+                   
                 </ul>
           </li>
           
