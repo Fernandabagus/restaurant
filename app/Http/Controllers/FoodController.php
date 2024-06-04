@@ -27,7 +27,7 @@ class FoodController extends Controller
             'food_name' => 'required|string|max:255',
             'food_price' => 'required|integer|min:3',
             'description' => 'required|string',
-            'img_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'img_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:1048',
         ]);
 
         if ($request->hasFile('img_url')) {
