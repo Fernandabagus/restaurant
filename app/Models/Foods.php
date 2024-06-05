@@ -12,7 +12,7 @@ class Foods extends Model
     use SoftDeletes;
 
     protected $table = 'foods';
-    protected $primaryKey = 'id_food';
+    protected $primaryKey = 'id';
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
