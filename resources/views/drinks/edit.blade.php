@@ -40,15 +40,16 @@
                                     >
                             </div>
                             <div class="form-group">
-                                <label for="drink_price">Price</label>
-                                <input type="text" name="drink_price" id="drink_price" class="form-control"
-                                    required="required" value="{{ old('price', $drink->price) }}" placeholder="Input drink price here">
+                            <label for="drink_price_display">Price</label>
+                            <input type="text" id="drink_price_display" class="form-control"
+                                required="required" value="{{ old('price', 'Rp. ' . number_format($drink->price, 0, ',', '.')) }}" placeholder="Input drink price here">
+                            <input type="hidden" name="drink_price" id="drink_price" value="{{ old('price', $drink->price) }}">
 
-                                <!-- Error Message -->
-                                @error('price')
-                                    <div class="alert alert-danger mt-2">{{ $message }}</div>
-                                @enderror
-                            </div>
+                            <!-- Error Message -->
+                            @error('price')
+                                <div class="alert alert-danger mt-2">{{ $message }}</div>
+                            @enderror
+                        </div>
 
                             <div class="form-group">
                                 <label for="description">Description</label>
@@ -73,28 +74,35 @@
     <!-- /.content-wrapper -->
     <script>
     /* Format Rupiah */
-    var price = document.getElementById('price');
-    price.addEventListener('keyup', function(e)
-    {
-        price.value = formatRupiah(this.value, 'Rp. ');
+    var drink_price_display = document.getElementById('drink_price_display');
+    var drink_price = document.getElementById('drink_price');
+
+    drink_price_display.addEventListener('keyup', function(e) {
+        var formattedValue = formatRupiah(this.value, 'Rp. ');
+        drink_price_display.value = formattedValue;
+        drink_price.value = formatNumber(this.value);
     });
-    
-    /* Fungsi */
-    function formatRupiah(angka, prefix)
-    {
+
+    /* Format currency with Rupiah */
+    function formatRupiah(angka, prefix) {
         var number_string = angka.replace(/[^,\d]/g, '').toString(),
-            split    = number_string.split(','),
-            sisa     = split[0].length % 3,
-            rupiah     = split[0].substr(0, sisa),
-            ribuan     = split[0].substr(sisa).match(/\d{3}/gi);
-            
+            split = number_string.split(','),
+            sisa = split[0].length % 3,
+            rupiah = split[0].substr(0, sisa),
+            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
         if (ribuan) {
             separator = sisa ? '.' : '';
             rupiah += separator + ribuan.join('.');
         }
-        
+
         rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
         return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+    }
+
+    /* Format number without currency symbol */
+    function formatNumber(angka) {
+        return angka.replace(/[^,\d]/g, '');
     }
 </script>
 @endsection
