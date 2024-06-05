@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Foods;
+use RealRashid\SweetAlert\Facades\Alert as FacadesAlert;
 
 class FoodController extends Controller
 {
@@ -45,8 +46,8 @@ class FoodController extends Controller
         ]);
 
         $food->save();
-
-        return redirect(route('daftarFoods'))->with('success', 'Food added successfully!');
+        FacadesAlert::success('Berhasil', 'Food added successfully!');
+        return redirect(route('daftarFoods'));
     }
 
     public function show($id)
@@ -85,8 +86,8 @@ class FoodController extends Controller
         $food->img_url = $validatedData['img_url'] ?? $food->img_url;
 
         $food->save();
-
-        return redirect(route('daftarFoods'))->with('success', 'Food updated successfully!');
+        FacadesAlert::success('Berhasil', 'Food updated successfully!');
+        return redirect(route('daftarFoods'));
     }
 
     public function destroy($id)
@@ -96,7 +97,33 @@ class FoodController extends Controller
             unlink(public_path($food->img_url));
         }
         $food->delete();
-
-        return redirect(route('daftarFoods'))->with('success', 'Food deleted successfully!');
+        FacadesAlert::success('Berhasil', 'Food deleted successfully!');
+        return redirect(route('daftarFoods'));
     }
+
+    public function trash()
+    {
+        $foods = Foods::onlyTrashed()->get();
+        return view('food.trash', compact('foods'));
+    }
+
+    
+    public function restore()
+    {
+                
+            $food = Foods::onlyTrashed();
+            $food->restore();
+     
+            return redirect('/food/trash');
+    }
+
+public function deleted($id)
+{
+    	// hapus permanen data guru
+    	$food = Foods::onlyTrashed();
+        // dd($food);
+    	$food->forceDelete();
+ 
+    	return redirect('/food/trash');
+}
 }
