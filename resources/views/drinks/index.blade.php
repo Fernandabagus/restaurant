@@ -57,7 +57,7 @@
                         <td> {!! $drink->description !!} </td>
                         <td cols="2">
                         <a href="{{ route('editDrinks', ['id' => $drink->id_drink]) }}"
-                                                class="btn btn-warning btn-sm" role="button">Edit</a>
+                            class="btn btn-warning btn-sm" role="button">Edit</a>
                             <!-- Button triger modal -->
                             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                                                 data-target="#exampleModal{{ $loop->index }}">
