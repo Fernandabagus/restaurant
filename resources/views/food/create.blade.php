@@ -42,8 +42,10 @@
 
                         <div class="form-group">
                             <label for="food_price">Price</label>
+
                             <input type="text" name="food_price" id="food_price" class="form-control"
                                 required="required" pattern="" placeholder="Input food price here..">
+
                         </div>
 
                         <div class="form-group">

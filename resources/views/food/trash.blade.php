@@ -1,32 +1,33 @@
 @extends('layouts.master')
 @section('content')
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Foods List</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-              <li class="breadcrumb-item active">Foods</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Trash  List</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                            <li class="breadcrumb-item active">trash</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
 
         <!-- Main content -->
         <div class="content">
             <div class="container mt-5">
                 <div class="card">
                     <div class="card-header text-right">
-                        <a href="{{ route('createFoods') }}" class="btn btn-primary" role="button">Add</a>
-                        <a href="{{ route('trashFoods') }}" class="btn btn-primary" role="button">Trash</a>
+                        <a href="{{ route('deletedFoods') }}" class="btn btn-primary" role="button">delete all</a>
+                        <a href="{{ route('restoreFoods') }}" class="btn btn-primary" role="button">restore all</a>
+                        <a href="{{ route('daftarFoods') }}" class="btn btn-primary" role="button">back</a>
                     </div>
                     <div class="card-body">
                         <table class="table table-hover table-bordered" id="data-table">
@@ -52,16 +53,17 @@
                                             @endif
                                         </td>
                                         <td> {{ $food->name }}</td>
-                                        <td> @currency($food->price)</td>
+                                        <td> {{ $food->price }}</td>
                                         <td> {!! $food->description !!} </td>
                                         <td cols="2">
-                                            <a href="{{ route('editFoods', ['id' => $food->id]) }}"
-                                                class="btn btn-warning btn-sm" role="button">Edit</a>
+                                        <a href="{{ route('restoreFoods') }}" class="btn btn-primary" role="button">restore</a>
                                             <!-- Button triger modal -->
-                                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                                data-target="#exampleModal{{ $loop->index }}">
-                                                Delete
-                                            </button>
+                                            <!-- <a href="{{ route('deletedFoods') }}" class="btn btn-primary">delete</a> -->
+                                            <form action="{{ route('deletedFoods', $food->id) }}" onclick="return confirm('Hapus Data  ?')" method="POST">
+                                        @method('delete')
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger mx-1 btn-sm">Delete</button>
+                                    </form>
 
                                             <!-- Modal -->
                                             <div class="modal fade" id="exampleModal{{ $loop->index }}" tabindex="-1"
@@ -83,7 +85,7 @@
                                                             <button type="button" class="btn btn-secondary btn-sm"
                                                                 data-dismiss="modal">Close</button>
                                                             <form
-                                                                action="{{ route('deleteFoods', ['id' => $food->id]) }}">
+                                                                action="{{ route('deletedFoods', ['id' => $food->id_food]) }}">
                                                                 @csrf
                                                                 @method('DELETE')
 

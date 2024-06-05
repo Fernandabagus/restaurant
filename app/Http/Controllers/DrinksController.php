@@ -57,8 +57,8 @@ class DrinksController extends Controller
 
     public function edit($id)
     {
-        $drink = Drinks::findOrFail($id);
-        return view('drink.edit', ['drink' => $drink]);
+        $drinks = Drinks::findOrFail($id);
+        return view('drinks.edit', ['drink' => $drinks]);
     }
 
     public function update(Request $request, $id)
@@ -70,7 +70,7 @@ class DrinksController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $drink = Drinks::findOrFail($id);
+        $drinks = Drinks::findOrFail($id);
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -79,12 +79,12 @@ class DrinksController extends Controller
             $validatedData['image'] = 'storage/' . $imagePath;
         }
 
-        $drink->name = $validatedData['food_name'];
-        $drink->price = $validatedData['food_price'];
-        $drink->description = $validatedData['description'];
-        $drink->image = $validatedData['image'] ?? $drink->image;
+        $drinks->name = $validatedData['drink_name'];
+        $drinks->price = $validatedData['drink_price'];
+        $drinks->description = $validatedData['description'];
+        $drinks->image = $validatedData['image'] ?? $drinks->image;
 
-        $drink->save();
+        $drinks->save();
 
         return redirect(route('daftarDrinks'))->with('success', 'Drink updated successfully!');
     }
@@ -99,4 +99,30 @@ class DrinksController extends Controller
 
         return redirect(route('daftarDrinks'))->with('success', 'Drink deleted successfully!');
     }
+
+    public function trash()
+    {
+        $drinks = Drinks::onlyTrashed()->get();
+        return view('drinks.trash', compact('drinks'));
+    }
+
+    
+    public function restore()
+    {
+                
+            $drinks = Foods::onlyTrashed();
+            $drinks->restore();
+     
+            return redirect('/drink/trash');
+    }
+
+public function deleted1($id)
+{
+    	// hapus permanen data guru
+    	$drink = Drinks::onlyTrashed();
+        // dd($food);
+    	$drink->forceDelete();
+ 
+    	return redirect('/drink/trash');
+}
 }

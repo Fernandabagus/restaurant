@@ -35,14 +35,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="name">Drinks Name</label>
-                            <input type="text" name="name" id="name" class="form-control"
+                            <label for="drink_name">Drinks Name</label>
+                            <input type="text" name="drink_name" id="drink_name" class="form-control"
                                 required="required" placeholder="Input food name here">
                         </div>
 
                         <div class="form-group">
-                            <label for="price">Price</label>
-                            <input type="text" name="price" id="price" class="form-control"
+                            <label for="drink_price">Price</label>
+                            <input type="text" name="drink_price" id="drink_price" class="form-control"
                                 required="required" placeholder="Input food price here">
                         </div>
 

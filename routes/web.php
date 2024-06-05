@@ -15,7 +15,7 @@ use App\Http\Controllers\DrinksController;
 
 use App\Http\Controllers\FoodController;
 
-
+use app\app\Controller\WebController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,13 +27,15 @@ use App\Http\Controllers\FoodController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('layouts.master');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/', [App\Http\Controllers\WebController::class, 'index']);
 
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -61,6 +63,11 @@ Route::post('/food/create', [App\Http\Controllers\FoodController::class, 'store'
 Route::get('/food/edit/{id}', [App\Http\Controllers\FoodController::class, 'edit'])->name('editFoods');
 Route::post('/food/edit/{id}', [App\Http\Controllers\FoodController::class, 'update'])->name('updateFoods');
 Route::get('/food/delete/{id}', [App\Http\Controllers\FoodController::class, 'destroy'])->name('deleteFoods');
+Route::get('/food/trash', [App\Http\Controllers\FoodController::class, 'trash'])->name('trashFoods');
+Route::get('/food/restore/{id?}', [App\Http\Controllers\FoodController::class, 'restore'])->name('restoreFoods');
+Route::delete('/food/deleted/{id?}', [App\Http\Controllers\FoodController::class, 'deleted'])->name('deletedFoods');
+
+
 
 Route::get('/drink', [DrinksController::class, 'index'])->name('daftarDrinks');
 Route::get('/drink/create', [App\Http\Controllers\DrinksController::class, 'create'])->name('createDrinks');
@@ -68,8 +75,12 @@ Route::post('/drink/create', [App\Http\Controllers\DrinksController::class, 'sto
 Route::get('/drink/edit/{id}', [App\Http\Controllers\DrinksController::class, 'edit'])->name('editDrinks');
 Route::post('/drink/edit/{id}', [App\Http\Controllers\DrinksController::class, 'update'])->name('updateDrinks');
 Route::get('/drink/delete/{id}', [App\Http\Controllers\DrinksController::class, 'destroy'])->name('deleteDrinks');
+Route::get('/drink/trash', [App\Http\Controllers\DrinksController::class, 'trash'])->name('trashDrinks');
+Route::get('/drink/restore/{id?}', [App\Http\Controllers\FoodController::class, 'restore'])->name('restoreDrinks');
+Route::get('/drink/deleted1/{id?}', [App\Http\Controllers\FoodController::class, 'deleted1'])->name('deleted1Drinks');
 
 require __DIR__.'/auth.php';
 
 // //route resource
 Route::resource('/drinks', \App\Http\Controllers\DrinksController::class);
+
