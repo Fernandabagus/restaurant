@@ -58,7 +58,12 @@
                                         <td cols="2">
                                         <a href="{{ route('restoreFoods') }}" class="btn btn-primary" role="button">restore</a>
                                             <!-- Button triger modal -->
-                                            <a href="{{ route('deletedFoods') }}" class="btn btn-primary" role="button">delete</a>
+                                            <!-- <a href="{{ route('deletedFoods') }}" class="btn btn-primary">delete</a> -->
+                                            <form action="{{ route('deletedFoods', $food->id) }}" onclick="return confirm('Hapus Data  ?')" method="POST">
+                                        @method('delete')
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger mx-1 btn-sm">Delete</button>
+                                    </form>
 
                                             <!-- Modal -->
                                             <div class="modal fade" id="exampleModal{{ $loop->index }}" tabindex="-1"

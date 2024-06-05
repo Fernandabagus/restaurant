@@ -91,12 +91,38 @@ class DrinksController extends Controller
 
     public function destroy($id)
     {
-        $drinks = Drinks::findOrFail($id);
-        if ($drinks->image && file_exists(public_path($drinks->image))) {
-            unlink(public_path($drinks->image));
+        $drink = Drinks::findOrFail($id);
+        if ($drink->image && file_exists(public_path($drink->image))) {
+            unlink(public_path($drink->image));
         }
-        $drinks->delete();
+        $drink->delete();
 
         return redirect(route('daftarDrinks'))->with('success', 'Drink deleted successfully!');
     }
+
+    public function trash()
+    {
+        $drinks = Drinks::onlyTrashed()->get();
+        return view('drinks.trash', compact('drinks'));
+    }
+
+    
+    public function restore()
+    {
+                
+            $drinks = Foods::onlyTrashed();
+            $drinks->restore();
+     
+            return redirect('/drink/trash');
+    }
+
+public function deleted1($id)
+{
+    	// hapus permanen data guru
+    	$drink = Drinks::onlyTrashed();
+        // dd($food);
+    	$drink->forceDelete();
+ 
+    	return redirect('/drink/trash');
+}
 }

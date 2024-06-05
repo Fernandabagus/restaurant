@@ -116,10 +116,11 @@ class FoodController extends Controller
             return redirect('/food/trash');
     }
 
-public function deleted()
+public function deleted($id)
 {
     	// hapus permanen data guru
     	$food = Foods::onlyTrashed();
+        // dd($food);
     	$food->forceDelete();
  
     	return redirect('/food/trash');

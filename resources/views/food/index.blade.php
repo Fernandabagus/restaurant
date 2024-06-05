@@ -55,7 +55,7 @@
                                         <td> {{ $food->price }}</td>
                                         <td> {!! $food->description !!} </td>
                                         <td cols="2">
-                                            <a href="{{ route('editFoods', ['id' => $food->id_food]) }}"
+                                            <a href="{{ route('editFoods', ['id' => $food->id]) }}"
                                                 class="btn btn-warning btn-sm" role="button">Edit</a>
                                             <!-- Button triger modal -->
                                             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
@@ -83,7 +83,7 @@
                                                             <button type="button" class="btn btn-secondary btn-sm"
                                                                 data-dismiss="modal">Close</button>
                                                             <form
-                                                                action="{{ route('deleteFoods', ['id' => $food->id_food]) }}">
+                                                                action="{{ route('deleteFoods', ['id' => $food->id]) }}">
                                                                 @csrf
                                                                 @method('DELETE')
 

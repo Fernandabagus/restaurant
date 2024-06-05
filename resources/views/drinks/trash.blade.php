@@ -7,12 +7,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Drinks List</h1>
+            <h1 class="m-0">Drinks trash List</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-              <li class="breadcrumb-item active">Drinks</li>
+              <li class="breadcrumb-item active">Drinks trash</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -25,8 +25,9 @@
          <div class="container mt-5">
          <div class="card">
          <div class="card-header text-right">
-        <a href="{{route('createDrinks')}}" class="btn btn-primary" role="button">Add</a>
-        <a href="{{ route('trashDrinks') }}" class="btn btn-primary" role="button">Trash</a>
+         <a href="{{ route('deleted1Drinks') }}" class="btn btn-primary" role="button">delete all</a>
+         <a href="{{ route('restoreDrinks') }}" class="btn btn-primary" role="button">restore all</a>
+         <a href="{{ route('daftarDrinks') }}" class="btn btn-primary" role="button">back</a>
 
     </div>
     <div class="card-body">
@@ -43,7 +44,7 @@
             </thead>
             <tbody>
 
-                @forelse ($drinks as $drink)
+            @forelse ($drinks as $drink)
                 
                 <tr>
                         <td> {{ $loop->index + 1 }}</td>
@@ -56,13 +57,14 @@
                         <td> {{ $drink->price }}</td>
                         <td> {!! $drink->description !!} </td>
                         <td cols="2">
-                        <a href="{{ route('editDrinks', ['id' => $drink->id_drink]) }}"
-                                                class="btn btn-warning btn-sm" role="button">Edit</a>
-                            <!-- Button triger modal -->
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                                data-target="#exampleModal{{ $loop->index }}">
-                                                Delete
-                                            </button>
+                        <a href="{{ route('restoreDrinks') }}" class="btn btn-primary" role="button">restore</a>
+                                            <!-- Button triger modal -->
+                                            <!-- <a href="{{ route('deletedFoods') }}" class="btn btn-primary">delete</a> -->
+                                            <form action="{{ route('deleted1Drinks', $drink->id_drink) }}" onclick="return confirm('Hapus Data ini ?')" method="POST">
+                                        @method('delete')
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger mx-1 btn-sm">Delete</button>
+                                    </form>
 
                                             <!-- Modal -->
                                             <div class="modal fade" id="exampleModal{{ $loop->index }}" tabindex="-1"
@@ -84,7 +86,7 @@
                                                             <button type="button" class="btn btn-secondary btn-sm"
                                                                 data-dismiss="modal">Close</button>
                                                             <form
-                                                                action="{{ route('deleteDrinks', ['id' => $drink->id_drink]) }}">
+                                                                action="{{ route('deleted1Drinks', ['id' => $drink->id_drink]) }}">
                                                                 @csrf
                                                                 @method('DELETE')
 
