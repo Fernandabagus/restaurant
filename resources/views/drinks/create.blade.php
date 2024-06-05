@@ -41,9 +41,10 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="price">Price</label>
-                            <input type="text" name="price" id="price" class="form-control"
-                                required="required" placeholder="Input food price here">
+                            <label for="price_display">Price</label>
+                            <input type="text" id="price_display" class="form-control"
+                                required="required" placeholder="Input drinks price here">
+                            <input type="hidden" name="price" id="price">
                         </div>
 
                         <div class="form-group">
@@ -67,28 +68,35 @@
 <!-- /.content-wrapper -->
 <script>
     /* Format Rupiah */
+    var price_display = document.getElementById('price_display');
     var price = document.getElementById('price');
-    price.addEventListener('keyup', function(e)
-    {
-        price.value = formatRupiah(this.value, 'Rp. ');
+
+    price_display.addEventListener('keyup', function(e) {
+        var formattedValue = formatRupiah(this.value, 'Rp. ');
+        price_display.value = formattedValue;
+        price.value = formatNumber(this.value);
     });
-    
-    /* Fungsi */
-    function formatRupiah(angka, prefix)
-    {
+
+    /* Format currency with Rupiah */
+    function formatRupiah(angka, prefix) {
         var number_string = angka.replace(/[^,\d]/g, '').toString(),
-            split    = number_string.split(','),
-            sisa     = split[0].length % 3,
-            rupiah     = split[0].substr(0, sisa),
-            ribuan     = split[0].substr(sisa).match(/\d{3}/gi);
-            
+            split = number_string.split(','),
+            sisa = split[0].length % 3,
+            rupiah = split[0].substr(0, sisa),
+            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
         if (ribuan) {
             separator = sisa ? '.' : '';
             rupiah += separator + ribuan.join('.');
         }
-        
+
         rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
         return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+    }
+
+    /* Format number without currency symbol */
+    function formatNumber(angka) {
+        return angka.replace(/[^,\d]/g, '');
     }
 </script>
 
