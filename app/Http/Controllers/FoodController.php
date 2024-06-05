@@ -100,4 +100,30 @@ class FoodController extends Controller
         FacadesAlert::success('Berhasil', 'Food deleted successfully!');
         return redirect(route('daftarFoods'));
     }
+
+    public function trash()
+    {
+        $foods = Foods::onlyTrashed()->get();
+        return view('food.trash', compact('foods'));
+    }
+
+    
+    public function restore()
+    {
+                
+            $food = Foods::onlyTrashed();
+            $food->restore();
+     
+            return redirect('/food/trash');
+    }
+
+public function deleted($id)
+{
+    	// hapus permanen data guru
+    	$food = Foods::onlyTrashed();
+        // dd($food);
+    	$food->forceDelete();
+ 
+    	return redirect('/food/trash');
+}
 }

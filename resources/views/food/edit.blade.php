@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Add Foods</h1>
+                        <h1 class="m-0">Edit Foods</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -42,7 +42,7 @@
                             <div class="form-group">
                                 <label for="food_price">Price</label>
                                 <input type="text" name="food_price" id="food_price" class="form-control"
-                                    required="required" value="{{ old('price', $food->price) }}" placeholder="Input food price here">
+                                    required="required" value="@currency(old('price', $food->price))" placeholder="Input food price here">
 
                                 <!-- Error Message -->
                                 @error('price')
@@ -71,4 +71,30 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+    <script>
+    /* Format Rupiah */
+    var food_price = document.getElementById('food_price');
+    food_price.addEventListener('keyup', function(e)
+    {
+        food_price.value = formatRupiah(this.value, 'Rp. ');
+    });
+    
+    /* Fungsi */
+    function formatRupiah(angka, prefix)
+    {
+        var number_string = angka.replace(/[^,\d]/g, '').toString(),
+            split    = number_string.split(','),
+            sisa     = split[0].length % 3,
+            rupiah     = split[0].substr(0, sisa),
+            ribuan     = split[0].substr(sisa).match(/\d{3}/gi);
+            
+        if (ribuan) {
+            separator = sisa ? '.' : '';
+            rupiah += separator + ribuan.join('.');
+        }
+        
+        rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+        return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+    }
+</script>
 @endsection
