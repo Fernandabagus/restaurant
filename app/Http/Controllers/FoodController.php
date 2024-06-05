@@ -27,7 +27,7 @@ class FoodController extends Controller
             'food_name' => 'required|string|max:255',
             'food_price' => 'required|integer|min:3',
             'description' => 'required|string',
-            'img_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'img_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:1048',
         ]);
 
         if ($request->hasFile('img_url')) {
@@ -99,4 +99,30 @@ class FoodController extends Controller
 
         return redirect(route('daftarFoods'))->with('success', 'Food deleted successfully!');
     }
+
+    public function trash()
+    {
+        $foods = Foods::onlyTrashed()->get();
+        return view('food.trash', compact('foods'));
+    }
+
+    
+    public function restore()
+    {
+                
+            $food = Foods::onlyTrashed();
+            $food->restore();
+     
+            return redirect('/food/trash');
+    }
+
+public function deleted($id)
+{
+    	// hapus permanen data guru
+    	$food = Foods::onlyTrashed();
+        // dd($food);
+    	$food->forceDelete();
+ 
+    	return redirect('/food/trash');
+}
 }
