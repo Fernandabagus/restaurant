@@ -37,19 +37,21 @@
                         <div class="form-group">
                             <label for="food_name">Food Name</label>
                             <input type="text" name="food_name" id="food_name" class="form-control"
-                                required="required" placeholder="Input food name here">
+                                required="required" placeholder="Input food name here..">
                         </div>
 
                         <div class="form-group">
                             <label for="food_price">Price</label>
-                            <input type="number" name="food_price" id="food_price" class="form-control"
-                                required="required" placeholder="Input food price here">
+
+                            <input type="text" name="food_price" id="food_price" class="form-control"
+                                required="required" pattern="" placeholder="Input food price here..">
+
                         </div>
 
                         <div class="form-group">
                             <label for="description">Description</label>
                             <textarea name="description" id="description" rows="3" class="form-control"
-                                required="required" placeholder="Input food description here"></textarea>
+                                required="required" placeholder="Input food description here.."></textarea>
                         </div>
 
                         <div class="text-right">
@@ -65,5 +67,31 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<script>
+    /* Format Rupiah */
+    var food_price = document.getElementById('food_price');
+    food_price.addEventListener('keyup', function(e)
+    {
+        food_price.value = formatRupiah(this.value, 'Rp. ');
+    });
+    
+    /* Fungsi */
+    function formatRupiah(angka, prefix)
+    {
+        var number_string = angka.replace(/[^,\d]/g, '').toString(),
+            split    = number_string.split(','),
+            sisa     = split[0].length % 3,
+            rupiah     = split[0].substr(0, sisa),
+            ribuan     = split[0].substr(sisa).match(/\d{3}/gi);
+            
+        if (ribuan) {
+            separator = sisa ? '.' : '';
+            rupiah += separator + ribuan.join('.');
+        }
+        
+        rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+        return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+    }
+</script>
 
 @endsection
