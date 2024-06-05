@@ -110,7 +110,7 @@ class DrinksController extends Controller
     public function restore()
     {
                 
-            $drinks = Foods::onlyTrashed();
+            $drinks = Drinks::onlyTrashed();
             $drinks->restore();
      
             return redirect('/drink/trash');
