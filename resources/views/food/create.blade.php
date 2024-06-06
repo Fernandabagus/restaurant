@@ -31,7 +31,8 @@
 
                         <div class="form-group">
                             <label for="img_url">Food Image</label>
-                            <input type="file" name="img_url" id="img_url" class="form-control-file">
+                            <input type="file" name="img_url" id="img_url" class="form-control-file" onchange="loadFile(event)">
+                            <img id="output" class="img-fluid mt-2 mb-4" width="100" />
                         </div>
 
                         <div class="form-group">
