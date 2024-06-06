@@ -34,8 +34,8 @@
                                 <input type="file" class="form-control" name="image">
                             </div>
                             <div class="form-group">
-                                <label for="drink_name">Drink Name</label>
-                                <input type="text" class="form-control" name="drink_name" id="drink_name"
+                                <label for="name">Drink Name</label>
+                                <input type="text" class="form-control" name="name" id="name"
                                     required="required" value="{{ old('name', $drink->name) }}" placeholder="Input drink price here"
                                     >
                             </div>
@@ -43,7 +43,7 @@
                             <label for="drink_price_display">Price</label>
                             <input type="text" id="drink_price_display" class="form-control"
                                 required="required" value="{{ old('price', 'Rp. ' . number_format($drink->price, 0, ',', '.')) }}" placeholder="Input drink price here">
-                            <input type="hidden" name="drink_price" id="drink_price" value="{{ old('price', $drink->price) }}">
+                            <input type="hidden" name="price" id="price" value="{{ old('price', $drink->price) }}">
 
                             <!-- Error Message -->
                             @error('price')
@@ -75,12 +75,12 @@
     <script>
     /* Format Rupiah */
     var drink_price_display = document.getElementById('drink_price_display');
-    var drink_price = document.getElementById('drink_price');
+    var price = document.getElementById('price');
 
     drink_price_display.addEventListener('keyup', function(e) {
         var formattedValue = formatRupiah(this.value, 'Rp. ');
         drink_price_display.value = formattedValue;
-        drink_price.value = formatNumber(this.value);
+        price.value = formatNumber(this.value);
     });
 
     /* Format currency with Rupiah */
