@@ -30,6 +30,7 @@ class FoodController extends Controller
             'description' => 'required|string',
             'img_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:1048',
         ]);
+        
 
         if ($request->hasFile('img_url')) {
             $image = $request->file('img_url');
@@ -46,7 +47,7 @@ class FoodController extends Controller
         ]);
 
         $food->save();
-        FacadesAlert::success('Berhasil', 'Food added successfully!');
+        // FacadesAlert::success('Berhasil', 'Food added successfully!');
         return redirect(route('daftarFoods'));
     }
 

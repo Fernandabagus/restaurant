@@ -23,9 +23,10 @@ class DrinksController extends Controller
      */
     public function store(Request $request)
     {
+        
         $validatedData = $request->validate([
-            'drink_name' => 'required|string|max:255',
-            'drink_price' => 'required|integer|min:3',
+            'name' => 'required|string|max:255',
+            'price' => 'required|integer',
             'description' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
@@ -38,8 +39,8 @@ class DrinksController extends Controller
         }
 
         $drinks = new Drinks([
-            'name' => $validatedData['drink_name'],
-            'price' => $validatedData['drink_price'],
+            'name' => $validatedData['name'],
+            'price' => $validatedData['price'],
             'description' => $validatedData['description'],
             'image' => $validatedData['image'] ?? null,
         ]);
@@ -66,8 +67,8 @@ class DrinksController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'drink_name' => 'required|string|max:255',
-            'drink_price' => 'required|integer|min:3',
+            'name' => 'required|string|max:255',
+            'price' => 'required|integer|min:3',
             'description' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
@@ -81,8 +82,8 @@ class DrinksController extends Controller
             $validatedData['image'] = 'storage/' . $imagePath;
         }
 
-        $drinks->name = $validatedData['drink_name'];
-        $drinks->price = $validatedData['drink_price'];
+        $drinks->name = $validatedData['name'];
+        $drinks->price = $validatedData['price'];
         $drinks->description = $validatedData['description'];
         $drinks->image = $validatedData['image'] ?? $drinks->image;
 
@@ -98,7 +99,7 @@ class DrinksController extends Controller
             unlink(public_path($drink->image));
         }
 
-        $drinks->delete();
+        $drink->delete();
         FacadesAlert::success('Berhasil', 'Drink deleted successfully!');
         return redirect(route('daftarDrinks'));
 

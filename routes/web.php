@@ -31,9 +31,7 @@ use app\app\Controller\WebController;
 //     return view('welcome');
 // });
 
-Route::get('/dashboard', function () {
-    return view('layouts.master');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::get('/', [App\Http\Controllers\WebController::class, 'index']);
 
@@ -51,13 +49,16 @@ Route::get('/testimonial', [TestimonialController::class, 'index'])->name('testi
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'sa'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
-Route::get('/food', [FoodController::class, 'index'])->name('daftarFoods');
+    Route::get('/dashboard', function () {
+        return view('layouts.master');
+    })->middleware(['auth', 'verified'])->name('dashboard');
+
+    Route::get('/food', [FoodController::class, 'index'])->name('daftarFoods');
 Route::get('/food/create', [App\Http\Controllers\FoodController::class, 'create'])->name('createFoods');
 Route::post('/food/create', [App\Http\Controllers\FoodController::class, 'store'])->name('storeFoods');
 Route::get('/food/edit/{id}', [App\Http\Controllers\FoodController::class, 'edit'])->name('editFoods');
@@ -78,6 +79,7 @@ Route::get('/drink/delete/{id}', [App\Http\Controllers\DrinksController::class, 
 Route::get('/drink/trash', [App\Http\Controllers\DrinksController::class, 'trash'])->name('trashDrinks');
 Route::get('/drink/restore/{id?}', [App\Http\Controllers\FoodController::class, 'restore'])->name('restoreDrinks');
 Route::get('/drink/deleted1/{id?}', [App\Http\Controllers\FoodController::class, 'deleted1'])->name('deleted1Drinks');
+});
 
 require __DIR__.'/auth.php';
 

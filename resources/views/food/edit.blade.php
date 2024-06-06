@@ -26,7 +26,7 @@
             <div class="container mt-5">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('updateFoods', $food->id_food) }}" method="post"
+                        <form action="{{ route('updateFoods', $food->id) }}" method="post"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
