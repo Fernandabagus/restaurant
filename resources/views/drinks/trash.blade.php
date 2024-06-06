@@ -25,7 +25,7 @@
          <div class="container mt-5">
          <div class="card">
          <div class="card-header text-right">
-         <a href="{{ route('deleted1Drinks') }}" class="btn btn-primary" role="button">delete all</a>
+         <a href="{{ route('deletedDrinks') }}" class="btn btn-primary" role="button">delete all</a>
          <a href="{{ route('restoreDrinks') }}" class="btn btn-primary" role="button">restore all</a>
          <a href="{{ route('daftarDrinks') }}" class="btn btn-primary" role="button">back</a>
 
@@ -60,7 +60,7 @@
                         <a href="{{ route('restoreDrinks') }}" class="btn btn-primary" role="button">restore</a>
                                             <!-- Button triger modal -->
                                             <!-- <a href="{{ route('deletedFoods') }}" class="btn btn-primary">delete</a> -->
-                                            <form action="{{ route('deleted1Drinks', $drink->id_drink) }}" onclick="return confirm('Hapus Data ini ?')" method="POST">
+                                            <form action="{{ route('deletedDrinks', $drink->id_drink) }}" onclick="return confirm('Hapus Data ini ?')" method="POST">
                                         @method('delete')
                                         @csrf
                                         <button type="submit" class="btn btn-danger mx-1 btn-sm">Delete</button>
@@ -86,7 +86,7 @@
                                                             <button type="button" class="btn btn-secondary btn-sm"
                                                                 data-dismiss="modal">Close</button>
                                                             <form
-                                                                action="{{ route('deleted1Drinks', ['id' => $drink->id_drink]) }}">
+                                                                action="{{ route('deletedDrinks', ['id' => $drink->id_drink]) }}">
                                                                 @csrf
                                                                 @method('DELETE')
 

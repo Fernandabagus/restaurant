@@ -121,7 +121,7 @@ class DrinksController extends Controller
             return redirect('/drink/trash');
     }
 
-public function deleted1($id)
+public function deleted($id)
 {
     	// hapus permanen data guru
     	$drink = Drinks::onlyTrashed();
