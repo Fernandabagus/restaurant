@@ -41,26 +41,28 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <x-responsive-nav-link :href="route('dashboard')" class="nav-link">
+                    <x-responsive-nav-link :href="route('dashboard')"
+                        class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>Dashboard</p>
                     </x-responsive-nav-link>
                 </li>
-
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link {{ request()->is('product*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-table"></i>
                         <p>Users</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('daftarDrinks') }}" class="nav-link">
+                    <a href="{{ route('daftarDrinks') }}"
+                        class="nav-link {{ request()->routeIs('daftarDrinks') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-table"></i>
                         <p>Drink</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('daftarFoods') }}" class="nav-link">
+                    <a href="{{ route('daftarFoods') }}"
+                        class="nav-link {{ request()->routeIs('daftarFoods') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-table"></i>
                         <p>Foods</p>
                     </a>
