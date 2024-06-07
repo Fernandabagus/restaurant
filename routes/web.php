@@ -13,6 +13,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DrinksController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\WebController;
+use App\Http\Controllers\Users\AboutUsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,10 +26,11 @@ use App\Http\Controllers\WebController;
 |
 */
 
-Route::get('/', [WebController::class, 'index']);
+Route::get('/', [WebController::class, 'index'])->name('home');
+Route::get('/about-us', [AboutUsController::class, 'index'])->name('aboutUsers');
+Route::get('/our-menu', [AboutUsController::class, 'index'])->name('menuUsers');
 
 // Route untuk halaman home dan lainnya
-Route::get('/home', [DashboardController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::get('/service', [ServiceController::class, 'index'])->name('service.index');
 Route::get('/menu', [MenuController::class, 'index'])->name('menu.index');

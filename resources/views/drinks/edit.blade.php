@@ -31,7 +31,8 @@
                             @csrf
                             <div class="form-group">
                                 <label for="image">Drink Image</label>
-                                <input type="file" class="form-control" name="image">
+                                <input type="file" class="form-control" name="image" onchange="loadFile(event)">
+                                <img id="output" class="img-fluid mt-2 mb-4" width="100" />
                             </div>
                             <div class="form-group">
                                 <label for="name">Drink Name</label>
