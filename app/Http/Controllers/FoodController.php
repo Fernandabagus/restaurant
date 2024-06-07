@@ -30,7 +30,7 @@ class FoodController extends Controller
             'description' => 'required|string',
             'img_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:1048',
         ]);
-        
+
 
         if ($request->hasFile('img_url')) {
             $image = $request->file('img_url');
@@ -75,11 +75,23 @@ class FoodController extends Controller
         $food = Foods::findOrFail($id);
 
         if ($request->hasFile('img_url')) {
+            if ($request->img_url != null) {
+
+                $image = $request->file('img_url');
+                $imagePath = $food->img_url;
+                $realLocation = $imagePath;
+
+                if (file_exists($realLocation) && !is_dir($realLocation)) {
+                    unlink($realLocation);
+                }
+            }
             $image = $request->file('img_url');
             $folderPath = 'foods/' . date('Y') . '/' . date('m');
             $imagePath = $image->store($folderPath, 'public');
             $validatedData['img_url'] = 'storage/' . $imagePath;
         }
+
+
 
         $food->name = $validatedData['food_name'];
         $food->price = $validatedData['food_price'];
@@ -108,23 +120,23 @@ class FoodController extends Controller
         return view('food.trash', compact('foods'));
     }
 
-    
+
     public function restore()
     {
-                
-            $food = Foods::onlyTrashed();
-            $food->restore();
-     
-            return redirect('/food/trash');
+
+        $food = Foods::onlyTrashed();
+        $food->restore();
+
+        return redirect('/food/trash');
     }
 
-public function deleted($id)
-{
-    	// hapus permanen data guru
-    	$food = Foods::onlyTrashed();
+    public function deleted($id)
+    {
+        // hapus permanen data guru
+        $food = Foods::onlyTrashed();
         // dd($food);
-    	$food->forceDelete();
- 
-    	return redirect('/food/trash');
-}
+        $food->forceDelete();
+
+        return redirect('/food/trash');
+    }
 }

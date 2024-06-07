@@ -32,6 +32,10 @@
                             <div class="form-group">
                                 <label for="img_url">Food Image</label>
                                 <input type="file" class="form-control" name="img_url" onchange="loadFile(event)">
+                                @if ($food->img_url)
+                                                <img src="{{ asset($food->img_url) }}" alt="{{ $food->name }}"
+                                                    width="100">
+                                            @endif
                                 <img id="output" class="img-fluid mt-2 mb-4" width="100" />
                             </div>
                             <div class="form-group">
