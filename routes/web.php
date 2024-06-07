@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Users\FoodUsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
@@ -29,7 +30,9 @@ use App\Http\Controllers\Users\AboutUsController;
 Route::get('/', [WebController::class, 'index'])->name('home');
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('aboutUsers');
 Route::get('/our-menu', [AboutUsController::class, 'index'])->name('menuUsers');
+Route::get('/our-food', [FoodUsController::class, 'index'])->name('foodUsers');
 Route::get('/myprofile', [ProfileController::class, 'index'])->name('myprofileUsers');
+
 
 
 // Route untuk halaman home dan lainnya
