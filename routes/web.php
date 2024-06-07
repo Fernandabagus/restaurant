@@ -29,6 +29,8 @@ use App\Http\Controllers\Users\AboutUsController;
 Route::get('/', [WebController::class, 'index'])->name('home');
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('aboutUsers');
 Route::get('/our-menu', [AboutUsController::class, 'index'])->name('menuUsers');
+Route::get('/myprofile', [ProfileController::class, 'index'])->name('myprofileUsers');
+
 
 // Route untuk halaman home dan lainnya
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
