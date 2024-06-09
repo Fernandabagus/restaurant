@@ -29,13 +29,21 @@ class ProfileController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
             'password' => 'nullable|string|min:8|confirmed',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'address' => 'required|string|max:255', 
         ]);
 
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->address = $request->address; 
 
         if ($request->password) {
             $user->password = Hash::make($request->password);
+        }
+
+        if ($request->hasFile('img')) { 
+            $imagePath = $request->file('img')->store('img', 'public');
+            $user->img = $imagePath;
         }
 
         $user->save();
