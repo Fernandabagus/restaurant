@@ -2,16 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Drinks;
+use App\Models\Foods;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     public function index()
     {
+        $totalFood = Foods::count();
+        $totalDrink = Drinks::count();
+        $totalUser = User::where('role', 'user')->count();
+        return view('dashboard.index', ['totalFood' => $totalFood,'totalDrink' => $totalDrink,'totalUser' => $totalUser]);
+    }
+    public function indexAdm()
+    {
+        $totalFood = Foods::count();
+        $totalDrink = Drinks::count();
+        $totalUser = User::where('role', 'user')->count();
+        
         $data = [
-            'title'     => 'HOME',
+            'totalFood'=>$totalFood,
+            'totalDrink'=>$totalDrink,
+            'totalUser'=>$totalUser,
             'content'   => 'dashboard/index'
         ];
-        return view('layouts.wrapper', $data);
+        return view('users.layouts.wrapper', $data);
     }
 }

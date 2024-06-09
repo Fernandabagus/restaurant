@@ -32,7 +32,13 @@ use App\Http\Controllers\SearchController;
 Route::get('/', [WebController::class, 'index'])->name('home');
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('aboutUsers');
 Route::get('/our-menu', [AboutUsController::class, 'index'])->name('menuUsers');
-Route::get('/our-food', [FoodUsController::class, 'index'])->name('foodUsers');
+
+Route::get('/menuUser', [FoodUsController::class, 'index'])->name('menuUser');
+Route::get('/foodUser', [FoodUsController::class, 'indexFood'])->name('foodUser');
+Route::get('/drinkUser', [FoodUsController::class, 'indexDrink'])->name('drinkUser');
+Route::get('/dasAdmin', [DashboardController::class, 'indexAdm'])->name('dasAdmin');
+Route::get('/myprofile', [ProfileController::class, 'index'])->name('myprofileUsers');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/myprofile', [ProfileController::class, 'index'])->name('myprofile.index');
@@ -58,9 +64,11 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/dashboard', function () {
-        return view('layouts.master');
-    })->middleware(['auth', 'verified'])->name('dashboard');
+    // Route::get('/dashboard', function () {
+    //     return view('layouts.master');
+    // })->middleware(['auth', 'verified'])->name('dashboard');
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Rute untuk FoodController
     Route::get('/food', [FoodController::class, 'index'])->name('daftarFoods');

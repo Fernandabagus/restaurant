@@ -2,13 +2,19 @@
 <section class="food_section layout_padding">
     <div class="container">
         <div class="heading_container heading_center">
-            <h2>Our Food Menu</h2>
+            <h2>Our Menu</h2>
         </div>
+
+        <ul class="filters_menu">
+            <li data-filter="*"><a class="text-dark" href="{{route('menuUser')}}">All</a></li>
+            <li class="active" data-filter=""><a class="text-light" href="{{route('foodUser')}}">Food</a></li>
+            <li data-filter=""><a class="text-dark" href="{{route('drinkUser')}}">Drink</a></li>
+        </ul>
 
         <div class="filters-content">
             <div class="row grid">
                 @forelse ($foods as $food)
-                    <div class="col-sm-6 col-lg-4 all pizza">
+                    <div class="col-sm-4 col-lg-3 all food">
                         <div class="box">
                             <div>
                                 <div class="img-box">
@@ -49,6 +55,9 @@
                             There no data of food.
                         </div>
                 @endforelse
+            </div>
+            <div class="pagination d-flex justify-content-center mt-2">
+                {{$foods->links('pagination::bootstrap-4')}}
             </div>
             <div class="btn-box">
                 <a href="">View More</a>
