@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -29,19 +30,23 @@ class ProfileController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
             'password' => 'nullable|string|min:8|confirmed',
-            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif',
-            'address' => 'required|string|max:255', 
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // validate profile photo
+            'username' => 'required|string|max:255',
+            'phone' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
         ]);
 
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->address = $request->address; 
+        $user->username = $request->username;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
 
         if ($request->password) {
             $user->password = Hash::make($request->password);
         }
 
-        if ($request->hasFile('img')) { 
+        if ($request->hasFile('img')) { // handle profile photo upload
             $imagePath = $request->file('img')->store('img', 'public');
             $user->img = $imagePath;
         }
