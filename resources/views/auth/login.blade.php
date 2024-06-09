@@ -1,125 +1,103 @@
+<!-- resources/views/auth/login.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Log in</title>
-
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{asset('AdminLTE-3.1.0')}}/plugins/fontawesome-free/css/all.min.css">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="{{asset('AdminLTE-3.1.0')}}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{asset('AdminLTE-3.1.0')}}/dist/css/adminlte.min.css">
-
-  <style>
-    body {
-      background-image: url('https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=600');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center center;
-      height: 100vh;
-      margin: 0;
-  }
-  </style>
-
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="{{ asset('login-template/images/icons/favicon.ico') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('login-template/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('login-template/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('login-template/fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('login-template/vendor/animate/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('login-template/vendor/css-hamburgers/hamburgers.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('login-template/vendor/animsition/css/animsition.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('login-template/vendor/select2/select2.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('login-template/vendor/daterangepicker/daterangepicker.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('login-template/css/util.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('login-template/css/main.css') }}">
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
-  <div class="login-logo">
+<body style="background-color: #666666;">
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form method="POST" action="{{ route('login') }}" class="login100-form validate-form">
+                    @csrf
+                    <span class="login100-form-title p-b-43">
+                    <x-application-logo />
+                        Login to continue
+                    </span>
 
-    <a href="#" class="text-light"><b>Restaurant</b></a>
+                    <!-- Email Address -->
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="email" name="email" id="email" value="{{ old('email') }}" required autofocus autocomplete="username">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Email</span>
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
 
-  <!-- /.login-logo -->
-  <div class="card">
-    <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+                    <!-- Password -->
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100" type="password" name="password" id="password" required autocomplete="current-password">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Password</span>
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
 
-      <form action="{{ route('login') }}" method="post">
-            @csrf
-            <div class="input-group mb-3">
-              <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-envelope"></span>
-                </div>
-              </div>
-              @error('email')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-              @enderror
+                    <!-- Remember Me and Forgot Password -->
+                    <div class="flex-sb-m w-full p-t-3 p-b-32">
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" id="remember_me" type="checkbox" name="remember">
+                            <label class="label-checkbox100" for="remember_me">
+                                Remember me
+                            </label>
+                        </div>
+                        @if (Route::has('password.request'))
+                            <div>
+                                <a class="txt1" href="{{ route('password.request') }}">
+                                    Forgot Password?
+                                </a>
+                            </div>
+                        @endif
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button type="submit" class="login100-form-btn">
+                            Login
+                        </button>
+                    </div>
+
+                    <div class="text-center p-t-46 p-b-20">
+                        <span class="txt2">
+                            Don't have an account? 
+                        </span>
+                        <a href="{{ route('register') }}" class="txt2">
+                            Register
+                        </a>
+                    </div>
+
+                </form>
+                <div class="login100-more" style="background-image: url('{{ asset('login-template/images/bg-01.jpg') }}');"></div>
             </div>
-            <div class="input-group mb-3">
-              <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-lock"></span>
-                </div>
-              </div>
-              @error('password')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-              @enderror
-            </div>
-            <div class="row">
-              <div class="col-8">
-                <div class="icheck-primary">
-                  <input type="checkbox" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                  <label for="remember">
-                    {{ __('Remember Me') }}
-                  </label>
-                </div>
-              </div>
-              <!-- /.col -->
-              <div class="col-4">
-                <button type="submit" class="btn btn-primary btn-block">{{ __('Login') }}</button>
-              </div>
-              <!-- /.col -->
-            </div>
-          </form>
-
-      <div class="social-auth-links text-center mb-3">
-        <p>- OR -</p>
-        <a href="#" class="btn btn-block btn-primary">
-          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-        </a>
-        <a href="#" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-        </a>
-      </div>
-      <!-- /.social-auth-links -->
-
-      <p class="mb-1">
-      @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-      </p>
-      <p class="mb-0">
-      @if (Route::has('register'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('register') }}">
-                    {{ __('Register a new membership') }}
-                </a>
-            @endif
-      </p>
+        </div>
     </div>
-    <!-- /.login-card-body -->
-  </div>
-</div>
-<!-- /.login-box -->
 
-
-<!-- jQuery -->
-<script src="{{asset('AdminLTE-3.1.0')}}plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="{{asset('AdminLTE-3.1.0')}}plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="{{asset('AdminLTE-3.1.0')}}dist/js/adminlte.min.js"></script>
+    <script src="{{ asset('login-template/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('login-template/vendor/animsition/js/animsition.min.js') }}"></script>
+    <script src="{{ asset('login-template/vendor/bootstrap/js/popper.js') }}"></script>
+    <script src="{{ asset('login-template/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('login-template/vendor/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('login-template/vendor/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ asset('login-template/vendor/daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ asset('login-template/vendor/countdowntime/countdowntime.js') }}"></script>
+    <script src="{{ asset('login-template/js/main.js') }}"></script>
 </body>
 </html>
-

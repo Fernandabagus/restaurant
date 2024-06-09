@@ -3,66 +3,60 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display the user's profile page.
-     */
-    public function index(): View
+    public function index()
     {
-        return view('myprofile.index', [
-            'user' => Auth::user(),
-        ]);
+        $user = Auth::user();
+        return view('myprofile.index', compact('user'));
     }
 
-    /**
-     * Display the user's profile form.
-     */
-    public function edit(Request $request): View
+    public function edit()
     {
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
+        $user = Auth::user();
+        return view('myprofile.edit', compact('user'));
     }
 
-    /**
-     * Update the user's profile information.
-     */
-    public function update(ProfileUpdateRequest $request)
+    public function update(Request $request)
     {
-        $request->user()->fill($request->validated());
+        $user = Auth::user();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
+            'password' => 'nullable|string|min:8|confirmed',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'address' => 'required|string|max:255', 
+        ]);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->address = $request->address; 
+
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
         }
 
-        $request->user()->save();
+        if ($request->hasFile('img')) { 
+            $imagePath = $request->file('img')->store('img', 'public');
+            $user->img = $imagePath;
+        }
 
-        return redirect()->route('profile.edit')->with('status', 'profile-updated');
+        $user->save();
+
+        return redirect()->route('myprofile.index')->with('success', 'Profile updated successfully');
     }
 
-    /**
-     * Delete the user's account.
-     */
-    public function destroy(Request $request)
+    public function destroy()
     {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
-        ]);
-
-        $user = $request->user();
-
+        $user = Auth::user();
         Auth::logout();
-
         $user->delete();
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect('/');
+        return redirect('/')->with('success', 'Account deleted successfully');
     }
 }
-
