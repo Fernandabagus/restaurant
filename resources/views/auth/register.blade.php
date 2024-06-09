@@ -1,164 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Registration Page</title>
-
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{asset('AdminLTE-3.1.0')}}/plugins/fontawesome-free/css/all.min.css">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="{{asset('AdminLTE-3.1.0')}}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{asset('AdminLTE-3.1.0')}}/dist/css/adminlte.min.css">
-
-  <style>
-    body {
-      background-image: url('https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=600');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center center;
-      height: 100vh;
-      margin: 0;
-  }
-  </style>
-
+    <title>Register</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="{{ asset('login-template/images/icons/favicon.ico') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('login-template/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('login-template/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('login-template/fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('login-template/vendor/animate/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('login-template/vendor/css-hamburgers/hamburgers.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('login-template/vendor/animsition/css/animsition.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('login-template/vendor/select2/select2.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('login-template/vendor/daterangepicker/daterangepicker.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('login-template/css/util.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('login-template/css/main.css') }}">
 </head>
-<body class="hold-transition register-page">
-<div class="register-box">
-  <div class="register-logo">
+<body style="background-color: #666666;">
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form method="POST" action="{{ route('register') }}" class="login100-form validate-form">
+                    @csrf
+                    <span class="login100-form-title p-b-43">
+                        <!-- Include the application logo component -->
+                        <x-application-logo />
+                        Register to continue
+                    </span>
 
-    <a href="#" class="text-light"><b>Restaurant</b></a>
+                    <!-- Fullname -->
+                    <div class="wrap-input100 validate-input" data-validate="Fullname is required">
+                        <input class="input100" type="text" name="name" id="name" value="{{ old('name') }}" required autofocus autocomplete="name">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Fullname</span>
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
 
-  </div>
+                    <!-- Username -->
+                    <div class="wrap-input100 validate-input" data-validate="Username is required">
+                        <input class="input100" type="text" name="username" id="username" value="{{ old('username') }}" required autocomplete="username">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Username</span>
+                        @error('username')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
 
-  <div class="card">
-    <div class="card-body register-card-body">
-      <p class="login-box-msg">Register a new membership</p>
+                    <!-- Email Address -->
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="email" name="email" id="email" value="{{ old('email') }}" required autocomplete="email">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Email</span>
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
 
-      <form action="{{ route('register') }}" method="post">
-            @csrf
-            <div class="input-group mb-3">
-              <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Full name" name="name" value="{{ old('name') }}">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-user"></span>
-                </div>
-              </div>
-              @error('name')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-              @enderror
-            </div>
-            <div class="input-group mb-3">
-              <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" placeholder="Username" name="username" value="{{ old('username') }}">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-user"></span>
-                </div>
-              </div>
-              @error('username')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-              @enderror
-            </div>
-            <div class="input-group mb-3">
-              <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email" name="email" value="{{ old('email') }}">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-envelope"></span>
-                </div>
-              </div>
-              @error('email')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-              @enderror
-            </div>
-            <div class="input-group mb-3">
-              <input type="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" placeholder="Phone" name="phone" value="{{ old('phone') }}">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-phone"></span>
-                </div>
-              </div>
-              @error('phone')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-              @enderror
-            </div>
-            <div class="input-group mb-3">
-              <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-lock"></span>
-                </div>
-              </div>
-              @error('password')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-              @enderror
-            </div>
-            <div class="input-group mb-3">
-              <input type="password" class="form-control" name="password_confirmation" placeholder="Retype password">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-lock"></span>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-8">
-                <div class="icheck-primary">
-                  <input type="checkbox" id="agreeTerms" name="terms" value="agree">
-                  <label for="agreeTerms">
-                   I agree to the <a href="#">terms</a>
-                  </label>
-                </div>
-              </div>
-              <!-- /.col -->
-              <div class="col-4">
-                <button type="submit" class="btn btn-primary btn-block">{{ __('Register') }}</button>
-              </div>
-              <!-- /.col -->
-            </div>
-          </form>
+                    <!-- Phone Number -->
+                    <div class="wrap-input100 validate-input" data-validate="Phone number is required">
+                        <input class="input100" type="text" name="phone" id="phone" value="{{ old('phone') }}" required autocomplete="phone">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Phone Number</span>
+                        @error('phone')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
 
-      <div class="social-auth-links text-center">
-        <p>- OR -</p>
-        <a href="#" class="btn btn-block btn-primary">
-          <i class="fab fa-facebook mr-2"></i>
-          Sign up using Facebook
-        </a>
-        <a href="#" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus mr-2"></i>
-          Sign up using Google+
-        </a>
-      </div>
+                    <!-- Password -->
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100" type="password" name="password" id="password" required autocomplete="new-password">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Password</span>
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
 
-      @if (Route::has('login'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                    {{ __('I already have a membership') }}
-                </a>
-            @endif
+                    <!-- Confirm Password -->
+                    <div class="wrap-input100 validate-input" data-validate="Password confirmation is required">
+                        <input class="input100" type="password" name="password_confirmation" id="password_confirmation" required autocomplete="new-password">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Confirm Password</span>
+                        @error('password_confirmation')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button type="submit" class="login100-form-btn">
+                            Register
+                        </button>
+                    </div>
+
+                    <div class="text-center p-t-46 p-b-20">
+                        <a class="txt2" href="{{ route('login') }}">
+                            Already registered?
+                        </a>
+                    </div>
+                </form>
+                <div class="login100-more" style="background-image: url('{{ asset('login-template/images/bg-01.jpg') }}');"></div>
+            </div>
+        </div>
     </div>
-    <!-- /.form-box -->
-  </div><!-- /.card -->
-</div>
-<!-- /.register-box -->
 
-<!-- jQuery -->
-<script src="{{asset('AdminLTE-3.1.0')}}plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="{{asset('AdminLTE-3.1.0')}}plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="{{asset('AdminLTE-3.1.0')}}dist/js/adminlte.min.js"></script>
+    <script src="{{ asset('login-template/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('login-template/vendor/animsition/js/animsition.min.js') }}"></script>
+    <script src="{{ asset('login-template/vendor/bootstrap/js/popper.js') }}"></script>
+    <script src="{{ asset('login-template/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('login-template/vendor/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('login-template/vendor/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ asset('login-template/vendor/daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ asset('login-template/vendor/countdowntime/countdowntime.js') }}"></script>
+    <script src="{{ asset('login-template/js/main.js') }}"></script>
 </body>
 </html>
-
