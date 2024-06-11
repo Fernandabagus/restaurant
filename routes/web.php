@@ -2,18 +2,12 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\MenuController;
-use App\Http\Controllers\BookingController;
-use App\Http\Controllers\TestimonialController;
-use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DrinksController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\Users\AboutUsController;
+use App\Http\Controllers\Users\OurMenuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,15 +22,8 @@ use App\Http\Controllers\Users\AboutUsController;
 
 Route::get('/', [WebController::class, 'index'])->name('home');
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('aboutUsers');
-Route::get('/our-menu', [AboutUsController::class, 'index'])->name('menuUsers');
+Route::get('/our-menu', [OurMenuController::class, 'index'])->name('menuUsers');
 
-// Route untuk halaman home dan lainnya
-Route::get('/about', [AboutController::class, 'index'])->name('about.index');
-Route::get('/service', [ServiceController::class, 'index'])->name('service.index');
-Route::get('/menu', [MenuController::class, 'index'])->name('menu.index');
-Route::get('/booking', [BookingController::class, 'index'])->name('booking.index');
-Route::get('/testimonial', [TestimonialController::class, 'index'])->name('testimonial.index');
-Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 
 // Middleware untuk auth dan role
 Route::middleware(['auth', 'sa'])->group(function () {

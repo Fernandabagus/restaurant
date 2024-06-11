@@ -47,12 +47,7 @@
                     </x-responsive-nav-link>
                 </li>
 
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-table"></i>
-                        <p>Product</p>
-                    </a>
-                </li>
+                
                 <li class="nav-item">
                     <a href="{{ route('daftarDrinks') }}" class="nav-link">
                         <i class="nav-icon fas fa-table"></i>
@@ -65,24 +60,7 @@
                         <p>Foods</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-table"></i>
-                        <p>Sub Categories</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-table"></i>
-                        <p>Brands</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-table"></i>
-                        <p>Customers</p>
-                    </a>
-                </li>
+                
                 <li class="nav-item">
 
                     <x-responsive-nav-link href="#" class="nav-link">

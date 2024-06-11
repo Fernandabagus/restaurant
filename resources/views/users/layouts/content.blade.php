@@ -1,3 +1,3 @@
- @if ($content)
-                @include($content)
-            @endif
+@if ($content)
+    @include($content)
+@endif

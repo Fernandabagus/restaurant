@@ -1,14 +1,11 @@
 <div class="hero_area">
-    <!-- <div class="bg-box">
-      <img src="{{asset('feane-1.0.0\images/hero-bg.jpg')}}" alt="">
-    </div> -->
-    <!-- header section strats -->
+  
     <header class="header_section" style="background-color: #222831;">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container">
           <a class="navbar-brand" href="index.html">
             <span>
-              Feane
+              Prospero Barn
             </span>
           </a>
 
@@ -27,9 +24,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('aboutUsers') }}">About</a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" href="book.html">Book Table</a>
-              </li>
+              </li> -->
             </ul>
             <div class="user_option">
               @guest
@@ -110,4 +107,8 @@
         </nav>
       </div>
     </header>
+    <!-- slider section -->
+    
+
+
   </div>
