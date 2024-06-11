@@ -34,12 +34,12 @@
             <div class="user_option">
             
             @auth
-            <a href="{{ route('myprofile.index') }}" class="user_link" title="My Profile">
+            <a href="{{ route('myprofile.edit') }}" class="user_link" title="My Profile">
     <i class="fa fa-user" aria-hidden="true"></i>
 </a>
               @endauth
              
-              <a class="cart_link" title="Orderlist" href="#">
+              <a class="cart_link" title="Orderlist" href="{{ route('mytransaction.index') }}">
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                   <g>
                     <g>
