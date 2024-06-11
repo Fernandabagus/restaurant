@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Drinks;
 use RealRashid\SweetAlert\Facades\Alert as FacadesAlert;
+
 class DrinksController extends Controller
 {
     public function index()
@@ -23,7 +24,7 @@ class DrinksController extends Controller
      */
     public function store(Request $request)
     {
-        
+       
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|integer',
@@ -46,19 +47,19 @@ class DrinksController extends Controller
         ]);
 
         $drinks->save();
-        FacadesAlert::success('Berhasil', 'Drink added successfully!');
+        // FacadesAlert::success('Berhasil', 'Drink added successfully!');
         return redirect(route('daftarDrinks'));
     }
 
     public function show($id)
     {
-        $drink = Drinks::findOrFail($id);
-        return view('drink.show', ['drink' => $drink]);
+        $drinks = Drinks::findOrFail($id);
+        return view('drinks.show', ['drink' => $drinks]);
     }
 
     public function edit($id)
     {
-
+       
         $drinks = Drinks::findOrFail($id);
         return view('drinks.edit', ['drink' => $drinks]);
 
@@ -76,6 +77,16 @@ class DrinksController extends Controller
         $drinks = Drinks::findOrFail($id);
 
         if ($request->hasFile('image')) {
+            if ($request->image != null) {
+
+                $image = $request->file('image');
+                $imagePath = $drinks->image;
+                $realLocation = $imagePath;
+
+                if (file_exists($realLocation) && !is_dir($realLocation)) {
+                    unlink($realLocation);
+                }
+            }
             $image = $request->file('image');
             $folderPath = 'drinks/' . date('Y') . '/' . date('m');
             $imagePath = $image->store($folderPath, 'public');
@@ -94,12 +105,11 @@ class DrinksController extends Controller
 
     public function destroy($id)
     {
-        $drink = Drinks::findOrFail($id);
-        if ($drink->image && file_exists(public_path($drink->image))) {
-            unlink(public_path($drink->image));
+        $drinks = Drinks::findOrFail($id);
+        if ($drinks->image && file_exists(public_path($drinks->image))) {
+            unlink(public_path($drinks->image));
         }
-
-        $drink->delete();
+        $drinks->delete();
         FacadesAlert::success('Berhasil', 'Drink deleted successfully!');
         return redirect(route('daftarDrinks'));
 
@@ -111,23 +121,23 @@ class DrinksController extends Controller
         return view('drinks.trash', compact('drinks'));
     }
 
-    
+
     public function restore()
     {
-                
-            $drinks = Drinks::onlyTrashed();
-            $drinks->restore();
-     
-            return redirect('/drink/trash');
+
+        $drinks = Drinks::onlyTrashed();
+        $drinks->restore();
+
+        return redirect('/drink/trash');
     }
 
-public function deleted($id)
-{
-    	// hapus permanen data guru
-    	$drink = Drinks::onlyTrashed();
-        // dd($food);
-    	$drink->forceDelete();
- 
-    	return redirect('/drink/trash');
-}
+    public function deleted($id)
+    {
+        // hapus permanen data guru
+        $drinks = Drinks::onlyTrashed();
+        // dd($drinks);
+        $drinks->forceDelete();
+
+        return redirect('/drink/trash');
+    }
 }
