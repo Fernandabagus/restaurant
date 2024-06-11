@@ -16,6 +16,7 @@ use App\Http\Controllers\FoodController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\Users\AboutUsController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\TransactionController;
 
 
 /*
@@ -41,10 +42,11 @@ Route::get('/myprofile', [ProfileController::class, 'index'])->name('myprofileUs
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/myprofile', [ProfileController::class, 'index'])->name('myprofile.index');
     Route::get('/myprofile/edit', [ProfileController::class, 'edit'])->name('myprofile.edit');
-    Route::put('/myprofile', [ProfileController::class, 'update'])->name('myprofile.update');
+    Route::post('/update-profile', [ProfileController::class, 'updateProfile'])->name('update.profile');
     Route::delete('/myprofile', [ProfileController::class, 'destroy'])->name('myprofile.destroy');
+    Route::get('/mytransaction', [TransactionController::class, 'index'])->name('mytransaction.index');
+Route::post('/mytransaction', [TransactionController::class, 'store'])->name('mytransaction.store');
 });
 
 Route::get('/search', [SearchController::class, 'index'])->name('search');

@@ -20,13 +20,24 @@
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
-                <form method="POST" action="{{ route('register') }}" class="login100-form validate-form">
+                <form method="POST" action="{{ route('register') }}" class="login100-form validate-form" enctype="multipart/form-data">
                     @csrf
                     <span class="login100-form-title p-b-43">
                         <!-- Include the application logo component -->
                         <x-application-logo />
                         Register to continue
                     </span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Image is required">
+                        <input class="input100" type="file" name="img" id="img" value="{{ old('img') }}" required autofocus autocomplete="img">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Image</span>
+                        @error('img')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
 
                     <!-- Fullname -->
                     <div class="wrap-input100 validate-input" data-validate="Fullname is required">
@@ -70,6 +81,17 @@
                         <span class="focus-input100"></span>
                         <span class="label-input100">Phone Number</span>
                         @error('phone')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Address is required">
+                        <input class="input100" type="text" name="address" id="address" value="{{ old('address') }}" required autocomplete="address">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Address</span>
+                        @error('address')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

@@ -1,51 +1,82 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="colorlib.com">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Form</title>
 
-@section('content')
-<div class="container">
-    <h1>Edit Profile</h1>
-    <form action="{{ route('myprofile.update') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
-        
-        @if ($user->img)
-            <div class="form-group">
-                <img src="{{ asset('storage/' . $user->img) }}" alt="Profile Photo" width="150">
-            </div>
-        @endif
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{{ asset('colorlib-wizard-14/fonts/material-icon/css/material-design-iconic-font.min.css') }}">
 
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" name="name" class="form-control" value="{{ $user->name }}" required>
+    <!-- Main css -->
+    <link rel="stylesheet" href="{{ asset('colorlib-wizard-14/css/style.css') }}">
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+            <h2>Rebuild your profile</h2>
+            <form method="POST" id="signup-form" class="signup-form" enctype="multipart/form-data" action="{{ route('update.profile') }}">
+            @csrf
+                <h3>Picture</h3>
+                <fieldset>
+                    <div class="form-row">
+                        <div class="form-file">
+                            <input type="file" class="inputfile" name="your_picture" id="your_picture" onchange="readURL(this);" data-multiple-caption="{count} files selected" multiple />
+                            <label for="your_picture">
+                                <figure>
+                                    <img src="{{ asset('storage/' . $user->img) }}" alt="" class="your_picture_image">
+                                </figure>
+                                <span class="file-button">Choose picture</span>
+                            </label>
+                        </div>
+                        <div class="form-group-flex">
+                            <div class="form-group">
+                                <input type="text" name="username" id="username" placeholder="Username" value="{{ $user->username }}" required />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="name" id="name" placeholder="Name" value="{{ $user->name }}" required />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="phone" id="phone" placeholder="Phone" value="{{ $user->phone }}" required />
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <h3>Address</h3>
+                <fieldset>
+                    <div class="form-row form-input-flex">
+                        <div class="form-input">
+                            <input type="text" name="address" id="address" placeholder="Address" value="{{ $user->address }}" required />
+                        </div>
+                        <div class="form-input">
+                            <input type="email" name="email" id="email" placeholder="Email" value="{{ $user->email }}" required />
+                        </div>
+                    </div>
+                </fieldset>
+
+                <h3>Password</h3>
+                <fieldset>
+                    <div class="form-row form-input-flex">
+                        <div class="form-input">
+                            <input type="password" name="password" id="password" placeholder="Password" required />
+                        </div>
+                        <div class="form-input">
+                            <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" required />
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
         </div>
+    </div>
 
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" name="email" class="form-control" value="{{ $user->email }}" required>
-        </div>
-
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" name="username" class="form-control" value="{{ $user->username }}" required>
-        </div>
-
-        <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="text" name="phone" class="form-control" value="{{ $user->phone }}" required>
-        </div>
-
-        <div class="form-group">
-            <label for="address">Address</label>
-            <input type="text" name="address" class="form-control" value="{{ $user->address }}" required>
-        </div>
-
-        <div class="form-group">
-            <label for="img">Profile Photo</label>
-            <input type="file" name="img" class="form-control">
-        </div>
-
-       
-
-        <button type="submit" class="btn btn-primary">Update Profile</button>
-    </form>
-</div>
-@endsection
+    <!-- JS -->
+    <script src="{{ asset('colorlib-wizard-14/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('colorlib-wizard-14/vendor/jquery-validation/dist/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('colorlib-wizard-14/vendor/jquery-validation/dist/additional-methods.min.js') }}"></script>
+    <script src="{{ asset('colorlib-wizard-14/vendor/jquery-steps/jquery.steps.min.js') }}"></script>
+    <script src="{{ asset('colorlib-wizard-14/js/main.js') }}"></script>
+</body>
+</html>
