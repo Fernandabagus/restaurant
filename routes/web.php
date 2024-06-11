@@ -64,6 +64,7 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+
     // Route::get('/dashboard', function () {
     //     return view('layouts.master');
     // })->middleware(['auth', 'verified'])->name('dashboard');
@@ -91,6 +92,9 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::get('/drink/trash', [DrinksController::class, 'trash'])->name('trashDrinks');
     Route::get('/drink/restore/{id?}', [DrinksController::class, 'restore'])->name('restoreDrinks');
     Route::delete('/drink/deleted/{id?}', [DrinksController::class, 'deleted'])->name('deletedDrinks');
+
+    // Rute untuk Orders
+    Route::apiResource('orders', OrderController::class);
 });
 
 // Rute otentikasi

@@ -38,20 +38,20 @@
                         <div class="form-group">
                             <label for="name">Drinks Name</label>
                             <input type="text" name="name" id="name" class="form-control"
-                                required="required" placeholder="Input food name here">
+                                required="required" placeholder="Input drink name here">
                         </div>
 
                         <div class="form-group">
                             <label for="price_display">Price</label>
                             <input type="text" id="price_display" class="form-control"
-                                required="required" placeholder="Input drinks price here">
+                                required="required" placeholder="Input drink price here">
                             <input type="hidden" name="price" id="price">
                         </div>
 
                         <div class="form-group">
                             <label for="description">Description</label>
                             <textarea name="description" id="description" rows="3" class="form-control"
-                                required="required" placeholder="Input food description here"></textarea>
+                                required="required" placeholder="Input drink description here"></textarea>
                         </div>
 
                         <div class="text-right">
