@@ -13,7 +13,9 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DrinksController;
 use App\Http\Controllers\FoodController;
+
 use App\Http\Controllers\OrdersController;
+
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\Users\AboutUsController;
 use App\Http\Controllers\SearchController;
@@ -33,7 +35,7 @@ use App\Http\Controllers\TransactionController;
 
 Route::get('/', [WebController::class, 'index'])->name('home');
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('aboutUsers');
-Route::get('/our-menu', [AboutUsController::class, 'index'])->name('menuUsers');
+Route::get('/our-menu', [MenuController::class, 'index'])->name('menuUsers');
 
 // Route::get('/test', [OrdersController::class, 'test'])->name('test');
 
@@ -108,7 +110,7 @@ Route::delete('drinks/force-delete-all', [DrinksController::class, 'forceDeleteA
 
 
     // Rute untuk Orders
-    Route::apiResource('orders', OrderController::class);
+    Route::resource('/orders', OrderController::class);
 });
 
 // Rute otentikasi

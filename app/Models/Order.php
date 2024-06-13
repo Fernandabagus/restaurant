@@ -13,9 +13,13 @@ class Order extends Model
         'user_id',
 
         'id_food',
+        'id_drink',
         'quantity',
         'order_date',
-        'status',
+      'status',
+        'created_at',
+        'updated_at',
+
     ];
 
     public function user()
@@ -27,5 +31,11 @@ class Order extends Model
     {
         return $this->hasMany(Foods::class, 'id_food', 'id');
 
+    }
+
+    // Relationship with Food
+    public function food()
+    {
+        return $this->belongsTo(Foods::class, 'id_food');
     }
 }
