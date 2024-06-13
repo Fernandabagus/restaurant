@@ -11,13 +11,19 @@ class WebController extends Controller
     public function index()
     {
         $foods = Foods::all();
+        $foodTop = Foods::first(); 
         $drinks = Drinks::all();
+        $drinkTop = Drinks::first(); 
 
         $data = [
-            // 'title'     => 'Test',
-            'content'   => 'users/home/index'
+            'content' => 'users/home/index',
+            'foods' => $foods,
+            'foodTop' => $foodTop,
+            'drinks' => $drinks,
+            'drinkTop' => $drinkTop,
         ];
-        return view('users.layouts.wrapper', $data, compact('foods', 'drinks'));
+
+        return view('users.layouts.wrapper', $data);
 
     }
 }

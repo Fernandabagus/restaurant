@@ -11,19 +11,19 @@
               <a href="">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <span>
-                  Location
+                  Jl. Flamboyan, Kenteng - Tegalrejo, Kumpulrejo, Argomulyo, Salatiga 50733
                 </span>
               </a>
               <a href="">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <span>
-                  Call +01 1234567890
+                  0852 8080 0889
                 </span>
               </a>
               <a href="">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <i class="fa fa-instagram" aria-hidden="true"></i>
                 <span>
-                  demo@gmail.com
+                  prosperobarn
                 </span>
               </a>
             </div>
@@ -32,12 +32,12 @@
         <div class="col-md-4 footer-col">
           <div class="footer_detail">
             <a href="" class="footer-logo">
-              Feane
+              Prospero Barn
             </a>
             <p>
-              Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
+            Stylish cafe serving Western & Asian fare in a contemporary building shaped like a barn.
             </p>
-            <div class="footer_social">
+            <!-- <div class="footer_social">
               <a href="">
                 <i class="fa fa-facebook" aria-hidden="true"></i>
               </a>
@@ -53,7 +53,7 @@
               <a href="">
                 <i class="fa fa-pinterest" aria-hidden="true"></i>
               </a>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="col-md-4 footer-col">
@@ -68,17 +68,21 @@
           </p>
         </div>
       </div>
-      <div class="footer-info">
+      <!-- <div class="footer-info">
         <p>
           &copy; <span id="displayYear"></span> All Rights Reserved By
           <a href="https://html.design/">Free Html Templates</a><br><br>
           &copy; <span id="displayYear"></span> Distributed By
           <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
         </p>
-      </div>
+      </div> -->
     </div>
   </footer>
   <!-- footer section -->
+  
+  <!-- script for isotope -->
+  
+
 
   <!-- jQery -->
   <script src="{{asset('feane-1.0.0\js/jquery-3.4.1.min.js')}}"></script>
@@ -98,7 +102,9 @@
   <script src="{{asset('feane-1.0.0\js/custom.js')}}"></script>
   <!-- Google Map -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
-  </script>
+ </script>
+
+
   <!-- End Google Map -->
 
 </body>

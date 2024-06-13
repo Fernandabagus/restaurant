@@ -3,14 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Users\FoodUsController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\MenuController;
-use App\Http\Controllers\BookingController;
-use App\Http\Controllers\TestimonialController;
-use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DrinksController;
 use App\Http\Controllers\FoodController;
 
