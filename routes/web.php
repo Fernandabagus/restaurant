@@ -71,6 +71,12 @@ Route::middleware(['auth', 'sa'])->group(function () {
     //     return view('layouts.master');
     // })->middleware(['auth', 'verified'])->name('dashboard');
 
+    // tblTransaction
+    Route::get('/trans', function () {
+        return view('mytransaction.tblTransaction');
+    })->name('tblTransaction');
+
+    // dashboard admin
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Rute untuk FoodController

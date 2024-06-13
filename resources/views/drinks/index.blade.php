@@ -30,7 +30,7 @@
 
     </div>
     <div class="card-body">
-        <table class="table table-hover table-bordered" id="data-table">
+        <table id="example1" class="table table-hover table-bordered" id="data-table">
             <thead>
                 <tr>
                     <th>No.</th>
@@ -45,7 +45,7 @@
 
                 @forelse ($drinks as $drink)
                 
-                <tr>
+                <tr class="bg-dark">
                         <td> {{ $loop->index + 1 }}</td>
                         <td>
                         @if($drink->image)
