@@ -10,8 +10,8 @@
             phone: { required: true },
             address: { required: true },
             email: { required: true, email: true },
-            password: { required: true },
-            password_confirmation: { required: true, equalTo: "#password" }
+            // password: { required: true },
+            // password_confirmation: { required: true, equalTo: "#password" }
         },
         messages: {
             username: { required: "Please enter your username" },
@@ -19,8 +19,8 @@
             phone: { required: "Please enter your phone number" },
             address: { required: "Please enter your address" },
             email: { required: "Please enter your email", email: "Please enter a valid email address!" },
-            password: { required: "Please enter your password" },
-            password_confirmation: { required: "Please confirm your password", equalTo: "Passwords do not match" }
+            // password: { required: "Please enter your password" },
+            // password_confirmation: { required: "Please confirm your password", equalTo: "Passwords do not match" }
         },
         onfocusout: function(element) {
             $(element).valid();

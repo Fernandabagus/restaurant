@@ -80,9 +80,11 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::get('/food/edit/{id}', [FoodController::class, 'edit'])->name('editFoods');
     Route::post('/food/edit/{id}', [FoodController::class, 'update'])->name('updateFoods');
     Route::get('/food/delete/{id}', [FoodController::class, 'destroy'])->name('deleteFoods');
-    Route::get('/food/trash', [FoodController::class, 'trash'])->name('trashFoods');
-    Route::get('/food/restore/{id?}', [FoodController::class, 'restore'])->name('restoreFoods');
-    Route::delete('/food/deleted/{id?}', [FoodController::class, 'deleted'])->name('deletedFoods');
+    Route::get('foods/trash', [FoodController::class, 'trash'])->name('foods.trash');
+    Route::post('foods/restore/{id}', [FoodController::class, 'restore'])->name('foods.restore');
+Route::delete('foods/force-delete/{id}', [FoodController::class, 'forceDelete'])->name('foods.forceDelete');
+Route::post('foods/restore-all', [FoodController::class, 'restoreAll'])->name('foods.restoreAll');
+Route::delete('foods/force-delete-all', [FoodController::class, 'forceDeleteAll'])->name('foods.forceDeleteAll');
 
     // Rute untuk DrinksController
     Route::get('/drink', [DrinksController::class, 'index'])->name('daftarDrinks');
@@ -90,10 +92,13 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::post('/drink/create', [DrinksController::class, 'store'])->name('storeDrinks');
     Route::get('/drink/edit/{id}', [DrinksController::class, 'edit'])->name('editDrinks');
     Route::post('/drink/edit/{id}', [DrinksController::class, 'update'])->name('updateDrinks');
-    Route::get('/drink/delete/{id}', [DrinksController::class, 'destroy'])->name('deleteDrinks');
-    Route::get('/drink/trash', [DrinksController::class, 'trash'])->name('trashDrinks');
-    Route::get('/drink/restore/{id?}', [DrinksController::class, 'restore'])->name('restoreDrinks');
-    Route::delete('/drink/deleted/{id?}', [DrinksController::class, 'deleted'])->name('deletedDrinks');
+    Route::get('/drink/deleste/{id}', [DrinksController::class, 'destroy'])->name('deleteDrinks');
+    Route::get('drinks/trash', [DrinksController::class, 'trash'])->name('drinks.trash');
+Route::post('drinks/restore/{id}', [DrinksController::class, 'restore'])->name('drinks.restore');
+Route::delete('drinks/force-delete/{id}', [DrinksController::class, 'forceDelete'])->name('drinks.forceDelete');
+Route::post('drinks/restore-all', [DrinksController::class, 'restoreAll'])->name('drinks.restoreAll');
+Route::delete('drinks/force-delete-all', [DrinksController::class, 'forceDeleteAll'])->name('drinks.forceDeleteAll');
+
 
     // Rute untuk Orders
     Route::apiResource('orders', OrderController::class);

@@ -25,8 +25,13 @@
          <div class="container mt-5">
          <div class="card">
          <div class="card-header text-right">
-        <a href="{{route('createDrinks')}}" class="btn btn-primary" role="button">Add</a>
-        <a href="{{ route('trashDrinks') }}" class="btn btn-primary" role="button">Trash</a>
+         <a href="{{ route('createDrinks') }}" class="btn btn-primary" role="button">
+    <i class="bi bi-file-earmark-plus"></i> Add
+</a>
+
+        <a href="{{ route('drinks.trash') }}" class="btn btn-primary" role="button">
+        <i class="bi bi-recycle"></i> Trash
+            </a>
 
     </div>
     <div class="card-body">
@@ -56,11 +61,13 @@
                         <td> @currency($drink->price)</td>
                         <td> {!! $drink->description !!} </td>
                         <td cols="2">
-                        <a href="{{ route('editDrinks', ['id' => $drink->id_drink]) }}"
-                            class="btn btn-warning btn-sm" role="button">Edit</a>
+                        <a href="{{ route('editDrinks', ['id' => $drink->id_drink]) }}" class="btn btn-warning btn-sm" role="button">
+    <i class="bi bi-pencil-square"></i> Edit
+</a>
+
                             <!-- Button triger modal -->
                             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                                data-target="#exampleModal{{ $loop->index }}">
+                                                data-target="#exampleModal{{ $loop->index }}"><i class="bi bi-archive"></i>
                                                 Delete
                                             </button>
 
