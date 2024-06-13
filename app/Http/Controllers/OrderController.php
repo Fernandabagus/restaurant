@@ -13,7 +13,11 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::all();
-        return response()->json($orders);
+        $data = [
+            'title' => 'Orders List',
+            'orders' => $orders
+        ];
+        return view('orders.index', $data);
     }
 
     /**
@@ -23,6 +27,7 @@ class OrderController extends Controller
     {
         $request->validate([
             'user_id' => 'required|exists:users,id',
+            'id_food' => 'required|exists:foods,id',
             'id_drink' => 'required|exists:drinks,id',
             'quantity' => 'required|integer',
             'order_date' => 'required|date',

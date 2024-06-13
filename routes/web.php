@@ -7,6 +7,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DrinksController;
 use App\Http\Controllers\FoodController;
+
+use App\Http\Controllers\OrdersController;
+
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\Users\AboutUsController;
 use App\Http\Controllers\SearchController;
@@ -26,7 +29,9 @@ use App\Http\Controllers\TransactionController;
 
 Route::get('/', [WebController::class, 'index'])->name('home');
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('aboutUsers');
-Route::get('/our-menu', [AboutUsController::class, 'index'])->name('menuUsers');
+Route::get('/our-menu', [MenuController::class, 'index'])->name('menuUsers');
+
+// Route::get('/test', [OrdersController::class, 'test'])->name('test');
 
 Route::get('/menuUser', [FoodUsController::class, 'index'])->name('menuUser');
 Route::get('/foodUser', [FoodUsController::class, 'indexFood'])->name('foodUser');
@@ -39,8 +44,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/myprofile/edit', [ProfileController::class, 'edit'])->name('myprofile.edit');
     Route::post('/update-profile', [ProfileController::class, 'updateProfile'])->name('update.profile');
     Route::delete('/myprofile', [ProfileController::class, 'destroy'])->name('myprofile.destroy');
-    Route::get('/mytransaction', [TransactionController::class, 'index'])->name('mytransaction.index');
-Route::post('/mytransaction', [TransactionController::class, 'store'])->name('mytransaction.store');
+
+    
+    Route::get('/order-food/{id}', [OrdersController::class, 'order'])->name('order-food');
+    Route::put('/process-my-order/{id}', [OrdersController::class, 'processOrder'])->name('process-my-order');
+    Route::put('update-order/{id}', [OrdersController::class, 'updateOrder'])->name('update-order');
+
 });
 
 Route::get('/search', [SearchController::class, 'index'])->name('search');
@@ -65,6 +74,12 @@ Route::middleware(['auth', 'sa'])->group(function () {
     //     return view('layouts.master');
     // })->middleware(['auth', 'verified'])->name('dashboard');
 
+    // tblTransaction
+    Route::get('/trans', function () {
+        return view('mytransaction.tblTransaction');
+    })->name('tblTransaction');
+
+    // dashboard admin
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Rute untuk FoodController
@@ -95,7 +110,7 @@ Route::delete('drinks/force-delete-all', [DrinksController::class, 'forceDeleteA
 
 
     // Rute untuk Orders
-    Route::apiResource('orders', OrderController::class);
+    Route::resource('/orders', OrderController::class);
 });
 
 // Rute otentikasi

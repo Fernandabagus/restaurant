@@ -20,6 +20,7 @@
     </div>
     <!-- /.content-header -->
 
+
     <!-- Main content -->
     <div class="content">
       <div class="container mt-5">
@@ -62,6 +63,7 @@
                       </a>
                          <!-- Button triger modal -->
                          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+
                                                 data-target="#exampleModal{{ $loop->index }}">
                                                 Delete
                                             </button>
