@@ -11,24 +11,26 @@ class Order extends Model
 
     protected $fillable = [
         'user_id',
+
         'id_food',
         'id_drink',
         'quantity',
         'order_date',
+      'status',
         'created_at',
         'updated_at',
+
     ];
 
-     // Relationship with User
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    // Relationship with Drink
-    public function drink()
+    public function food()
     {
-        return $this->belongsTo(Drinks::class, 'id_drink');
+        return $this->hasMany(Foods::class, 'id_food', 'id');
+
     }
 
     // Relationship with Food
