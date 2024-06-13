@@ -22,8 +22,8 @@
             are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in
             the middle of text. All
           </p>
-          <a href="foodUser">
-            Read More
+          <!-- <a href="foodUser"> -->
+       
           </a>
         </div>
       </div>
