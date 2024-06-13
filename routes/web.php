@@ -1,13 +1,16 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Users\FoodUsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DrinksController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\Users\AboutUsController;
-use App\Http\Controllers\Users\OurMenuController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\TransactionController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +25,33 @@ use App\Http\Controllers\Users\OurMenuController;
 
 Route::get('/', [WebController::class, 'index'])->name('home');
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('aboutUsers');
-Route::get('/our-menu', [OurMenuController::class, 'index'])->name('menuUsers');
+Route::get('/our-menu', [AboutUsController::class, 'index'])->name('menuUsers');
 
+Route::get('/menuUser', [FoodUsController::class, 'index'])->name('menuUser');
+Route::get('/foodUser', [FoodUsController::class, 'indexFood'])->name('foodUser');
+Route::get('/drinkUser', [FoodUsController::class, 'indexDrink'])->name('drinkUser');
+Route::get('/dasAdmin', [DashboardController::class, 'indexAdm'])->name('dasAdmin');
+Route::get('/myprofile', [ProfileController::class, 'index'])->name('myprofileUsers');
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/myprofile/edit', [ProfileController::class, 'edit'])->name('myprofile.edit');
+    Route::post('/update-profile', [ProfileController::class, 'updateProfile'])->name('update.profile');
+    Route::delete('/myprofile', [ProfileController::class, 'destroy'])->name('myprofile.destroy');
+    Route::get('/mytransaction', [TransactionController::class, 'index'])->name('mytransaction.index');
+Route::post('/mytransaction', [TransactionController::class, 'store'])->name('mytransaction.store');
+});
+
+Route::get('/search', [SearchController::class, 'index'])->name('search');
+
+
+// Route untuk halaman home dan lainnya
+Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+Route::get('/service', [ServiceController::class, 'index'])->name('service.index');
+Route::get('/menu', [MenuController::class, 'index'])->name('menu.index');
+Route::get('/booking', [BookingController::class, 'index'])->name('booking.index');
+Route::get('/testimonial', [TestimonialController::class, 'index'])->name('testimonial.index');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 
 // Middleware untuk auth dan role
 Route::middleware(['auth', 'sa'])->group(function () {
@@ -31,9 +59,12 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/dashboard', function () {
-        return view('layouts.master');
-    })->middleware(['auth', 'verified'])->name('dashboard');
+
+    // Route::get('/dashboard', function () {
+    //     return view('layouts.master');
+    // })->middleware(['auth', 'verified'])->name('dashboard');
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Rute untuk FoodController
     Route::get('/food', [FoodController::class, 'index'])->name('daftarFoods');
@@ -42,9 +73,11 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::get('/food/edit/{id}', [FoodController::class, 'edit'])->name('editFoods');
     Route::post('/food/edit/{id}', [FoodController::class, 'update'])->name('updateFoods');
     Route::get('/food/delete/{id}', [FoodController::class, 'destroy'])->name('deleteFoods');
-    Route::get('/food/trash', [FoodController::class, 'trash'])->name('trashFoods');
-    Route::get('/food/restore/{id?}', [FoodController::class, 'restore'])->name('restoreFoods');
-    Route::delete('/food/deleted/{id?}', [FoodController::class, 'deleted'])->name('deletedFoods');
+    Route::get('foods/trash', [FoodController::class, 'trash'])->name('foods.trash');
+    Route::post('foods/restore/{id}', [FoodController::class, 'restore'])->name('foods.restore');
+Route::delete('foods/force-delete/{id}', [FoodController::class, 'forceDelete'])->name('foods.forceDelete');
+Route::post('foods/restore-all', [FoodController::class, 'restoreAll'])->name('foods.restoreAll');
+Route::delete('foods/force-delete-all', [FoodController::class, 'forceDeleteAll'])->name('foods.forceDeleteAll');
 
     // Rute untuk DrinksController
     Route::get('/drink', [DrinksController::class, 'index'])->name('daftarDrinks');
@@ -52,10 +85,16 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::post('/drink/create', [DrinksController::class, 'store'])->name('storeDrinks');
     Route::get('/drink/edit/{id}', [DrinksController::class, 'edit'])->name('editDrinks');
     Route::post('/drink/edit/{id}', [DrinksController::class, 'update'])->name('updateDrinks');
-    Route::get('/drink/delete/{id}', [DrinksController::class, 'destroy'])->name('deleteDrinks');
-    Route::get('/drink/trash', [DrinksController::class, 'trash'])->name('trashDrinks');
-    Route::get('/drink/restore/{id?}', [DrinksController::class, 'restore'])->name('restoreDrinks');
-    Route::delete('/drink/deleted/{id?}', [DrinksController::class, 'deleted'])->name('deletedDrinks');
+    Route::get('/drink/deleste/{id}', [DrinksController::class, 'destroy'])->name('deleteDrinks');
+    Route::get('drinks/trash', [DrinksController::class, 'trash'])->name('drinks.trash');
+Route::post('drinks/restore/{id}', [DrinksController::class, 'restore'])->name('drinks.restore');
+Route::delete('drinks/force-delete/{id}', [DrinksController::class, 'forceDelete'])->name('drinks.forceDelete');
+Route::post('drinks/restore-all', [DrinksController::class, 'restoreAll'])->name('drinks.restoreAll');
+Route::delete('drinks/force-delete-all', [DrinksController::class, 'forceDeleteAll'])->name('drinks.forceDeleteAll');
+
+
+    // Rute untuk Orders
+    Route::apiResource('orders', OrderController::class);
 });
 
 // Rute otentikasi
