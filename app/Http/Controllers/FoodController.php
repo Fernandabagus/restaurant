@@ -67,7 +67,7 @@ class FoodController extends Controller
     {
         $validatedData = $request->validate([
             'food_name' => 'required|string|max:255',
-            'food_price' => 'required|integer|min:3',
+            'food_price' => 'required|integer|min:3',            
             'description' => 'required|string',
             'img_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
@@ -120,23 +120,35 @@ class FoodController extends Controller
         return view('food.trash', compact('foods'));
     }
 
-
-    public function restore()
+    public function restore($id)
     {
-
-        $food = Foods::onlyTrashed();
+        $food = Foods::onlyTrashed()->findOrFail($id);
         $food->restore();
-
-        return redirect('/food/trash');
+       
+        return redirect()->route('foods.trash');
     }
+    
 
-    public function deleted($id)
+    public function forceDelete($id)
     {
-        // hapus permanen data guru
-        $food = Foods::onlyTrashed();
-        // dd($food);
+        $food = Foods::onlyTrashed()->where('id', $id)->firstOrFail();
         $food->forceDelete();
-
-        return redirect('/food/trash');
+        
+        return redirect()->route('foods.trash');
     }
+
+    public function restoreAll()
+    {
+        Foods::onlyTrashed()->restore();
+      
+        return redirect()->route('foods.trash');
+    }
+
+    public function forceDeleteAll()
+    {
+        Foods::onlyTrashed()->forceDelete();
+        
+        return redirect()->route('foods.trash');
+    }
+
 }

@@ -20,45 +20,50 @@
     </div>
     <!-- /.content-header -->
 
-        <!-- Main content -->
-        <div class="content">
-            <div class="container mt-5">
-                <div class="card">
-                    <div class="card-header text-right">
-                        <a href="{{ route('createFoods') }}" class="btn btn-primary" role="button">Add</a>
-                        <a href="{{ route('trashFoods') }}" class="btn btn-primary" role="button">Trash</a>
-                    </div>
-                    <div class="card-body">
-                        <table id="example1" class="table table-hover table-bordered" id="data-table">
-                            <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Image</th>
-                                    <th>Foods</th>
-                                    <th>Price</th>
-                                    <th>Description</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
 
-                                @forelse ($foods as $food)
-                                    <tr class="bg-dark">
-                                        <td> {{ $loop->index + 1 }}</td>
-                                        <td>
-                                            @if ($food->img_url)
-                                                <img src="{{ asset($food->img_url) }}" alt="{{ $food->name }}"
-                                                    width="100">
-                                            @endif
-                                        </td>
-                                        <td> {{ $food->name }}</td>
-                                        <td> @currency($food->price)</td>
-                                        <td> {!! $food->description !!} </td>
-                                        <td cols="2">
-                                            <a href="{{ route('editFoods', ['id' => $food->id]) }}"
-                                                class="btn btn-warning btn-sm" role="button">Edit</a>
-                                            <!-- Button triger modal -->
-                                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+    <!-- Main content -->
+    <div class="content">
+      <div class="container mt-5">
+        <div class="card">
+          <div class="card-header text-right">
+            <a href="{{ route('createFoods') }}" class="btn btn-primary" role="button">
+              <i class="bi bi-file-earmark-plus"></i> Add
+            </a>
+            <a href="{{ route('foods.trash') }}" class="btn btn-primary" role="button">
+              <i class="bi bi-recycle"></i> Trash
+            </a>
+          </div>
+          <div class="card-body">
+            <table class="table table-hover table-bordered" id="data-table">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Image</th>
+                  <th>Foods</th>
+                  <th>Price</th>
+                  <th>Description</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                @forelse ($foods as $food)
+                  <tr>
+                    <td>{{ $loop->index + 1 }}</td>
+                    <td>
+                      @if ($food->img_url)
+                        <img src="{{ asset($food->img_url) }}" alt="{{ $food->name }}" width="100">
+                      @endif
+                    </td>
+                    <td>{{ $food->name }}</td>
+                    <td>@currency($food->price)</td>
+                    <td>{!! $food->description !!}</td>
+                    <td>
+                      <a href="{{ route('editFoods', $food->id) }}" class="btn btn-warning btn-sm" role="button">
+                        <i class="bi bi-pencil-square"></i> Edit
+                      </a>
+                         <!-- Button triger modal -->
+                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+
                                                 data-target="#exampleModal{{ $loop->index }}">
                                                 Delete
                                             </button>
@@ -96,21 +101,20 @@
                                     <div class="alert alert-danger">
                                         There no data of food.
                                     </div>
-
-
-                            </tbody>
-                            @endforelse
-                        </table>
-                    </div>
-                </div>
-            </div>
+           
+              </tbody>
+              @endforelse
+            </table>
+          </div>
         </div>
-        <!-- /.content -->
+      </div>
     </div>
-    <!-- /.content-wrapper -->
-    <script>
-        $(document).ready(function() {
-            $('#food-table').DataTable();
-        });
-    </script>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <script>
+    $(document).ready(function() {
+      $('#data-table').DataTable();
+    });
+  </script>
 @endsection

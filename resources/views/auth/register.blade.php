@@ -29,10 +29,10 @@
                     </span>
 
                     <div class="wrap-input100 validate-input" data-validate="Image is required">
-                        <input class="input100" type="file" name="img" id="img" value="{{ old('img') }}" required autofocus autocomplete="img">
+                        <input class="input100" type="file" name="img" id="img" value="{{ old('profile-image') }}" required autofocus autocomplete="img">
                         <span class="focus-input100"></span>
                         <span class="label-input100">Image</span>
-                        @error('img')
+                        @error('profile-image')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

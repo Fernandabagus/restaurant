@@ -23,10 +23,10 @@
                 <fieldset>
                     <div class="form-row">
                         <div class="form-file">
-                            <input type="file" class="inputfile" name="your_picture" id="your_picture" onchange="readURL(this);" data-multiple-caption="{count} files selected" multiple />
+                            <input type="file" class="inputfile" name="img" id="your_picture" onchange="readURL(this);" data-multiple-caption="{count} files selected" multiple />
                             <label for="your_picture">
                                 <figure>
-                                    <img src="{{ asset('storage/' . $user->img) }}" alt="" class="your_picture_image">
+                                    <img src="{{ asset('storage/profile-image/' . $user->img) }}" alt="{{ $user->img }}" class="your_picture_image">
                                 </figure>
                                 <span class="file-button">Choose picture</span>
                             </label>
@@ -61,10 +61,10 @@
                 <fieldset>
                     <div class="form-row form-input-flex">
                         <div class="form-input">
-                            <input type="password" name="password" id="password" placeholder="Password" required />
+                            <input type="password" name="password" id="password" placeholder="Password"  />
                         </div>
                         <div class="form-input">
-                            <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" required />
+                            <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password"  />
                         </div>
                     </div>
                 </fieldset>
@@ -78,5 +78,17 @@
     <script src="{{ asset('colorlib-wizard-14/vendor/jquery-validation/dist/additional-methods.min.js') }}"></script>
     <script src="{{ asset('colorlib-wizard-14/vendor/jquery-steps/jquery.steps.min.js') }}"></script>
     <script src="{{ asset('colorlib-wizard-14/js/main.js') }}"></script>
+
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('.your_picture_image').attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 </body>
 </html>
