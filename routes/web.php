@@ -13,6 +13,7 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DrinksController;
 use App\Http\Controllers\FoodController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\Users\AboutUsController;
 use App\Http\Controllers\SearchController;
@@ -31,7 +32,7 @@ use App\Http\Controllers\SearchController;
 
 Route::get('/', [WebController::class, 'index'])->name('home');
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('aboutUsers');
-Route::get('/our-menu', [AboutUsController::class, 'index'])->name('menuUsers');
+Route::get('/our-menu', [MenuController::class, 'index'])->name('menuUsers');
 
 Route::get('/menuUser', [FoodUsController::class, 'index'])->name('menuUser');
 Route::get('/foodUser', [FoodUsController::class, 'indexFood'])->name('foodUser');
@@ -94,7 +95,7 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::delete('/drink/deleted/{id?}', [DrinksController::class, 'deleted'])->name('deletedDrinks');
 
     // Rute untuk Orders
-    Route::apiResource('orders', OrderController::class);
+    Route::resource('/orders', OrderController::class);
 });
 
 // Rute otentikasi

@@ -11,9 +11,12 @@ class Order extends Model
 
     protected $fillable = [
         'user_id',
+        'id_food',
         'id_drink',
         'quantity',
         'order_date',
+        'created_at',
+        'updated_at',
     ];
 
      // Relationship with User
@@ -26,5 +29,11 @@ class Order extends Model
     public function drink()
     {
         return $this->belongsTo(Drinks::class, 'id_drink');
+    }
+
+    // Relationship with Food
+    public function food()
+    {
+        return $this->belongsTo(Foods::class, 'id_food');
     }
 }
