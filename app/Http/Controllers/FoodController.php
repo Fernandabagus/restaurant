@@ -67,7 +67,7 @@ class FoodController extends Controller
     {
         $validatedData = $request->validate([
             'food_name' => 'required|string|max:255',
-            'food_price' => 'required|integer|min:3',
+            'food_price' => 'required|integer|min:3',            
             'description' => 'required|string',
             'img_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
