@@ -11,6 +11,7 @@ class Order extends Model
 
     protected $fillable = [
         'user_id',
+
         'id_food',
         'quantity',
         'order_date',
@@ -25,5 +26,6 @@ class Order extends Model
     public function food()
     {
         return $this->hasMany(Foods::class, 'id_food', 'id');
+
     }
 }

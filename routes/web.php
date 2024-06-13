@@ -17,6 +17,7 @@ use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\Users\AboutUsController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\TransactionController;
 
 
 /*
@@ -44,14 +45,15 @@ Route::get('/myprofile', [ProfileController::class, 'index'])->name('myprofileUs
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/myprofile', [ProfileController::class, 'index'])->name('myprofile.index');
     Route::get('/myprofile/edit', [ProfileController::class, 'edit'])->name('myprofile.edit');
-    Route::put('/myprofile', [ProfileController::class, 'update'])->name('myprofile.update');
+    Route::post('/update-profile', [ProfileController::class, 'updateProfile'])->name('update.profile');
     Route::delete('/myprofile', [ProfileController::class, 'destroy'])->name('myprofile.destroy');
+
     
     Route::get('/order-food/{id}', [OrdersController::class, 'order'])->name('order-food');
     Route::put('/process-my-order/{id}', [OrdersController::class, 'processOrder'])->name('process-my-order');
     Route::put('update-order/{id}', [OrdersController::class, 'updateOrder'])->name('update-order');
+
 });
 
 Route::get('/search', [SearchController::class, 'index'])->name('search');
@@ -71,6 +73,7 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+
     // Route::get('/dashboard', function () {
     //     return view('layouts.master');
     // })->middleware(['auth', 'verified'])->name('dashboard');
@@ -84,9 +87,11 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::get('/food/edit/{id}', [FoodController::class, 'edit'])->name('editFoods');
     Route::post('/food/edit/{id}', [FoodController::class, 'update'])->name('updateFoods');
     Route::get('/food/delete/{id}', [FoodController::class, 'destroy'])->name('deleteFoods');
-    Route::get('/food/trash', [FoodController::class, 'trash'])->name('trashFoods');
-    Route::get('/food/restore/{id?}', [FoodController::class, 'restore'])->name('restoreFoods');
-    Route::delete('/food/deleted/{id?}', [FoodController::class, 'deleted'])->name('deletedFoods');
+    Route::get('foods/trash', [FoodController::class, 'trash'])->name('foods.trash');
+    Route::post('foods/restore/{id}', [FoodController::class, 'restore'])->name('foods.restore');
+Route::delete('foods/force-delete/{id}', [FoodController::class, 'forceDelete'])->name('foods.forceDelete');
+Route::post('foods/restore-all', [FoodController::class, 'restoreAll'])->name('foods.restoreAll');
+Route::delete('foods/force-delete-all', [FoodController::class, 'forceDeleteAll'])->name('foods.forceDeleteAll');
 
     // Rute untuk DrinksController
     Route::get('/drink', [DrinksController::class, 'index'])->name('daftarDrinks');
@@ -94,10 +99,16 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::post('/drink/create', [DrinksController::class, 'store'])->name('storeDrinks');
     Route::get('/drink/edit/{id}', [DrinksController::class, 'edit'])->name('editDrinks');
     Route::post('/drink/edit/{id}', [DrinksController::class, 'update'])->name('updateDrinks');
-    Route::get('/drink/delete/{id}', [DrinksController::class, 'destroy'])->name('deleteDrinks');
-    Route::get('/drink/trash', [DrinksController::class, 'trash'])->name('trashDrinks');
-    Route::get('/drink/restore/{id?}', [DrinksController::class, 'restore'])->name('restoreDrinks');
-    Route::delete('/drink/deleted/{id?}', [DrinksController::class, 'deleted'])->name('deletedDrinks');
+    Route::get('/drink/deleste/{id}', [DrinksController::class, 'destroy'])->name('deleteDrinks');
+    Route::get('drinks/trash', [DrinksController::class, 'trash'])->name('drinks.trash');
+Route::post('drinks/restore/{id}', [DrinksController::class, 'restore'])->name('drinks.restore');
+Route::delete('drinks/force-delete/{id}', [DrinksController::class, 'forceDelete'])->name('drinks.forceDelete');
+Route::post('drinks/restore-all', [DrinksController::class, 'restoreAll'])->name('drinks.restoreAll');
+Route::delete('drinks/force-delete-all', [DrinksController::class, 'forceDeleteAll'])->name('drinks.forceDeleteAll');
+
+
+    // Rute untuk Orders
+    Route::apiResource('orders', OrderController::class);
 });
 
 // Rute otentikasi
