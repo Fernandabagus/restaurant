@@ -10,7 +10,7 @@ class FoodController extends Controller
 {
     public function index()
     {
-        $foods = Foods::all();
+        $foods = Foods::orderBy('created_at','asc')->get(); 
         return view('food.index', ['foods' => $foods]);
     }
 
