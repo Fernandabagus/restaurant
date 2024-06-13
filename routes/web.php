@@ -13,6 +13,7 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DrinksController;
 use App\Http\Controllers\FoodController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\Users\AboutUsController;
 use App\Http\Controllers\SearchController;
@@ -33,6 +34,8 @@ Route::get('/', [WebController::class, 'index'])->name('home');
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('aboutUsers');
 Route::get('/our-menu', [AboutUsController::class, 'index'])->name('menuUsers');
 
+// Route::get('/test', [OrdersController::class, 'test'])->name('test');
+
 Route::get('/menuUser', [FoodUsController::class, 'index'])->name('menuUser');
 Route::get('/foodUser', [FoodUsController::class, 'indexFood'])->name('foodUser');
 Route::get('/drinkUser', [FoodUsController::class, 'indexDrink'])->name('drinkUser');
@@ -45,6 +48,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/myprofile/edit', [ProfileController::class, 'edit'])->name('myprofile.edit');
     Route::put('/myprofile', [ProfileController::class, 'update'])->name('myprofile.update');
     Route::delete('/myprofile', [ProfileController::class, 'destroy'])->name('myprofile.destroy');
+    
+    Route::get('/order-food/{id}', [OrdersController::class, 'order'])->name('order-food');
+    Route::put('/process-my-order/{id}', [OrdersController::class, 'processOrder'])->name('process-my-order');
+    Route::put('update-order/{id}', [OrdersController::class, 'updateOrder'])->name('update-order');
 });
 
 Route::get('/search', [SearchController::class, 'index'])->name('search');
