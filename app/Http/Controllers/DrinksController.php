@@ -19,12 +19,8 @@ class DrinksController extends Controller
         return view('drinks.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-       
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|integer',
@@ -47,7 +43,7 @@ class DrinksController extends Controller
         ]);
 
         $drinks->save();
-        // FacadesAlert::success('Berhasil', 'Drink added successfully!');
+        FacadesAlert::success('Berhasil', 'Drink added successfully!');
         return redirect(route('daftarDrinks'));
     }
 
@@ -59,10 +55,8 @@ class DrinksController extends Controller
 
     public function edit($id)
     {
-       
         $drinks = Drinks::findOrFail($id);
         return view('drinks.edit', ['drink' => $drinks]);
-
     }
 
     public function update(Request $request, $id)
@@ -77,15 +71,8 @@ class DrinksController extends Controller
         $drinks = Drinks::findOrFail($id);
 
         if ($request->hasFile('image')) {
-            if ($request->image != null) {
-
-                $image = $request->file('image');
-                $imagePath = $drinks->image;
-                $realLocation = $imagePath;
-
-                if (file_exists($realLocation) && !is_dir($realLocation)) {
-                    unlink($realLocation);
-                }
+            if ($drinks->image && file_exists(public_path($drinks->image))) {
+                unlink(public_path($drinks->image));
             }
             $image = $request->file('image');
             $folderPath = 'drinks/' . date('Y') . '/' . date('m');
@@ -93,12 +80,13 @@ class DrinksController extends Controller
             $validatedData['image'] = 'storage/' . $imagePath;
         }
 
-        $drinks->name = $validatedData['name'];
-        $drinks->price = $validatedData['price'];
-        $drinks->description = $validatedData['description'];
-        $drinks->image = $validatedData['image'] ?? $drinks->image;
+        $drinks->update([
+            'name' => $validatedData['name'],
+            'price' => $validatedData['price'],
+            'description' => $validatedData['description'],
+            'image' => $validatedData['image'] ?? $drinks->image,
+        ]);
 
-        $drinks->save();
         FacadesAlert::success('Berhasil', 'Drink updated successfully!');
         return redirect(route('daftarDrinks'));
     }
@@ -112,7 +100,6 @@ class DrinksController extends Controller
         $drinks->delete();
         FacadesAlert::success('Berhasil', 'Drink deleted successfully!');
         return redirect(route('daftarDrinks'));
-
     }
 
     public function trash()
@@ -120,24 +107,44 @@ class DrinksController extends Controller
         $drinks = Drinks::onlyTrashed()->get();
         return view('drinks.trash', compact('drinks'));
     }
-
-
-    public function restore()
+    
+    public function restore($id)
     {
-
-        $drinks = Drinks::onlyTrashed();
-        $drinks->restore();
-
-        return redirect('/drink/trash');
+        $drink = Drinks::onlyTrashed()->findOrFail($id);
+        $drink->restore();
+        FacadesAlert::success('Berhasil', 'Drink restored successfully!');
+        return redirect()->route('drinks.trash');
     }
-
-    public function deleted($id)
+    
+    public function forceDelete($id)
     {
-        // hapus permanen data guru
-        $drinks = Drinks::onlyTrashed();
-        // dd($drinks);
-        $drinks->forceDelete();
-
-        return redirect('/drink/trash');
+        $drink = Drinks::onlyTrashed()->findOrFail($id);
+        if ($drink->image && file_exists(public_path($drink->image))) {
+            unlink(public_path($drink->image));
+        }
+        $drink->forceDelete();
+        FacadesAlert::success('Berhasil', 'Drink permanently deleted successfully!');
+        return redirect()->route('drinks.trash');
     }
+    
+    public function restoreAll()
+    {
+        Drinks::onlyTrashed()->restore();
+        FacadesAlert::success('Berhasil', 'All drinks restored successfully!');
+        return redirect()->route('drinks.trash');
+    }
+    
+    public function forceDeleteAll()
+    {
+        $drinks = Drinks::onlyTrashed()->get();
+        foreach ($drinks as $drink) {
+            if ($drink->image && file_exists(public_path($drink->image))) {
+                unlink(public_path($drink->image));
+            }
+            $drink->forceDelete();
+        }
+        FacadesAlert::success('Berhasil', 'All drinks permanently deleted successfully!');
+        return redirect()->route('drinks.trash');
+    }
+    
 }
