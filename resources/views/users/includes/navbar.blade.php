@@ -34,7 +34,7 @@
                  <li class="nav-item">
                                 <a class="nav-link" href="{{ route('reviewUsers') }}">Ulasan</a>
                             </li>
-                        @endauth
+
                     </ul>
                     <div class="user_option">
             </ul>
