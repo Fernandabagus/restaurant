@@ -4,20 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Drinks;
 use App\Models\Foods;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
     public function index()
     {
-        $foods = Foods::all();
-        $drinks = Drinks::all();
+        $menus = Product::all();
 
         $data = [
-            'title'     => 'MENU',
             'content'   => 'users/menu/index',
-            'foods' => $foods,
-            'drinks' => $drinks,
+            'menus'     => $menus,
         ];
         return view('users.layouts.wrapper', $data);
     }

@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Drinks List</h1>
+                        <h1 class="m-0">Order List</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Drinks</li>
+                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+                            <li class="breadcrumb-item active">Orders</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -20,55 +20,45 @@
         </div>
         <!-- /.content-header -->
 
+
         <!-- Main content -->
         <div class="content">
             <div class="container mt-5">
                 <div class="card">
                     <div class="card-header text-right">
-                        <a href="{{ route('createDrinks') }}" class="btn btn-primary" role="button">
+                        <a href="{{ route('createFoods') }}" class="btn btn-primary" role="button">
                             <i class="bi bi-file-earmark-plus"></i> Add
                         </a>
-
-                        <a href="{{ route('drinks.trash') }}" class="btn btn-primary" role="button">
+                        <a href="{{ route('foods.trash') }}" class="btn btn-primary" role="button">
                             <i class="bi bi-recycle"></i> Trash
                         </a>
-
                     </div>
                     <div class="card-body">
-                        <table id="example1" class="table table-hover table-bordered" id="data-table">
+                        <table class="table table-hover table-bordered" id="data-table">
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Image</th>
-                                    <th>Drinks</th>
-                                    <th>Price</th>
-                                    <th>Description</th>
+                                    <th>Nama Menu</th>
+                                    <th>Harga</th>
+                                    <th>Pemesan</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-
-                                @forelse ($drinks as $drink)
-                                    <tr class="bg-dark">
-                                        <td> {{ $loop->index + 1 }}</td>
+                                @forelse ($orders as $item)
+                                    <tr>
+                                        <td>{{ $loop->index + 1 }}</td>
+                                        <td>{{ $item->product->nama }}</td>
+                                        <td>@currency($item->product->harga)</td>
+                                        <td>{{ $item->user->name }}</td>
                                         <td>
-                                            @if ($drink->image)
-                                                <img src="{{ asset($drink->image) }}" alt="{{ $drink->name }}"
-                                                    width="100">
-                                            @endif
-                                        </td>
-                                        <td> {{ $drink->name }}</td>
-                                        <td> @currency($drink->price)</td>
-                                        <td> {!! $drink->description !!} </td>
-                                        <td cols="2">
-                                            <a href="{{ route('editDrinks', ['id' => $drink->id_drink]) }}"
-                                                class="btn btn-warning btn-sm" role="button">
+                                            <a href="{{ route('editFoods', $item->id) }}" class="btn btn-warning btn-sm"
+                                                role="button">
                                                 <i class="bi bi-pencil-square"></i> Edit
                                             </a>
-
                                             <!-- Button triger modal -->
                                             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                                data-target="#exampleModal{{ $loop->index }}"><i class="bi bi-archive"></i>
+                                                data-target="#exampleModal{{ $loop->index }}">
                                                 Delete
                                             </button>
 
@@ -91,8 +81,7 @@
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary btn-sm"
                                                                 data-dismiss="modal">Close</button>
-                                                            <form
-                                                                action="{{ route('deleteDrinks', ['id' => $drink->id_drink]) }}">
+                                                            <form action="{{ route('deleteFoods', ['id' => $item->id]) }}">
                                                                 @csrf
                                                                 @method('DELETE')
 
@@ -103,9 +92,8 @@
                                     </tr>
                                 @empty
                                     <div class="alert alert-danger">
-                                        There no data of drink.
+                                        There no data of food.
                                     </div>
-
 
                             </tbody>
                             @endforelse
@@ -119,7 +107,7 @@
     <!-- /.content-wrapper -->
     <script>
         $(document).ready(function() {
-            $('#drink-table').DataTable();
+            $('#data-table').DataTable();
         });
     </script>
 @endsection

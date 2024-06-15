@@ -1,14 +1,18 @@
 <?php
 
+use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Users\FoodUsController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DrinksController;
 use App\Http\Controllers\FoodController;
+
+use App\Http\Controllers\MenuController;
+
 use App\Http\Controllers\UserController;
+
 use App\Http\Controllers\OrdersController;
 
 use App\Http\Controllers\ReviewsController;
@@ -17,9 +21,11 @@ use App\Http\Controllers\ProductController;
 
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\Users\AboutUsController;
+
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\Users\OurMenuController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +40,6 @@ use App\Http\Controllers\Users\OurMenuController;
 
 Route::get('/', [WebController::class, 'index'])->name('home');
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('aboutUsers');
-Route::get('/our-menu', [MenuController::class, 'index'])->name('menuUsers');
 Route::get('/product', [ProductController::class, 'index'])->name('product-list');
 
 // Route::get('/test', [OrdersController::class, 'test'])->name('test');
@@ -44,6 +49,9 @@ Route::get('/foodUser', [FoodUsController::class, 'indexFood'])->name('foodUser'
 Route::get('/drinkUser', [FoodUsController::class, 'indexDrink'])->name('drinkUser');
 Route::get('/dasAdmin', [DashboardController::class, 'indexAdm'])->name('dasAdmin');
 Route::get('/myprofile', [ProfileController::class, 'index'])->name('myprofileUsers');
+
+// MENU
+Route::get('/our-menu', [MenuController::class, 'index'])->name('our-menu');
 
 
 Route::middleware(['auth'])->group(function () {
@@ -90,6 +98,8 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::get('/profil-admin/edit', [ProfileController::class, 'edit'])->name('profiladmin.edit');
     Route::patch('/profil-admin', [ProfileController::class, 'update'])->name('profiladmin.update');
     Route::delete('/profil-admin', [ProfileController::class, 'destroy'])->name('profiladmin.destroy');
+
+    Route::get('order-list', [AdminOrderController::class, 'index'])->name('order-list');
 
 
     // Route::get('/dashboard', function () {

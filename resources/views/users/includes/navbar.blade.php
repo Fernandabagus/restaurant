@@ -1,5 +1,4 @@
 <div class="hero_area">
-
     <header class="header_section" style="background-color: #222831;">
         <div class="container">
             <nav class="navbar navbar-expand-lg custom_nav-container">
@@ -14,46 +13,53 @@
                     <span class=""> </span>
                 </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav  mx-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('home') }}">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('menuUsers') }}">Menu</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('aboutUsers') }}">About</a>
-              </li>
-              <li class="nav-item">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav  mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('home') }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('our-menu') }}">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('aboutUsers') }}">About</a>
+                        </li>
+                        {{-- <li class="nav-item">
                 <a class="nav-link" href="{{ route('product-list') }}">Product</a>
-              </li>
-              <!-- <li class="nav-item">
+              </li> --}}
+                        <!-- <li class="nav-item">
                 <a class="nav-link" href="book.html">Book Table</a>
               </li> -->
+              
+                 <li class="nav-item">
+                                <a class="nav-link" href="{{ route('reviewUsers') }}">Ulasan</a>
+                            </li>
+
+
+                    </ul>
+                    <div class="user_option">
+
+                        @auth
+                            <a href="{{ route('myprofile.edit') }}" class="user_link" title="My Profile">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </a>
+                        @endauth
+
+                        <a class="cart_link" title="Orderlist" href="#">
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029"
+                                style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                                <g>
+                                    <g>
+                                        <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
+
                  <li class="nav-item">
                                 <a class="nav-link" href="{{ route('reviewUsers') }}">Ulasan</a>
                             </li>
 
                     </ul>
                     <div class="user_option">
-            </ul>
-            <div class="user_option">
-            
-            @auth
-            <a href="{{ route('myprofile.edit') }}" class="user_link" title="My Profile">
-    <i class="fa fa-user" aria-hidden="true"></i>
-</a>
-              @endauth
-             
-
-              <a class="cart_link" title="Orderlist" href="#">
-
-                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                  <g>
-                    <g>
-                      <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-
+ 
                    c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
                                     </g>
                                 </g>
@@ -119,6 +125,7 @@
                                 <button type="submit" class="order_online">Logout</button>
                             </form>
                         @endauth
+
                     </div>
                 </div>
             </nav>
@@ -126,75 +133,12 @@
     </header>
     <!-- slider section -->
 
-    <!-- slider section -->
-     <section class="slider_section">
-        <div id="customCarousel1" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active" style="background-image: url('image/slider/slider-1.jpg');">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-7 col-lg-6">
-                                <div class="detail-box">
-                                    <h1>Family Restaurant</h1>
-                                    <p>
-                                    Stylish cafe serving Western & Asian fare in a contemporary building shaped like a barn.
-                                    </p>
-                                    <div class="btn-box">
-                                        <a href="" class="btn1">Order Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="carousel-item" style="background-image: url('image/slider/slider-2.jpg');">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-7 col-lg-6">
-                                <div class="detail-box">
-                                    <h1>Family Restaurant</h1>
-                                    <p>
-                                    Stylish cafe serving Western & Asian fare in a contemporary building shaped like a barn.
-                                    </p>
-                                    <div class="btn-box">
-                                        <a href="" class="btn1">Order Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item" style="background-image: url('image/slider/slider-3.jpg');">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-7 col-lg-6">
-                                <div class="detail-box">
-                                    <h1>Family Restaurant</h1>
-                                    <p>
-                                    Stylish cafe serving Western & Asian fare in a contemporary building shaped like a barn.
-                                    </p>
-                                    <div class="btn-box">
-                                        <a href="" class="btn1">Order Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
+   
+
+    
+
 </div>
-<div class="container">
-    <ol class="carousel-indicators">
-        <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
-        <li data-target="#customCarousel1" data-slide-to="1"></li>
-        <li data-target="#customCarousel1" data-slide-to="2"></li>
-    </ol>
-</div>
-</div>
-</section>
-<!-- end slider section -->
 
 
 
-
-</div>
 
