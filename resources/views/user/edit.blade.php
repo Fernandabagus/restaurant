@@ -81,43 +81,17 @@
                                 <input type="password" class="form-control" name="password_confirmation" id="" required="required">
                             </div>
                             <div class="form-group">
-                                <label for="role">Role</label>
-                                <input type="text" class="form-control" name="role" id="" required="required"
-                                    value="{{ old('name', $user->role) }}">
-                            </div>
-                            {{-- <div class="form-group">
-                                <label for="food_price_display">Harga</label>
-                                <input type="text" id="food_price_display" class="form-control"
-                                    required="required" value="{{ old('harga', number_format($product->harga, 0, ',', '.')) }}" placeholder="Input food price here">
-                                <input type="hidden" name="harga" id="harga" value="{{ old('harga', $product->harga) }}">
 
-                                <!-- Error Message -->
-                                @error('harga')
-                                    <div class="alert alert-danger mt-2">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1" class="form-label">Kategori</label>
-                                <select name="kategori" class="form-control" aria-label="Default select example">
+                                <label for="exampleFormControlInput1" class="form-label">Role</label>
+                                <select name="role" class="form-control" aria-label="Default select example">
                                     <option disabled selected value>
-                                        <- Choose ->
+                                        Choose...
                                     </option>
-                                    <option value="Makanan">Makanan</option>
-                                    <option value="Minuman">Minuman</option>
+                                    <option value="sa">Sa</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="user">User</option>
                                 </select>
                             </div>
-
-                            <div class="form-group">
-                                <label for="deskripsi">Description</label>
-                                <textarea class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi" rows="3"
-                                    placeholder="Input food deskripsi here">{{ old('deskripsi', $product->deskripsi) }}</textarea>
-
-                                <!-- Error Message -->
-                                @error('deskripsi')
-                                    <div class="alert alert-danger mt-2">{{ $message }}</div>
-                                @enderror
-                            </div> --}}
                             <a href="{{ route('daftarUsers') }}" class="btn btn-outline-secondary mr-2"
                                 role="button">Batal</a>
                             <button type="submit" class="btn btn-primary">SIMPAN</button>

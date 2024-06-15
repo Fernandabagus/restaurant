@@ -60,7 +60,7 @@
                 <label for="exampleFormControlInput1" class="form-label">Role</label>
                 <select name="role" class="form-control" aria-label="Default select example">
                     <option disabled selected value>
-                        <- Choose ->
+                        Choose...
                     </option>
                     <option value="sa">Sa</option>
                     <option value="admin">Admin</option>
