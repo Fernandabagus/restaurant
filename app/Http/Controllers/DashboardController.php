@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Drinks;
 use App\Models\Foods;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -13,8 +14,10 @@ class DashboardController extends Controller
     {
         $totalFood = Foods::count();
         $totalDrink = Drinks::count();
+        
+        $totalProduct = Product::count();
         $totalUser = User::where('role', 'user')->count();
-        return view('dashboard.index', ['totalFood' => $totalFood,'totalDrink' => $totalDrink,'totalUser' => $totalUser]);
+        return view('dashboard.index', ['totalProduct' => $totalProduct,'totalFood' => $totalFood,'totalDrink' => $totalDrink,'totalUser' => $totalUser]);
     }
     public function indexAdm()
     {
