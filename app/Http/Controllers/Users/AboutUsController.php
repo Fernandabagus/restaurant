@@ -13,6 +13,6 @@ class AboutUsController extends Controller
             // 'title'     => 'Test',
             'content'   => 'users/about/index'
         ];
-        return view($data['content'], $data);
+        return view('users.layouts.wrapper', $data);
     }
 }

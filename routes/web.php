@@ -8,7 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DrinksController;
 use App\Http\Controllers\FoodController;
-
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WebController;
@@ -117,6 +117,10 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::post('drinks/restore-all', [DrinksController::class, 'restoreAll'])->name('drinks.restoreAll');
     Route::delete('drinks/force-delete-all', [DrinksController::class, 'forceDeleteAll'])->name('drinks.forceDeleteAll');
 
+    Route::get('/user', [UserController::class, 'index'])->name('daftarUsers');
+    Route::get('/user/create', [UserController::class, 'create'])->name('createUsers');
+    Route::post('/user/create', [UserController::class, 'store'])->name('storeUsers');
+
     // Rute untuk Orders
     // Route::resource('/orders', OrderController::class);
 });
@@ -126,3 +130,4 @@ require __DIR__ . '/auth.php';
 
 // Rute resource
 Route::resource('/drinks', DrinksController::class);
+
