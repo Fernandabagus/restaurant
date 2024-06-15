@@ -24,7 +24,7 @@ class ProfileController extends Controller
 
     protected function create(array $data)
     {
-        $path = isset($data['img']) ? $data['img']->store('public/profile-image') : null;
+        $path = isset($data['img']) ? $data['img']->store('profile-image') : null;
 
         return User::create([
             'name' => $data['name'],
@@ -65,9 +65,9 @@ class ProfileController extends Controller
         if ($request->hasFile('img')) {
 
             $img = $request->file('img');
-            $img->storeAs('public/profile-image', $img->hashName());
+            $img->storeAs('profile-image', $img->hashName());
 
-            Storage::delete('public/profile-image/' . $user->img);
+            Storage::delete('profile-image/' . $user->img);
 
             $user->update([
                 'img'     => $img->hashName(),

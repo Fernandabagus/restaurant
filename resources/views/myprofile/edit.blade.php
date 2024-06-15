@@ -26,7 +26,7 @@
                             <input type="file" class="inputfile" name="img" id="your_picture" onchange="readURL(this);" data-multiple-caption="{count} files selected" multiple />
                             <label for="your_picture">
                                 <figure>
-                                    <img src="{{ asset('storage/profile-image/' . $user->img) }}" alt="{{ $user->img }}" class="your_picture_image">
+                                    <img src="{{ asset( $user->img) }}" alt="{{ $user->img }}" class="your_picture_image">
                                 </figure>
                                 <span class="file-button">Choose picture</span>
                             </label>
