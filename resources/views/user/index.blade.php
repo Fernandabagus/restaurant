@@ -116,4 +116,6 @@
       $('#data-table').DataTable();
     });
   </script>
+
+  <!-- rawrr -->
 @endsection
