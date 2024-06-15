@@ -34,8 +34,8 @@ class Order extends Model
     }
 
     // Relationship with Food
-    public function food()
-    {
-        return $this->belongsTo(Foods::class, 'id_food');
-    }
+    // public function food()
+    // {
+    //     return $this->belongsTo(Foods::class, 'id_food');
+    // }
 }

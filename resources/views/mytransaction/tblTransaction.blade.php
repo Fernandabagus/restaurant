@@ -25,8 +25,8 @@
             <div class="container mt-5">
                 <div class="card">
                     <!-- <div class="card-header text-right">
-                        <a href="{{ route('createFoods') }}" class="btn btn-primary" role="button">Add</a>
-                        <a href="{{ route('trashFoods') }}" class="btn btn-primary" role="button">Trash</a>
+                        <a href="" class="btn btn-primary" role="button">Add</a>
+                        <a href="" class="btn btn-primary" role="button">Trash</a>
                     </div> -->
                     <div class="card-body">
                         <table id="example1" class="table table-hover table-bordered" id="data-table">

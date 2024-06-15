@@ -24,6 +24,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('aboutUsers') }}">About</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('product-list') }}">Product</a>
+              </li>
               <!-- <li class="nav-item">
                 <a class="nav-link" href="book.html">Book Table</a>
               </li> -->
@@ -36,7 +39,9 @@
 </a>
               @endauth
              
-         
+
+              <a class="cart_link" title="Orderlist" href="#">
+
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                   <g>
                     <g>
