@@ -56,6 +56,7 @@
                 <input type="password" name="password_confirmation" class="form-control" required>
               </div>
               <div class="form-group">
+
                 <label for="exampleFormControlInput1" class="form-label">Role</label>
                 <select name="role" class="form-control" aria-label="Default select example">
                     <option disabled selected value>
@@ -66,6 +67,7 @@
                     <option value="user">User</option>
                 </select>
             </div>
+
               <button type="submit" class="btn btn-primary">Create User</button>
             </form>
           </div>
@@ -73,5 +75,5 @@
       </div>
     </div>
   </div>
-  <!-- rawrr -->
+
 @endsection

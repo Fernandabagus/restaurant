@@ -33,7 +33,9 @@
             </a>
           </div>
           <div class="card-body">
+
           <table id="user-table" class="table table-bordered table-hover">
+
               <thead>
                 <tr>
                   <th>No.</th>
@@ -63,24 +65,30 @@
                     <td>{{ $user->address }}</td>
                     <td>{{ $user->role }}</td>
                     <td>
+
                       <a href="{{ route('editUsers', $user->id) }}" class="btn btn-warning btn-sm" role="button">
                         <i class="bi bi-pencil-square"></i> Edit
                       </a>
                       <!-- Button trigger modal -->
                       <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                       data-target="#exampleModal{{ $user->id }}">
+
                         Delete
                       </button>
 
                       <!-- Modal -->
+
                     <div class="modal fade" id="exampleModal{{ $user->id }}" tabindex="-1"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <div class="modal-header">
                               <h5 class="modal-title" id="exampleModalLabel">DELETE</h5>
+
                               <button type="button" class="close" data-dismiss="modal"
                               aria-label="Close">
+
                                 <span aria-hidden="true">&times;</span>
                               </button>
                             </div>
@@ -88,6 +96,7 @@
                               <p>Are you sure you want to delete this user?</p>
                             </div>
                             <div class="modal-footer">
+
                               <button type="button" class="btn btn-secondary btn-sm"
                               data-dismiss="modal">Close</button>
                               <form action="{{ route('deleteUsers', ['id' => $user->id]) }}">
@@ -96,6 +105,7 @@
 
                                 <button type="submit" class="btn btn-danger btn-sm"
                                 role="button">Delete</button>
+
                               </form>
                             </div>
                           </div>
@@ -123,5 +133,5 @@
     });
   </script>
 
-  <!-- rawrr -->
+
 @endsection

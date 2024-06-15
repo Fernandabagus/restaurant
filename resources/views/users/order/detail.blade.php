@@ -7,8 +7,10 @@
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- Font-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('colorlib-wizard-21/colorlib-wizard-21/css/raleway-font.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('colorlib-wizard-21/colorlib-wizard-21/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('colorlib-wizard-21/colorlib-wizard-21/css/raleway-font.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('colorlib-wizard-21/colorlib-wizard-21/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css') }}">
     <!-- Jquery -->
     <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
     <!-- Main Style Css -->
@@ -17,11 +19,22 @@
 </head>
 
 <body>
-    <div class="page-content" style="background-image: url('{{ asset('colorlib-wizard-21/colorlib-wizard-21/images/wizard-v1.jpg') }}')">
+    <div class="page-content"
+        style="background-image: url('{{ asset('colorlib-wizard-21/colorlib-wizard-21/images/wizard-v1.jpg') }}')">
         <div class="wizard-v1-content">
             <div class="wizard-form">
-                <form class="form-register" id="form-register" action="{{ route('update-order', $food->id) }}" method="post" enctype="multipart/form-data">
+                <form class="form-register" id="form-register" action="{{ route('update-order', $product->id) }}"
+                    method="post" enctype="multipart/form-data">
                     @csrf
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     @method('PUT')
                     <div id="form-total">
                         <!-- SECTION 1 -->
@@ -32,35 +45,40 @@
                         </h2>
                         <section>
                             <div class="inner">
-                                <input type="hidden" value="{{ $food->id }}" name="id_food">
+                                <input type="hidden" value="{{ $product->id }}" name="id_food">
                                 <div class="form-row">
                                     <div class="form-holder form-holder-2">
                                         <label for="username">Nama :</label>
-                                        <input type="text" class="form-control" id="name" name="username" value="{{ Auth::user()->name }}" disabled>
+                                        <input type="text" class="form-control" id="name" name="username"
+                                            value="{{ Auth::user()->name }}" disabled>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-holder form-holder-2">
                                         <label for="username">Nama Makanan :</label>
-                                        <input type="text" class="form-control" id="food-name" name="food" value="{{ $food->name }}" disabled>
+                                        <input type="text" class="form-control" id="food-name" name="food"
+                                            value="{{ $product->nama }}" disabled>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-holder form-holder-2">
                                         <label for="username">Harga :</label>
-                                        <input type="text" class="form-control" id="food-price" name="price" value="@currency($food->price)" disabled>
+                                        <input type="text" class="form-control" id="food-price" name="price"
+                                            value="@currency($product->harga)" disabled>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-holder form-holder-2">
                                         <label for="username">Deskripsi :</label>
-                                        <input type="text" class="form-control" id="description" name="description" value="{{ $food->description }}" disabled>
+                                        <input type="text" class="form-control" id="description" name="description"
+                                            value="{{ $product->deskripsi }}" disabled>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-holder form-holder-2">
                                         <label for="username">Jumlah :</label>
-                                        <input type="text" class="form-control" id="quantity" name="quantity" required>
+                                        <input type="text" class="form-control" id="quantity" name="quantity"
+                                            required>
                                     </div>
                                 </div>
                             </div>
