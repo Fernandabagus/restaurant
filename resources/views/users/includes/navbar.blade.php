@@ -34,7 +34,7 @@
                  <li class="nav-item">
                                 <a class="nav-link" href="{{ route('reviewUsers') }}">Ulasan</a>
                             </li>
-                        @endauth
+                       
                     </ul>
                     <div class="user_option">
             </ul>
@@ -127,7 +127,7 @@
     <!-- slider section -->
 
     <!-- slider section -->
-    {{-- <section class="slider_section">
+     <section class="slider_section">
         <div id="customCarousel1" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" style="background-image: url('image/slider/slider-1.jpg');">
@@ -147,7 +147,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item" style="background-image: url('image/slider/slider-2.jpg');">
+                <!-- <div class="carousel-item" style="background-image: url('image/slider/slider-2.jpg');">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-7 col-lg-6">
@@ -164,7 +164,7 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="carousel-item" style="background-image: url('image/slider/slider-3.jpg');">
+                <div class="carousel-item" style="background-image: url('image/slider/slider-3.jpg');">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-7 col-lg-6">
@@ -180,7 +180,7 @@
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div> -->
 </div>
 <div class="container">
     <ol class="carousel-indicators">
