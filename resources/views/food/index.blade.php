@@ -82,7 +82,6 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <p>Are you sure want to delete this data?</p>
-                                                            <p></p>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary btn-sm"
@@ -101,7 +100,7 @@
                                     <div class="alert alert-danger">
                                         There no data of food.
                                     </div>
-           
+
               </tbody>
               @endforelse
             </table>

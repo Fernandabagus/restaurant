@@ -65,7 +65,6 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
-
         $validatedData = $request->validate([
             'img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:1048',
             'name' => 'required|string|max:255',
@@ -102,6 +101,9 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
+        if ($user->img && file_exists(public_path($user->img))) {
+            unlink(public_path($user->img));
+        }
         $user->delete();
         Alert::success('Success', 'User deleted successfully!');
         return redirect(route('daftarUsers'));
