@@ -119,7 +119,7 @@
     <!-- slider section -->
 
     <!-- slider section -->
-    <!-- <section class="slider_section">
+    <section class="slider_section">
         <div id="customCarousel1" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" style="background-image: url('image/slider/slider-1.jpg');">
@@ -182,7 +182,7 @@
                 </ol>
             </div>
         </div>
-    </section> -->
+    </section>
     <!-- end slider section -->
     
 
