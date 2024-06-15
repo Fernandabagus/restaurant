@@ -48,9 +48,9 @@
                     </x-responsive-nav-link>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->is('product*') ? 'active' : '' }}">
+                    <a href="{{ route('daftarUsers') }}" class="nav-link {{ request()->routeIs('daftarUsers') ? 'active' : '' }}">
                         <i class="nav-icon fas fa fa-user-circle" aria-hidden="true"></i>
-                        <p>Users</p>
+                        <p>User</p>
                     </a>
                 </li>
                 {{-- <li class="nav-item">

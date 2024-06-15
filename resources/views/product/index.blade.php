@@ -38,11 +38,12 @@
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Image</th>
-                                    <th>Foods</th>
-                                    <th>Price</th>
-                                    <th>Description</th>
-                                    <th>Action</th>
+                                    <th>Gambar</th>
+                                    <th>Nama</th>
+                                    <th>Harga</th>
+                                    <th>Kategori</th>
+                                    <th>Deskripsi</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,16 +51,17 @@
                                     <tr class="bg-dark">
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>
-                                            @if ($item->img_url)
-                                                <img src="{{ asset($food->img_url) }}" alt="{{ $item->nama }}"
+                                            @if ($item->img)
+                                                <img src="{{ asset($item->img) }}" alt="{{ $item->nama }}"
                                                     width="100">
                                             @endif
                                         </td>
                                         <td>{{ $item->nama }}</td>
                                         <td>@currency($item->harga)</td>
-                                        <td>{!! $item->description !!}</td>
+                                        <td>{{ $item->kategori }}</td>
+                                        <td>{!! $item->deskripsi !!}</td>
                                         <td>
-                                            <a href="{{ route('editFoods', $item->id) }}" class="btn btn-warning btn-sm"
+                                            <a href="{{ route('edit-product', $item->id) }}" class="btn btn-warning btn-sm"
                                                 role="button">
                                                 <i class="bi bi-pencil-square"></i> Edit
                                             </a>

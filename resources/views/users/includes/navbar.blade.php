@@ -30,6 +30,12 @@
                         <!-- <li class="nav-item">
                 <a class="nav-link" href="book.html">Book Table</a>
               </li> -->
+              
+                 <li class="nav-item">
+                                <a class="nav-link" href="{{ route('reviewUsers') }}">Ulasan</a>
+                            </li>
+
+
                     </ul>
                     <div class="user_option">
 
@@ -46,6 +52,14 @@
                                 <g>
                                     <g>
                                         <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
+
+                 <li class="nav-item">
+                                <a class="nav-link" href="{{ route('reviewUsers') }}">Ulasan</a>
+                            </li>
+
+                    </ul>
+                    <div class="user_option">
+ 
                    c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
                                     </g>
                                 </g>
@@ -111,6 +125,7 @@
                                 <button type="submit" class="order_online">Logout</button>
                             </form>
                         @endauth
+
                     </div>
                 </div>
             </nav>
@@ -118,8 +133,12 @@
     </header>
     <!-- slider section -->
 
+   
+
     
 
-
-
 </div>
+
+
+
+
