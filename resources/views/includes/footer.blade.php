@@ -80,6 +80,14 @@
 
     <!-- Template Javascript -->
     <script src="{{asset('template/js/main.js')}}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.rupiah').mask("#,##0", {
+                reverse: true
+            });
+        });
+    </script>
 </body>
 
 </html>

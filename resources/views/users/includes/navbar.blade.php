@@ -14,39 +14,46 @@
                     <span class=""> </span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav  mx-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('menuUsers') }}">Menu</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('aboutUsers') }}">About</a>
-                        </li>
-                        @auth
-
-                            <li class="nav-item">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  mx-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('home') }}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('menuUsers') }}">Menu</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('aboutUsers') }}">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('product-list') }}">Product</a>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="book.html">Book Table</a>
+              </li> -->
+                 <li class="nav-item">
                                 <a class="nav-link" href="{{ route('reviewUsers') }}">Ulasan</a>
                             </li>
                         @endauth
                     </ul>
                     <div class="user_option">
+            </ul>
+            <div class="user_option">
+            
+            @auth
+            <a href="{{ route('myprofile.edit') }}" class="user_link" title="My Profile">
+    <i class="fa fa-user" aria-hidden="true"></i>
+</a>
+              @endauth
+             
 
-                        @auth
-                            <a href="{{ route('myprofile.edit') }}" class="user_link" title="My Profile">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                            </a>
-                        @endauth
+              <a class="cart_link" title="Orderlist" href="#">
 
-                        <a class="cart_link" title="Orderlist" href="#">
-                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029"
-                                style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                                <g>
-                                    <g>
-                                        <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                  <g>
+                    <g>
+                      <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
+
                    c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
                                     </g>
                                 </g>
@@ -188,4 +195,6 @@
 
 
 
+
 </div>
+

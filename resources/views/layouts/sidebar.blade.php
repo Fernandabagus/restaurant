@@ -48,23 +48,30 @@
                     </x-responsive-nav-link>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->is('product*') ? 'active' : '' }}">
+                    <a href="{{ route('daftarUsers') }}" class="nav-link {{ request()->routeIs('daftarUsers') ? 'active' : '' }}">
                         <i class="nav-icon fas fa fa-user-circle" aria-hidden="true"></i>
-                        <p>Users</p>
+                        <p>User</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{ route('daftarDrinks') }}"
                         class="nav-link {{ request()->routeIs('daftarDrinks') ? 'active' : '' }}">
                         <i class="nav-icon fas fa fa-coffee" aria-hidden="true"></i>
                         <p>Drink</p>
                     </a>
-                </li>
-                <li class="nav-item">
+                </li> --}}
+                {{-- <li class="nav-item">
                     <a href="{{ route('daftarFoods') }}"
                         class="nav-link {{ request()->routeIs('daftarFoods') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-table"></i>
                         <p>Foods</p>
+                    </a>
+                </li> --}}
+                <li class="nav-item">
+                    <a href="{{ route('product-admin') }}"
+                        class="nav-link {{ request()->routeIs('product-admin') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa fa-coffee" aria-hidden="true"></i>
+                        <p>Product</p>
                     </a>
                 </li>
                 <li class="nav-item">

@@ -67,7 +67,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $imagePath = $data['img']->storeAs('public/img', $data['img']->getClientOriginalName());
+        $imagePath = $data['img']->storeAs('public/profile-image', $data['img']->getClientOriginalName());
 
         return User::create([
             'name' => $data['name'],
@@ -79,5 +79,20 @@ class RegisterController extends Controller
             'role' => 'user', 
             'img' => $imagePath,
         ]);
+    }
+
+    public function register(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $this->create($request->all());
+
+        return redirect($this->redirectTo);
     }
 }
