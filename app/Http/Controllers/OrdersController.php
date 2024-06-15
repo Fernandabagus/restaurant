@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Foods;
 use App\Models\Order;
+use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,7 @@ class OrdersController extends Controller
     {
         // dd($id);
         $data = [
-            'food'      => Foods::find($id),
+            'product'      => Product::find($id),
             // 'content'   => 'users/order/detail',
         ];
         return view('users.order.detail', $data);
@@ -34,7 +35,7 @@ class OrdersController extends Controller
     {
         // dd($id);
         $status = 'Wait';
-        $food = Foods::find($id);
+        $food = Product::find($id);
 
         // $data = [
         //     'food'      => Foods::find($id),
@@ -51,15 +52,15 @@ class OrdersController extends Controller
             'quantity' => 'required|integer',
         ]);
 
-        $order = Order::create([
+        Order::create([
             'user_id' => Auth::user()->id,
-            'id_food' => $food->id,
+            'id_product' => $food->id,
             'quantity' => $request->input('quantity'),
             'order_date' => $orderDate,
             'status' => $status
         ]);
 
         // return view('users.order.detail', ['order' => $order], ['food' => $food]);
-        return redirect()->route('foodUser');
+        return redirect()->route('our-menu');
     }
 }

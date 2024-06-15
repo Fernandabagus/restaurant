@@ -75,7 +75,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('order-list') }}" class="nav-link {{ request()->routeIs('order-list') ? 'active' : '' }}">
                         <i class="nav-icon fas fa fa-cart-arrow-down" aria-hidden="true"></i>
                         <p>Orders</p>
                     </a>
