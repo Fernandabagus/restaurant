@@ -15,16 +15,10 @@
                 </span>
               </a>
               <a href="">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-                <span>
-                  0852 8080 0889
-                </span>
+                <a class="" href="https://api.whatsapp.com/send?phone=6288128003000"><i class="fa fa-phone" aria-hidden="true"> +6288128003000</i></a>
               </a>
               <a href="">
-                <i class="fa fa-instagram" aria-hidden="true"></i>
-                <span>
-                  prosperobarn
-                </span>
+                <a class="" href="https://www.instagram.com/prosperobarn/"><i class="fa fa-instagram" aria-hidden="true"></i> prosperobarn</a>
               </a>
             </div>
           </div>
@@ -57,15 +51,11 @@
           </div>
         </div>
         <div class="col-md-4 footer-col">
-          <h4>
-            Opening Hours
-          </h4>
-          <p>
-            Everyday
-          </p>
-          <p>
-            10.00 Am -10.00 Pm
-          </p>
+          <h4>Opening Hours</h4>
+          <p>Everyday</p>
+          <p>10.00AM - 10.00PM</p>
+          <p>Close Order</p>
+          <p>9.30PM</p>
         </div>
       </div>
       <!-- <div class="footer-info">

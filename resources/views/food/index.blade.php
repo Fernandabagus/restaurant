@@ -47,7 +47,7 @@
               </thead>
               <tbody>
                 @forelse ($foods as $food)
-                  <tr>
+                  <tr class="bg-dark">
                     <td>{{ $loop->index + 1 }}</td>
                     <td>
                       @if ($food->img_url)

@@ -7,7 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DrinksController;
 use App\Http\Controllers\FoodController;
-
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OrdersController;
 
 use App\Http\Controllers\WebController;
@@ -52,16 +52,16 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
-Route::get('/search', [SearchController::class, 'index'])->name('search');
+// Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 
 // Route untuk halaman home dan lainnya
-Route::get('/about', [AboutController::class, 'index'])->name('about.index');
-Route::get('/service', [ServiceController::class, 'index'])->name('service.index');
-Route::get('/menu', [MenuController::class, 'index'])->name('menu.index');
-Route::get('/booking', [BookingController::class, 'index'])->name('booking.index');
-Route::get('/testimonial', [TestimonialController::class, 'index'])->name('testimonial.index');
-Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+// Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+// Route::get('/service', [ServiceController::class, 'index'])->name('service.index');
+// Route::get('/menu', [MenuController::class, 'index'])->name('menu.index');
+// Route::get('/booking', [BookingController::class, 'index'])->name('booking.index');
+// Route::get('/testimonial', [TestimonialController::class, 'index'])->name('testimonial.index');
+// Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 
 // Middleware untuk auth dan role
 Route::middleware(['auth', 'sa'])->group(function () {
@@ -110,7 +110,7 @@ Route::delete('drinks/force-delete-all', [DrinksController::class, 'forceDeleteA
 
 
     // Rute untuk Orders
-    Route::resource('/orders', OrderController::class);
+    // Route::resource('/orders', OrderController::class);
 });
 
 // Rute otentikasi
