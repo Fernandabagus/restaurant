@@ -40,6 +40,9 @@ use App\Http\Controllers\Users\OurMenuController;
 
 Route::get('/', [WebController::class, 'index'])->name('home');
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('aboutUsers');
+
+Route::get('/our-menu', [OurMenuController::class, 'index'])->name('menuUsers');
+
 Route::get('/product', [ProductController::class, 'index'])->name('product-list');
 
 // Route::get('/test', [OrdersController::class, 'test'])->name('test');
@@ -84,7 +87,7 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
+
     // Product
     Route::get('products', [AdminProductController::class, 'index'])->name('product-admin');
     Route::get('/products/create', [AdminProductController::class, 'create'])->name('create-product');
@@ -141,6 +144,10 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::delete('drinks/force-delete-all', [DrinksController::class, 'forceDeleteAll'])->name('drinks.forceDeleteAll');
 
     Route::get('/user', [UserController::class, 'index'])->name('daftarUsers');
+    // Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('deleteUsers');
+    Route::get('/user/delete/{id}', [UserController::class, 'destroy'])->name('deleteUsers');
+    Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('editUsers');
+    Route::post('/user/edit/{id}', [UserController::class, 'update'])->name('updateUsers');
     Route::get('/user/create', [UserController::class, 'create'])->name('createUsers');
     Route::post('/user/create', [UserController::class, 'store'])->name('storeUsers');
 

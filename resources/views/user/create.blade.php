@@ -56,9 +56,18 @@
                 <input type="password" name="password_confirmation" class="form-control" required>
               </div>
               <div class="form-group">
-                <label for="role">Role</label>
-                <input type="text" name="role" class="form-control" required>
-              </div>
+
+                <label for="exampleFormControlInput1" class="form-label">Role</label>
+                <select name="role" class="form-control" aria-label="Default select example">
+                    <option disabled selected value>
+                        <- Choose ->
+                    </option>
+                    <option value="sa">Sa</option>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+            </div>
+
               <button type="submit" class="btn btn-primary">Create User</button>
             </form>
           </div>
@@ -66,4 +75,5 @@
       </div>
     </div>
   </div>
+
 @endsection
