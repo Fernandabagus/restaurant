@@ -75,6 +75,8 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::get('/products/create', [AdminProductController::class, 'create'])->name('create-product');
     Route::post('/products/store', [AdminProductController::class, 'store'])->name('store-product');
     Route::delete('delete-product/{id}', [AdminProductController::class, 'destroy'])->name('delete-product');
+    Route::get('/products/edit/{id}', [AdminProductController::class, 'edit'])->name('edit-product');
+    Route::post('/products/update/{id}', [AdminProductController::class, 'update'])->name('update-product');
 
 
     // Route::get('/dashboard', function () {
