@@ -10,12 +10,16 @@ use App\Http\Controllers\DrinksController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrdersController;
+
+use App\Http\Controllers\ReviewsController;
+
 use App\Http\Controllers\ProductController;
+
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\Users\AboutUsController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TransactionController;
-
+use App\Http\Controllers\Users\OurMenuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +52,9 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/myprofile', [ProfileController::class, 'destroy'])->name('myprofile.destroy');
 
 
+    Route::get('/review', [ReviewsController::class, 'index'])->name('reviewUsers');
+    Route::post('/review', [ReviewsController::class, 'store'])->name('review.store');
+
     Route::get('/order-food/{id}', [OrdersController::class, 'order'])->name('order-food');
     Route::put('/process-my-order/{id}', [OrdersController::class, 'processOrder'])->name('process-my-order');
     Route::put('update-order/{id}', [OrdersController::class, 'updateOrder'])->name('update-order');
@@ -77,6 +84,12 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::delete('delete-product/{id}', [AdminProductController::class, 'destroy'])->name('delete-product');
     Route::get('/products/edit/{id}', [AdminProductController::class, 'edit'])->name('edit-product');
     Route::post('/products/update/{id}', [AdminProductController::class, 'update'])->name('update-product');
+
+// Profil admin
+    Route::get('/profil-admin', [ProfileController::class, 'index'])->name('profiladmin.index');
+    Route::get('/profil-admin/edit', [ProfileController::class, 'edit'])->name('profiladmin.edit');
+    Route::patch('/profil-admin', [ProfileController::class, 'update'])->name('profiladmin.update');
+    Route::delete('/profil-admin', [ProfileController::class, 'destroy'])->name('profiladmin.destroy');
 
 
     // Route::get('/dashboard', function () {
