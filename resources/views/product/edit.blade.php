@@ -33,7 +33,7 @@
                                 <label for="img">Food Image</label>
                                 <input type="file" class="form-control" name="img" onchange="loadFile(event)">
                                 @if ($product->img)
-                                                <img src="{{ asset($product->img) }}" alt="{{ $product->nama }}"
+                                                <img src="{{ asset('storage/'.$product->img) }}" alt="{{ $product->nama }}"
                                                     width="100">
                                             @endif
                                 <img id="output" class="img-fluid mt-2 mb-4" width="100" />

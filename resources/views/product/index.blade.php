@@ -52,7 +52,7 @@
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>
                                             @if ($item->img)
-                                                <img src="{{ asset($item->img) }}" alt="{{ $item->nama }}"
+                                                <img src="{{ asset('storage/'.$item->img) }}" alt="{{ $item->nama }}"
                                                     width="100">
                                             @endif
                                         </td>
