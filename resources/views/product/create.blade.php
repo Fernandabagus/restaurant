@@ -72,7 +72,7 @@
                             </div>
 
                             <div class="text-right">
-                                <a href="{{ route('daftarFoods') }}" class="btn btn-outline-secondary mr-2"
+                                <a href="{{ route('product-admin') }}" class="btn btn-outline-secondary mr-2"
                                     role="button">Batal</a>
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>

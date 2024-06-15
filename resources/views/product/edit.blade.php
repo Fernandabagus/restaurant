@@ -26,47 +26,58 @@
             <div class="container mt-5">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('updateFoods', $food->id) }}" method="post"
+                        <form action="{{ route('update-product', $product->id) }}" method="post"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="img_url">Food Image</label>
-                                <input type="file" class="form-control" name="img_url" onchange="loadFile(event)">
-                                @if ($food->img_url)
-                                                <img src="{{ asset($food->img_url) }}" alt="{{ $food->name }}"
+                                <label for="img">Food Image</label>
+                                <input type="file" class="form-control" name="img" onchange="loadFile(event)">
+                                @if ($product->img)
+                                                <img src="{{ asset($product->img) }}" alt="{{ $product->nama }}"
                                                     width="100">
                                             @endif
                                 <img id="output" class="img-fluid mt-2 mb-4" width="100" />
                             </div>
                             <div class="form-group">
                                 <label for="food_name">Food Name</label>
-                                <input type="text" class="form-control" name="food_name" id="food_name"
-                                    required="required" value="{{ old('name', $food->name) }}" placeholder="Input food price here"
+                                <input type="text" class="form-control" name="nama" id="food_name"
+                                    required="required" value="{{ old('nama', $product->nama) }}" placeholder="Input food nama here"
                                     >
                             </div>
                             <div class="form-group">
-                                <label for="food_price_display">Price</label>
+                                <label for="food_price_display">Harga</label>
                                 <input type="text" id="food_price_display" class="form-control"
-                                    required="required" value="{{ old('price', number_format($food->price, 0, ',', '.')) }}" placeholder="Input food price here">
-                                <input type="hidden" name="food_price" id="food_price" value="{{ old('price', $food->price) }}">
+                                    required="required" value="{{ old('harga', number_format($product->harga, 0, ',', '.')) }}" placeholder="Input food price here">
+                                <input type="hidden" name="harga" id="harga" value="{{ old('harga', $product->harga) }}">
 
                                 <!-- Error Message -->
-                                @error('price')
+                                @error('harga')
                                     <div class="alert alert-danger mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
+                            
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1" class="form-label">Kategori</label>
+                                <select name="kategori" class="form-control" aria-label="Default select example">
+                                    <option disabled selected value>
+                                        <- Choose ->
+                                    </option>
+                                    <option value="Makanan">Makanan</option>
+                                    <option value="Minuman">Minuman</option>
+                                </select>
+                            </div>
 
                             <div class="form-group">
-                                <label for="description">Description</label>
-                                <textarea class="form-control @error('deskripsi') is-invalid @enderror" name="description" rows="3"
-                                    placeholder="Input food description here">{{ old('deskripsi', $food->description) }}</textarea>
+                                <label for="deskripsi">Description</label>
+                                <textarea class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi" rows="3"
+                                    placeholder="Input food deskripsi here">{{ old('deskripsi', $product->deskripsi) }}</textarea>
 
                                 <!-- Error Message -->
                                 @error('deskripsi')
                                     <div class="alert alert-danger mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <a href="{{ route('daftarFoods') }}" class="btn btn-outline-secondary mr-2"
+                            <a href="{{ route('product-admin') }}" class="btn btn-outline-secondary mr-2"
                                 role="button">Batal</a>
                             <button type="submit" class="btn btn-primary">SIMPAN</button>
                         </form>
@@ -80,7 +91,7 @@
     <script>
     /* Format Rupiah */
     var food_price_display = document.getElementById('food_price_display');
-    var food_price = document.getElementById('food_price');
+    var food_price = document.getElementById('harga');
 
     food_price_display.addEventListener('keyup', function(e) {
         var formattedValue = formatRupiah(this.value, 'Rp. ');
