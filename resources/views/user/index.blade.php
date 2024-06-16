@@ -32,7 +32,9 @@
         </div>
         <div class="card-body">
           <table id="user-table" class="table table-bordered table-hover">
-            <thead>
+
+
+            <thead class= "bg-dark">
               <tr>
                 <th>No.</th>
                 <th>Image</th>
@@ -62,6 +64,7 @@
                   <td>{{ $user->role }}</td>
                   <td>
                     @if (auth()->user()->role === 'sa')
+
                       <a href="{{ route('editUsers', $user->id) }}" class="btn btn-warning btn-sm" role="button">
                         <i class="bi bi-pencil-square"></i> Edit
                       </a>

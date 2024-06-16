@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Foods;
 use App\Models\Drinks;
 
+use App\Models\Reviews;
+
 class WebController extends Controller
 {
     public function index()
@@ -14,6 +16,7 @@ class WebController extends Controller
         $foodTop = Foods::first(); 
         $drinks = Drinks::all();
         $drinkTop = Drinks::first(); 
+        $reviews = Reviews::all(); 
 
         $data = [
             'content' => 'users/home/index',
@@ -21,6 +24,7 @@ class WebController extends Controller
             'foodTop' => $foodTop,
             'drinks' => $drinks,
             'drinkTop' => $drinkTop,
+            'reviews' => $reviews,
         ];
 
         return view('users.layouts.wrapper', $data);
