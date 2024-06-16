@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+
+use App\Models\Reviews;
+
 
 class ReviewsController extends Controller
 {
@@ -38,4 +42,16 @@ class ReviewsController extends Controller
         // return redirect()->route('our-menu')->with('success', 'Review successfully added!')->with('review', $review);
         return redirect()->route('our-menu')->with('success', 'Review successfully added!')->with('review', $review);
     }
+
+
+    public function reviewsAdmin()
+    {
+        $reviews = Reviews::with('user')->get();
+        $data = [
+            'reviews' => $reviews,
+        ];
+        return view('reviews.tableReviews', $data);
+    }
+
+
 }

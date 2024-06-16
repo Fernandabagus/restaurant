@@ -30,34 +30,34 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
+        // Validate the incoming request data
+        $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone' => ['required', 'numeric', 'digits_between:11,15'],
             'address' => ['required', 'string', 'max:255'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'img' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ]);
 
-        // Check if the image file is uploaded
+        // Handle the image upload if present
         if ($request->hasFile('img')) {
-            // Store the image and get the path
-            $imagePath = $request->file('img')->store('public/img');
-        } else {
-            // Set a default value if no image is uploaded
-            $imagePath = 'default/path/to/image.jpg';
+            $image = $request->file('img');
+            $folderPath = 'profile-image';
+            $imagePath = $image->store($folderPath, 'public');
+            $validatedData['img'] = 'storage/' . $imagePath;
         }
 
-        // Create user
+        // Create the user with validated data
         $user = User::create([
-            'name' => $request->name,
-            'username' => $request->username,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'address' => $request->address,
-            'password' => Hash::make($request->password),
-            'img' => $imagePath, // Assign the image path to the 'img' column
+            'name' => $validatedData['name'],
+            'username' => $validatedData['username'],
+            'email' => $validatedData['email'],
+            'phone' => $validatedData['phone'],
+            'address' => $validatedData['address'],
+            'password' => Hash::make($validatedData['password']),
+            'img' => $validatedData['img'],
         ]);
 
         // Debugging: Check if the user is created successfully

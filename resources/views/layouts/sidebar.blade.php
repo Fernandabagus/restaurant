@@ -89,9 +89,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('tableReviews') }}" class="nav-link">
                         <i class="nav-icon fas fa fa-comments" aria-hidden="true"></i>
-                        <p>review</p>
+                        <p>Reviews</p>
                     </a>
                 </li>
             

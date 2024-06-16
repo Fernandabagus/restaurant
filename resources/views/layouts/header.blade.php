@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,5 +45,5 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__wobble" src="{{asset('AdminLTE-3.1.0')}}/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="500" width="500">
+    <img class="animation__wobble" src="{{asset('AdminLTE-3.1.0')}}/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="205" width="205">
   </div>

@@ -1,5 +1,5 @@
-<div class="hero_area">
-    <header class="header_section" style="background-color: #222831;">
+
+<header class="header_section" style="background-color: #222831;">
         <div class="container">
             <nav class="navbar navbar-expand-lg custom_nav-container">
                 <a class="navbar-brand" href="index.html">
@@ -133,10 +133,5 @@
         </div>
     </header>
     <!-- slider section -->
-</div>
 
-
-
-
-
-
+    

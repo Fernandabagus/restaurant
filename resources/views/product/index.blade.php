@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Foods List</h1>
+                        <h1 class="m-0">halo List</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -52,7 +52,7 @@
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>
                                             @if ($item->img)
-                                                <img src="{{ asset($item->img) }}" alt="{{ $item->nama }}"
+                                                <img src="{{ asset('storage/'.$item->img) }}" alt="{{ $item->nama }}"
                                                     width="100">
                                             @endif
                                         </td>
