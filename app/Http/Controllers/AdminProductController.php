@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductStoreRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
-
+use RealRashid\SweetAlert\Facades\Alert as FacadesAlert;
 class AdminProductController extends Controller
 {
     public function index()
@@ -39,7 +39,7 @@ class AdminProductController extends Controller
         }
 
         Product::create($data);
-        // FacadesAlert::success('Berhasil', 'Pengaduan berhasil ditambahkan');
+        FacadesAlert::success('Berhasil', 'Data berhasil ditambahkan');
         return redirect()->route('product-admin');
     }
 
@@ -49,8 +49,11 @@ class AdminProductController extends Controller
         // dd($product);      
         try {
             $product->delete();
+            
+            FacadesAlert::success('Berhasil', 'Data berhasil dihapus');
             return redirect()->back()->with('success', 'Berhasil hapus');
         } catch (\Throwable $th) {
+            FacadesAlert::error('Gagal', 'Data gagal sihapus');
             return redirect()->back()->with('errorr', 'Gagal');
         }
     }
@@ -98,7 +101,7 @@ class AdminProductController extends Controller
         $product->img = $validatedData['img'] ?? $product->img;
 
         $product->save();
-        // FacadesAlert::success('Berhasil', 'Food updated successfully!');
+        FacadesAlert::success('Berhasil', 'Data berhasil diperbarui');
         return redirect(route('product-admin'));
     }
 }
