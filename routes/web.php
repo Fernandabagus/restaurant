@@ -103,6 +103,10 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::delete('/profil-admin', [ProfileController::class, 'destroy'])->name('profiladmin.destroy');
 
     Route::get('order-list', [AdminOrderController::class, 'index'])->name('order-list');
+    Route::get('order/{order}/edit', [AdminOrderController::class, 'edit'])->name('orders.edit');
+    Route::put('order/{order}', [AdminOrderController::class, 'update'])->name('orders.update');
+    Route::delete('order/{order}', [AdminOrderController::class, 'destroy'])->name('orders.delete');
+    
 
 
     // Route::get('/dashboard', function () {
