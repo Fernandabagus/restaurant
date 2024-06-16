@@ -63,8 +63,11 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/myprofile', [ProfileController::class, 'destroy'])->name('myprofile.destroy');
 
 
-    Route::get('/review', [ReviewsController::class, 'index'])->name('reviewUsers');
-    Route::post('/review', [ReviewsController::class, 'store'])->name('review.store');
+    Route::get('/review/{id}', [ReviewsController::class, 'index'])->name('reviewUsers');
+    Route::post('/store-review', [ReviewsController::class, 'store'])->name('review.store');
+
+    // ULASAN
+    // Route::get('/ulasan/{id}', [ReviewsController::class, 'index'])->name('reviewUsers');
 
     Route::get('/order-food/{id}', [OrdersController::class, 'order'])->name('order-food');
     Route::put('/process-my-order/{id}', [OrdersController::class, 'processOrder'])->name('process-my-order');
