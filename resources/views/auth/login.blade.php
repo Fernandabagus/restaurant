@@ -34,9 +34,7 @@
                         <span class="focus-input100"></span>
                         <span class="label-input100">Email</span>
                         @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                            <div class="alert-validate" data-validate="{{ $message }}"></div>
                         @enderror
                     </div>
 
@@ -46,9 +44,7 @@
                         <span class="focus-input100"></span>
                         <span class="label-input100">Password</span>
                         @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                            <div class="alert-validate" data-validate="{{ $message }}"></div>
                         @enderror
                     </div>
 

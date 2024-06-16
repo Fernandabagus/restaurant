@@ -37,7 +37,7 @@
           <table id="user-table" class="table table-bordered table-hover">
 
               <thead>
-                <tr>
+                <tr class= "bg-dark">
                   <th>No.</th>
                   <th>Image</th>
                   <th>Name</th>

@@ -13,7 +13,7 @@
   <meta name="author" content="" />
   <link rel="shortcut icon" href="{{asset('feane-1.0.0\images/favicon.png')}}" type="">
 
-  <title> Feane </title>
+  <title> Prospero Barn </title>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="{{asset('feane-1.0.0\css/bootstrap.css')}}" />

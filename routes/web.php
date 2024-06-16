@@ -18,7 +18,7 @@ use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ReviewsController;
 
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\Users\AboutUsController;
 
