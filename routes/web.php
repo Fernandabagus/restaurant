@@ -109,7 +109,11 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::get('order/{order}/edit', [AdminOrderController::class, 'edit'])->name('orders.edit');
     Route::put('order/{order}', [AdminOrderController::class, 'update'])->name('orders.update');
     Route::delete('order/{order}', [AdminOrderController::class, 'destroy'])->name('orders.delete');
-    
+    Route::get('/order/trash', [AdminOrderController::class, 'trash'])->name('order.trash');
+    Route::post('/order/restore/{id}', [AdminOrderController::class, 'restore'])->name('order.restore');
+    Route::delete('/order/force-delete/{id}', [AdminOrderController::class, 'forceDelete'])->name('order.forceDelete');
+    Route::post('/order/restore-all', [AdminOrderController::class, 'restoreAll'])->name('order.restoreAll');
+    Route::delete('/order/force-delete-all', [AdminOrderController::class, 'forceDeleteAll'])->name('order.forceDeleteAll');
 
 
     // Route::get('/dashboard', function () {
