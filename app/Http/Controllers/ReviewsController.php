@@ -3,16 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ReviewsController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        $user = auth()->user();
+        $menu = Product::find($id);
+        $user = Auth::user()->id;
         $data = [
             // 'title'     => 'Test',
-            'reviews'   => $user->reviews,
+            'user'      => $user,
+            'menu'      => $menu,
+            // 'reviews'   => $user->reviews,
             'content'   => 'users/review/index'
         ];
         return view('users.layouts.wrapper', $data);
@@ -20,6 +26,7 @@ class ReviewsController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request);
         $request->validate([
             'id_product' => 'required',
             'rating' => 'required',
@@ -27,10 +34,8 @@ class ReviewsController extends Controller
         ]);
 
         $user = $request->user();
-        $user->reviews()->create($request->all());
-
-        return redirect()->route('reviewUsers');
+        $review = $user->reviews()->create($request->all());
+        // return redirect()->route('our-menu')->with('success', 'Review successfully added!')->with('review', $review);
+        return redirect()->route('our-menu')->with('success', 'Review successfully added!')->with('review', $review);
     }
-
-
 }
