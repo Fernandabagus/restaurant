@@ -29,38 +29,48 @@
                         <form action="{{ route('update-product', $product->id) }}" method="post"
                             enctype="multipart/form-data">
                             @csrf
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <div class="form-group">
                                 <label for="img">Food Image</label>
                                 <input type="file" class="form-control" name="img" onchange="loadFile(event)">
                                 @if ($product->img)
-                                                <img src="{{ asset('storage/'.$product->img) }}" alt="{{ $product->nama }}"
-                                                    width="100">
-                                            @endif
+                                    <img src="{{ asset('storage/' . $product->img) }}" alt="{{ $product->nama }}"
+                                        width="100">
+                                @endif
                                 <img id="output" class="img-fluid mt-2 mb-4" width="100" />
                             </div>
                             <div class="form-group">
                                 <label for="food_name">Food Name</label>
-                                <input type="text" class="form-control" name="nama" id="food_name"
-                                    required="required" value="{{ old('nama', $product->nama) }}" placeholder="Input food nama here"
-                                    >
+                                <input type="text" class="form-control" name="nama" id="food_name" required="required"
+                                    value="{{ old('nama', $product->nama) }}" placeholder="Input food nama here">
                             </div>
                             <div class="form-group">
                                 <label for="food_price_display">Harga</label>
-                                <input type="text" id="food_price_display" class="form-control"
-                                    required="required" value="{{ old('harga', number_format($product->harga, 0, ',', '.')) }}" placeholder="Input food price here">
-                                <input type="hidden" name="harga" id="harga" value="{{ old('harga', $product->harga) }}">
+                                <input type="text" id="food_price_display" class="form-control" required="required"
+                                    value="{{ old('harga', number_format($product->harga, 0, ',', '.')) }}"
+                                    placeholder="Input food price here">
+                                <input type="hidden" name="harga" id="harga"
+                                    value="{{ old('harga', $product->harga) }}">
 
                                 <!-- Error Message -->
                                 @error('harga')
                                     <div class="alert alert-danger mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="exampleFormControlInput1" class="form-label">Kategori</label>
                                 <select name="kategori" class="form-control" aria-label="Default select example">
-                                    <option disabled selected value>
-                                        <- Choose ->
+                                    <option value="{{ $product->kategori }}" selected>
+                                        {{ old('kategori', $product->kategori) }}
                                     </option>
                                     <option value="Makanan">Makanan</option>
                                     <option value="Minuman">Minuman</option>
@@ -89,36 +99,36 @@
     </div>
     <!-- /.content-wrapper -->
     <script>
-    /* Format Rupiah */
-    var food_price_display = document.getElementById('food_price_display');
-    var food_price = document.getElementById('harga');
+        /* Format Rupiah */
+        var food_price_display = document.getElementById('food_price_display');
+        var food_price = document.getElementById('harga');
 
-    food_price_display.addEventListener('keyup', function(e) {
-        var formattedValue = formatRupiah(this.value, 'Rp. ');
-        food_price_display.value = formattedValue;
-        food_price.value = formatNumber(this.value);
-    });
+        food_price_display.addEventListener('keyup', function(e) {
+            var formattedValue = formatRupiah(this.value, 'Rp. ');
+            food_price_display.value = formattedValue;
+            food_price.value = formatNumber(this.value);
+        });
 
-    /* Format currency with Rupiah */
-    function formatRupiah(angka, prefix) {
-        var number_string = angka.replace(/[^,\d]/g, '').toString(),
-            split = number_string.split(','),
-            sisa = split[0].length % 3,
-            rupiah = split[0].substr(0, sisa),
-            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+        /* Format currency with Rupiah */
+        function formatRupiah(angka, prefix) {
+            var number_string = angka.replace(/[^,\d]/g, '').toString(),
+                split = number_string.split(','),
+                sisa = split[0].length % 3,
+                rupiah = split[0].substr(0, sisa),
+                ribuan = split[0].substr(sisa).match(/\d{3}/gi);
 
-        if (ribuan) {
-            separator = sisa ? '.' : '';
-            rupiah += separator + ribuan.join('.');
+            if (ribuan) {
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+
+            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+            return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
         }
 
-        rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-        return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
-    }
-
-    /* Format number without currency symbol */
-    function formatNumber(angka) {
-        return angka.replace(/[^,\d]/g, '');
-    }
+        /* Format number without currency symbol */
+        function formatNumber(angka) {
+            return angka.replace(/[^,\d]/g, '');
+        }
     </script>
 @endsection

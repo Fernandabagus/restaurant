@@ -45,7 +45,7 @@ class AdminProductController extends Controller
 
     public function destroy($id)
     {
-        $product = Product::find($id);  
+        $product = Product::find($id);
         // dd($product);      
         try {
             $product->delete();
@@ -60,45 +60,70 @@ class AdminProductController extends Controller
         $product = Product::findOrFail($id);
         return view('product.edit', ['product' => $product]);
     }
-    public function update(Request $request, $id)
+    // public function update(Request $request, $id)
+    // {
+    //     // dd($request);
+    //     $validatedData = $request->validate([
+    //         'nama' => 'required|string|max:255',
+    //         'harga' => 'required|min:3',
+    //         'kategori' => 'nullable',
+    //         'deskripsi' => 'required|string',
+    //         'img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:1048',
+    //     ]);
+
+    //     $product = Product::findOrFail($id);
+
+    //     if ($request->hasFile('img')) {
+    //         if ($request->img != null) {
+    //             $realLocation = "storage/" . $request->img;
+    //             if (file_exists($realLocation) && !is_dir($realLocation)) {
+    //                 unlink($realLocation);
+    //             }
+    //         }
+    //         $img = $request->file('img');
+    //         $file_name = time() . '-' . $img->getClientOriginalName();
+
+    //         $data['img'] = $request->file('img')->store('assets/product', 'public');
+    //     } else {
+    //         $data['img'] = $request->img;
+    //     }
+
+    //     $product->save();
+    //     // FacadesAlert::success('Berhasil', 'Food updated successfully!');
+    //     return redirect(route('product-admin'));
+    // }
+
+
+    public function update(Request $request, string $id)
     {
-        $validatedData = $request->validate([
-            'nama' => 'required|string|max:255',
-            'harga' => 'required|min:3',            
-            'kategori' => 'required',            
-            'deskripsi' => 'required|string',
-            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        $item = Product::find($id);
+        $data = $request->validate([
+            'nama'      => 'nullable',
+            'deskripsi' => 'nullable',
+            'harga'     => 'nullable',
+            'kategori'  => 'nullable',
+            'img'       => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        $product = Product::findOrFail($id);
-
         if ($request->hasFile('img')) {
-            if ($request->img != null) {
 
-                $image = $request->file('img');
-                $imagePath = $product->img;
-                $realLocation = $imagePath;
-
+            if ($item->img != null) {
+                $realLocation = "storage/" . $item->img;
                 if (file_exists($realLocation) && !is_dir($realLocation)) {
                     unlink($realLocation);
                 }
             }
-            $image = $request->file('img');
-            $folderPath = 'assets/product/';
-            $imagePath = $image->store($folderPath, 'public');
-            $validatedData['img'] = 'storage/' . $imagePath;
+
+            $img = $request->file('img');
+            $file_name = time() . '-' . $img->getClientOriginalName();
+
+            $data['img'] = $request->file('img')->store('assets/product', 'public');
+        } else {
+            $data['img'] = $item->img;
         }
 
-
-
-        $product->nama = $validatedData['nama'];
-        $product->harga = $validatedData['harga'];
-        $product->kategori = $validatedData['kategori'];
-        $product->deskripsi = $validatedData['deskripsi'];
-        $product->img = $validatedData['img'] ?? $product->img;
-
-        $product->save();
-        // FacadesAlert::success('Berhasil', 'Food updated successfully!');
-        return redirect(route('product-admin'));
+        $item->update($data);
+        // FacadesAlert::success('Berhasil', 'Pengajuan Surat Pengantar Pembuatan KTP Berhasil Diubah');
+        return redirect()->route('product-admin');
     }
 }
