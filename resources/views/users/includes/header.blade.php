@@ -29,7 +29,8 @@
   <link href="{{asset('feane-1.0.0\css/style.css')}}" rel="stylesheet" />
   <!-- responsive style -->
   <link href="{{asset('feane-1.0.0\css/responsive.css')}}" rel="stylesheet" />
-
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 </head>
 
 <body>

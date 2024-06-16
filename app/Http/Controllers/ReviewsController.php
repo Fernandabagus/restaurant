@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Reviews;
+
 
 class ReviewsController extends Controller
 {
@@ -32,5 +34,13 @@ class ReviewsController extends Controller
         return redirect()->route('reviewUsers');
     }
 
+    public function reviewsAdmin()
+    {
+        $reviews = Reviews::with('user')->get();
+        $data = [
+            'reviews' => $reviews,
+        ];
+        return view('reviews.tableReviews', $data);
+    }
 
 }

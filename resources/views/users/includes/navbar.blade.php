@@ -1,5 +1,5 @@
 
-    <header class="header_section" style="background-color: #222831;">
+<header class="header_section" style="background-color: #222831;">
         <div class="container">
             <nav class="navbar navbar-expand-lg custom_nav-container">
                 <a class="navbar-brand" href="index.html">
@@ -41,21 +41,26 @@
 
                     </ul>
                     <div class="user_option">
-            </ul>
-            <div class="user_option">
-            
-            @auth
-            <a href="{{ route('myprofile.edit') }}" class="user_link" title="My Profile">
-    <i class="fa fa-user" aria-hidden="true"></i>
-</a>
-              @endauth
-             
-              <a class="cart_link" title="Orderlist" href="#">
-                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                  <g>
-                    <g>
-                      <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
 
+
+                        @auth
+                            <a href="{{ route('myprofile.edit') }}" class="user_link" title="My Profile">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </a>
+                        @endauth
+
+                        <a class="cart_link" title="Orderlist" href="#">
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029"
+                                style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                                <g>
+                                    <g>
+                                        <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
+
+               
+
+  
+ 
                    c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
                                         </g>
                                     </g>

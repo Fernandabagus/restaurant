@@ -18,7 +18,7 @@ use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ReviewsController;
 
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\MenuController;
+
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\Users\AboutUsController;
 
@@ -162,6 +162,8 @@ Route::delete('/users/force-delete-all', [UserController::class, 'forceDeleteAll
 
     // Rute untuk Orders
     // Route::resource('/orders', OrderController::class);
+
+    Route::get('/admin/reviews', [ReviewsController::class, 'reviewsAdmin'])->name('tableReviews');
 });
 
 // Rute otentikasi
@@ -169,4 +171,3 @@ require __DIR__ . '/auth.php';
 
 // Rute resource
 Route::resource('/drinks', DrinksController::class);
-
