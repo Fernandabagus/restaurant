@@ -16,7 +16,7 @@ class WebController extends Controller
         $foodTop = Foods::first(); 
         $drinks = Drinks::all();
         $drinkTop = Drinks::first(); 
-        $reviews = Reviews::all(); 
+        $reviews = Reviews::orderBy('created_at', 'desc')->take(5)->get(); 
 
         $data = [
             'content' => 'users/home/index',

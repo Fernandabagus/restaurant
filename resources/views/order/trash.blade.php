@@ -38,7 +38,7 @@
                                 <i class="bi bi-recycle"></i> Restore All
                             </button>
                         </form>
-                        <a href="{{ route('daftarFoods') }}" class="btn btn-primary" role="button">
+                        <a href="{{ route('order-list') }}" class="btn btn-primary" role="button">
                             <i class="bi bi-arrow-left"></i> Back
                         </a>
                     </div>

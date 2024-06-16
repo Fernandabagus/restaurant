@@ -78,15 +78,13 @@
 
   <!-- jQery -->
   <script src="{{asset('feane-1.0.0\js/jquery-3.4.1.min.js')}}"></script>
-  <!-- owl slider -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <!-- popper js -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
   </script>
   <!-- bootstrap js -->
   <script src="{{asset('feane-1.0.0\js/bootstrap.js')}}"></script>
-  <!-- owl slider -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
   <!-- isotope js -->
   <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
   <!-- nice select -->
@@ -97,7 +95,42 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
  </script>
 
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            (function () {
+                "use strict";
 
+                var carousels = function () {
+                    $(".owl-carousel1").owlCarousel({
+                        loop: true,
+                        center: true,
+                        margin: 0,
+                        responsiveClass: true,
+                        nav: false,
+                        responsive: {
+                            0: {
+                                items: 1,
+                                nav: false
+                            },
+                            680: {
+                                items: 2,
+                                nav: false,
+                                loop: false
+                            },
+                            1000: {
+                                items: 3,
+                                nav: true
+                            }
+                        }
+                    });
+                };
+
+                (function ($) {
+                    carousels();
+                })(jQuery);
+            })();
+        });
+    </script>
   <!-- End Google Map -->
 
   
