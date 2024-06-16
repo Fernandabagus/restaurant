@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Edit Foods</h1>
+                        <h1 class="m-0">Edit product</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Add Foods</li>
+                            <li class="breadcrumb-item active">edit product</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -30,16 +30,16 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="img">Food Image</label>
+                                <label for="img">product Image</label>
                                 <input type="file" class="form-control" name="img" onchange="loadFile(event)">
                                 @if ($product->img)
-                                                <img src="{{ asset('storage/'.$product->img) }}" alt="{{ $product->nama }}"
+                                                <img src="{{ asset($product->img) }}" alt="{{ $product->nama }}"
                                                     width="100">
                                             @endif
                                 <img id="output" class="img-fluid mt-2 mb-4" width="100" />
                             </div>
                             <div class="form-group">
-                                <label for="food_name">Food Name</label>
+                                <label for="food_name">product Name</label>
                                 <input type="text" class="form-control" name="nama" id="food_name"
                                     required="required" value="{{ old('nama', $product->nama) }}" placeholder="Input food nama here"
                                     >
