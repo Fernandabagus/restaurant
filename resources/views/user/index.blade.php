@@ -28,7 +28,7 @@
             <a href="{{ route('createUsers') }}" class="btn btn-primary" role="button">
               <i class="bi bi-file-earmark-plus"></i> Add
             </a>
-            <a href="#" class="btn btn-primary" role="button">
+            <a href="{{ route('user.trash') }}" class="btn btn-primary" role="button">
               <i class="bi bi-recycle"></i> Trash
             </a>
           </div>

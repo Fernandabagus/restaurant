@@ -108,4 +108,50 @@ class UserController extends Controller
         Alert::success('Success', 'User deleted successfully!');
         return redirect(route('daftarUsers'));
     }
+
+    public function trash()
+    {
+        $users = User::onlyTrashed()->get(); // Menggunakan $users bukan $user
+        return view('user.trash', compact('users')); // Menggunakan 'users' bukan 'user'
+    }
+    
+    
+    public function restore($id)
+    {
+        $user = User::onlyTrashed()->findOrFail($id);
+        $user->restore();
+
+        return redirect()->route('user.trash')->with('success', 'User restored successfully');
+    }
+    
+    public function forceDelete($id)
+    {
+        $user = User::onlyTrashed()->findOrFail($id);
+        if ($user->image && file_exists(public_path($user->image))) {
+            unlink(public_path($user->image));
+        }
+        $user->forceDelete();
+       
+        return redirect()->route('user.trash');
+    }
+    
+    public function restoreAll()
+    {
+        User::onlyTrashed()->restore();
+        
+        return redirect()->route('user.trash');
+    }
+    
+    public function forceDeleteAll()
+    {
+        $user = User::onlyTrashed()->get();
+        foreach ($user as $user) {
+            if ($user->image && file_exists(public_path($user->image))) {
+                unlink(public_path($user->image));
+            }
+            $user->forceDelete();
+        }
+        
+        return redirect()->route('user.trash');
+    }
 }
