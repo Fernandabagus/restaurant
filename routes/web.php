@@ -147,9 +147,11 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::post('drinks/restore-all', [DrinksController::class, 'restoreAll'])->name('drinks.restoreAll');
     Route::delete('drinks/force-delete-all', [DrinksController::class, 'forceDeleteAll'])->name('drinks.forceDeleteAll');
 
+    
     Route::get('/user', [UserController::class, 'index'])->name('daftarUsers');
     // Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('deleteUsers');
-    Route::get('/user/delete/{id}', [UserController::class, 'destroy'])->name('deleteUsers');
+    Route::middleware(['role:sa'])->group(function () {
+        Route::delete('/user/delete/{id}', [UserController::class, 'destroy'])->name('deleteUsers');
     Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('editUsers');
     Route::post('/user/edit/{id}', [UserController::class, 'update'])->name('updateUsers');
     Route::get('/user/create', [UserController::class, 'create'])->name('createUsers');
@@ -159,6 +161,7 @@ Route::post('/users/restore/{id}', [UserController::class, 'restore'])->name('us
 Route::delete('/users/force-delete/{id}', [UserController::class, 'forceDelete'])->name('users.forceDelete');
 Route::post('/users/restore-all', [UserController::class, 'restoreAll'])->name('users.restoreAll');
 Route::delete('/users/force-delete-all', [UserController::class, 'forceDeleteAll'])->name('users.forceDeleteAll');
+});
 
     // Rute untuk Orders
     // Route::resource('/orders', OrderController::class);
