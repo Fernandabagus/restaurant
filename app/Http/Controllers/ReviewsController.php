@@ -53,5 +53,27 @@ class ReviewsController extends Controller
         return view('reviews.tableReviews', $data);
     }
 
+    // public function userIndex()
+    // {
+    //     $myReviews = Reviews::all();
+    //     $data = [
+    //         'user'      => $myReviews,
+    //         'content'   => 'users/review/my-review'
+    //     ];
+    //     return view('users.layouts.wrapper', $data);
+    // }
+
+    public function userIndex()
+    {
+        $user = auth()->user();
+        $userAuth = Auth::user()->id;
+        $reviews = Reviews::where('user_id', $userAuth)->get();
+        $data = [
+            // 'title'     => 'Test',
+            'reviews'   => $reviews,
+            'content'   => 'users/review/my-review'
+        ];
+        return view('users.layouts.wrapper', $data);
+    }
 
 }

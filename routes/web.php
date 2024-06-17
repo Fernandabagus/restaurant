@@ -47,7 +47,7 @@ use App\Http\Controllers\Auth\GoogleController;
 Route::middleware('guest')->group(function () {
     // ...
     Route::get('login/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
-Route::get('login/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+    Route::get('login/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 });
 // ...
 
@@ -68,6 +68,9 @@ Route::get('/myprofile', [ProfileController::class, 'index'])->name('myprofileUs
 
 // MENU
 Route::get('/our-menu', [MenuController::class, 'index'])->name('our-menu');
+
+// My Review
+Route::get('/my-review', [ReviewsController::class, 'userIndex'])->name('my-review');
 
 
 Route::middleware(['auth'])->group(function () {
@@ -112,7 +115,7 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::get('/products/edit/{id}', [AdminProductController::class, 'edit'])->name('edit-product');
     Route::post('/products/update/{id}', [AdminProductController::class, 'update'])->name('update-product');
 
-// Profil admin
+    // Profil admin
     Route::get('/profil-admin', [ProfileController::class, 'index'])->name('profiladmin.index');
     Route::get('/profil-admin/edit', [ProfileController::class, 'edit'])->name('profiladmin.edit');
     Route::patch('/profil-admin', [ProfileController::class, 'update'])->name('profiladmin.update');
@@ -167,21 +170,21 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::post('drinks/restore-all', [DrinksController::class, 'restoreAll'])->name('drinks.restoreAll');
     Route::delete('drinks/force-delete-all', [DrinksController::class, 'forceDeleteAll'])->name('drinks.forceDeleteAll');
 
-    
+
     Route::get('/user', [UserController::class, 'index'])->name('daftarUsers');
     // Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('deleteUsers');
     Route::middleware(['role:sa'])->group(function () {
         Route::delete('/user/delete/{id}', [UserController::class, 'destroy'])->name('deleteUsers');
-    Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('editUsers');
-    Route::post('/user/edit/{id}', [UserController::class, 'update'])->name('updateUsers');
-    Route::get('/user/create', [UserController::class, 'create'])->name('createUsers');
-    Route::post('/user/create', [UserController::class, 'store'])->name('storeUsers');
-    Route::get('/users/trash', [UserController::class, 'trash'])->name('user.trash');
-Route::post('/users/restore/{id}', [UserController::class, 'restore'])->name('users.restore');
-Route::delete('/users/force-delete/{id}', [UserController::class, 'forceDelete'])->name('users.forceDelete');
-Route::post('/users/restore-all', [UserController::class, 'restoreAll'])->name('users.restoreAll');
-Route::delete('/users/force-delete-all', [UserController::class, 'forceDeleteAll'])->name('users.forceDeleteAll');
-});
+        Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('editUsers');
+        Route::post('/user/edit/{id}', [UserController::class, 'update'])->name('updateUsers');
+        Route::get('/user/create', [UserController::class, 'create'])->name('createUsers');
+        Route::post('/user/create', [UserController::class, 'store'])->name('storeUsers');
+        Route::get('/users/trash', [UserController::class, 'trash'])->name('user.trash');
+        Route::post('/users/restore/{id}', [UserController::class, 'restore'])->name('users.restore');
+        Route::delete('/users/force-delete/{id}', [UserController::class, 'forceDelete'])->name('users.forceDelete');
+        Route::post('/users/restore-all', [UserController::class, 'restoreAll'])->name('users.restoreAll');
+        Route::delete('/users/force-delete-all', [UserController::class, 'forceDeleteAll'])->name('users.forceDeleteAll');
+    });
 
     // Rute untuk Orders
     // Route::resource('/orders', OrderController::class);
