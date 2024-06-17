@@ -29,13 +29,6 @@
                             <i class="bi bi-recycle"></i> Restore All
                         </button>
                     </form>
-                    <form action="{{ route('order.forceDeleteAll') }}" method="POST" style="display:inline;" onclick="return confirm('Are you sure you want to delete all users? This action cannot be undone.')">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn btn-danger">
-                            <i class="bi bi-trash"></i> Delete All
-                        </button>
-                    </form>
                     <a href="{{ route('order-list') }}" class="btn btn-primary" role="button">
                         <i class="bi bi-arrow-left"></i> Back
                     </a>
