@@ -141,14 +141,14 @@
           <div class="box ">
 
             <div class="img-box">
-              <img src="{{ $foodTop->img_url }}" alt="">
+             
             </div>
             <div class="detail-box">
               <h5>
-                {{ $foodTop->name }}
+               
               </h5>
               <h6>
-                <span>@currency($foodTop->price)</span>
+               
               </h6>
 
               <a href="">
