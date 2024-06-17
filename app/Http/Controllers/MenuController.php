@@ -11,7 +11,7 @@ class MenuController extends Controller
 {
     public function index()
     {
-        $menus = Product::all();
+        $menus = Product::paginate(12);
 
         $data = [
             'content'   => 'users/menu/index',

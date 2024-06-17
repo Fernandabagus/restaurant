@@ -1,7 +1,7 @@
 <!-- food section -->
 <section class="food_section layout_padding">
     <div class="container">
-        <div class="heading_container heading_center">
+        <div class="heading_container heading_center" style="margin-top: -50px;">
             <h2>Our Menu</h2>
         </div>
 
@@ -50,9 +50,7 @@
                         </div>
                 @endforelse
             </div>
-            <div class="btn-box">
-                <a href="">View More</a>
-            </div>
+            {{ $menus->links('vendor.pagination.custom') }}
         </div>
     </div>
   </section>
