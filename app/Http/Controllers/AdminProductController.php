@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductStoreRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert as FacadesAlert;
 
 class AdminProductController extends Controller
 {
@@ -39,7 +40,7 @@ class AdminProductController extends Controller
         }
 
         Product::create($data);
-        // FacadesAlert::success('Berhasil', 'Pengaduan berhasil ditambahkan');
+        FacadesAlert::success('Berhasil', 'Product berhasil ditambahkan');
         return redirect()->route('product-admin');
     }
 
@@ -49,7 +50,8 @@ class AdminProductController extends Controller
         // dd($product);      
         try {
             $product->delete();
-            return redirect()->back()->with('success', 'Berhasil hapus');
+            FacadesAlert::success('Berhasil', 'Product berhasil dihapus');
+            return redirect()->back();
         } catch (\Throwable $th) {
             return redirect()->back()->with('errorr', 'Gagal');
         }
@@ -123,7 +125,7 @@ class AdminProductController extends Controller
         }
 
         $item->update($data);
-        // FacadesAlert::success('Berhasil', 'Pengajuan Surat Pengantar Pembuatan KTP Berhasil Diubah');
+        FacadesAlert::success('Berhasil', 'Product Berhasil Diubah');
         return redirect()->route('product-admin');
     }
 }
