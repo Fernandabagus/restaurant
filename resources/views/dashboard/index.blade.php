@@ -49,7 +49,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>55</h3>
+                <h3>{{ $totalOrder }}</h3>
                 <p>Order</p>
               </div>
               <div class="icon">

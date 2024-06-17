@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Foods;
 use App\Models\Drinks;
@@ -13,6 +14,7 @@ class WebController extends Controller
     public function index()
     {
         $foods = Foods::all();
+        $product = Product::where('kategori', 'makanan')->paginate(3);
         $foodTop = Foods::first(); 
         $drinks = Drinks::all();
         $drinkTop = Drinks::first(); 
@@ -25,6 +27,7 @@ class WebController extends Controller
             'drinks' => $drinks,
             'drinkTop' => $drinkTop,
             'reviews' => $reviews,
+            'product' => $product,
         ];
 
         return view('users.layouts.wrapper', $data);
