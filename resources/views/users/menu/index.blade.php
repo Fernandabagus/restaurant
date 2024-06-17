@@ -39,6 +39,7 @@
                                                 </g>
                                             </svg>
                                         </a>
+                                        <a href="{{ route('reviewUsers', $item->id) }}" class="btn btn-outline-primary" style="background-color: white; border: none">⭐</a>
                                     </div>
                                 </div>
                             </div>

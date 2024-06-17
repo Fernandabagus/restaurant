@@ -1,6 +1,5 @@
-<!-- resources/views/user/index.blade.php -->
-
 @extends('layouts.master')
+
 @section('content')
 <div class="content-wrapper">
   <div class="content-header">
@@ -31,10 +30,8 @@
           </a>
         </div>
         <div class="card-body">
-          <table id="user-table" class="table table-bordered table-hover">
-
-
-            <thead class= "bg-dark">
+          <table id="example2" class="table table-hover table-bordered" id="data-table">
+            <thead class="bg-dark">
               <tr>
                 <th>No.</th>
                 <th>Image</th>
@@ -49,60 +46,59 @@
             </thead>
             <tbody>
               @forelse ($users as $user)
-                <tr class= "bg-dark">
-                  <td>{{ $loop->index + 1 }}</td>
-                  <td>
-                    @if ($user->img)
-                      <img src="{{ asset($user->img) }}" alt="{{ $user->name }}" width="100">
-                    @endif
-                  </td>
-                  <td>{{ $user->name }}</td>
-                  <td>{{ $user->username }}</td>
-                  <td>{{ $user->email }}</td>
-                  <td>{{ $user->phone }}</td>
-                  <td>{{ $user->address }}</td>
-                  <td>{{ $user->role }}</td>
-                  <td>
-                    @if (auth()->user()->role === 'sa')
-
-                      <a href="{{ route('editUsers', $user->id) }}" class="btn btn-warning btn-sm" role="button">
-                        <i class="bi bi-pencil-square"></i> Edit
-                      </a>
-                      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal{{ $user->id }}">
-                        Delete
-                      </button>
-                      <div class="modal fade" id="exampleModal{{ $user->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">DELETE</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                              <p>Are you sure you want to delete this user?</p>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-                              <form action="{{ route('deleteUsers', ['id' => $user->id]) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" role="button">Delete</button>
-                              </form>
-                            </div>
-                          </div>
+              <tr class="bg-dark">
+                <td>{{ $loop->index + 1 }}</td>
+                <td>
+                  @if ($user->img)
+                  <img src="{{ asset($user->img) }}" alt="{{ $user->name }}" width="100">
+                  @endif
+                </td>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->username }}</td>
+                <td>{{ $user->email }}</td>
+                <td>{{ $user->phone }}</td>
+                <td>{{ $user->address }}</td>
+                <td>{{ $user->role }}</td>
+                <td>
+                  @if (auth()->user()->role === 'sa')
+                  <a href="{{ route('editUsers', $user->id) }}" class="btn btn-warning btn-sm" role="button">
+                    <i class="bi bi-pencil-square"></i> Edit
+                  </a>
+                  <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal{{ $loop->index }}">
+                    Delete
+                  </button>
+                  <div class="modal fade" id="exampleModal{{ $loop->index }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">DELETE</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Are you sure you want to delete this user?</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                          <form action="{{ route('deleteUsers', ['id' => $user->id]) }}" method="POST">
+                            @method('delete')
+                            @csrf
+                            <button type="submit" class="btn btn-danger btn-sm" role="button">Delete</button>
+                          </form>
                         </div>
                       </div>
-                    @else
-                      <p>No actions available</p>
-                    @endif
-                  </td>
-                </tr>
+                    </div>
+                  </div>
+                  @else
+                  <p>No actions available</p>
+                  @endif
+                </td>
+              </tr>
               @empty
-                <tr>
-                  <td colspan="9" class="text-center">No data available.</td>
-                </tr>
+              <tr>
+                <td colspan="9" class="text-center">No data available.</td>
+              </tr>
               @endforelse
             </tbody>
           </table>
@@ -111,9 +107,12 @@
     </div>
   </div>
 </div>
+@endsection
+
+@section('scripts')
 <script>
   $(document).ready(function() {
-    $('#data-table').DataTable();
+    $('#example2').DataTable();
   });
 </script>
 @endsection

@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DrinksController;
 use App\Http\Controllers\FoodController;
 
+
 use App\Http\Controllers\MenuController;
 
 use App\Http\Controllers\UserController;
@@ -25,6 +26,7 @@ use App\Http\Controllers\Users\AboutUsController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\Users\OurMenuController;
+use App\Http\Controllers\Auth\GoogleController;
 
 
 /*
@@ -37,6 +39,17 @@ use App\Http\Controllers\Users\OurMenuController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
+// Route Login Google
+
+
+Route::middleware('guest')->group(function () {
+    // ...
+    Route::get('login/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('login/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+});
+// ...
 
 Route::get('/', [WebController::class, 'index'])->name('home');
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('aboutUsers');
@@ -63,8 +76,11 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/myprofile', [ProfileController::class, 'destroy'])->name('myprofile.destroy');
 
 
-    Route::get('/review', [ReviewsController::class, 'index'])->name('reviewUsers');
-    Route::post('/review', [ReviewsController::class, 'store'])->name('review.store');
+    Route::get('/review/{id}', [ReviewsController::class, 'index'])->name('reviewUsers');
+    Route::post('/store-review', [ReviewsController::class, 'store'])->name('review.store');
+
+    // ULASAN
+    // Route::get('/ulasan/{id}', [ReviewsController::class, 'index'])->name('reviewUsers');
 
     Route::get('/order-food/{id}', [OrdersController::class, 'order'])->name('order-food');
     Route::put('/process-my-order/{id}', [OrdersController::class, 'processOrder'])->name('process-my-order');
@@ -106,7 +122,11 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::get('order/{order}/edit', [AdminOrderController::class, 'edit'])->name('orders.edit');
     Route::put('order/{order}', [AdminOrderController::class, 'update'])->name('orders.update');
     Route::delete('order/{order}', [AdminOrderController::class, 'destroy'])->name('orders.delete');
-    
+    Route::get('/order/trash', [AdminOrderController::class, 'trash'])->name('order.trash');
+    Route::post('/order/restore/{id}', [AdminOrderController::class, 'restore'])->name('order.restore');
+    Route::delete('/order/force-delete/{id}', [AdminOrderController::class, 'forceDelete'])->name('order.forceDelete');
+    Route::post('/order/restore-all', [AdminOrderController::class, 'restoreAll'])->name('order.restoreAll');
+    Route::delete('/order/force-delete-all', [AdminOrderController::class, 'forceDeleteAll'])->name('order.forceDeleteAll');
 
 
     // Route::get('/dashboard', function () {

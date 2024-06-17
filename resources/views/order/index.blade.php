@@ -24,12 +24,12 @@
             <div class="container mt-5">
                 <div class="card">
                     <div class="card-header text-right">
-                        <a href="{{ route('foods.trash') }}" class="btn btn-primary" role="button">
+                        <a href="{{ route('order.trash') }}" class="btn btn-primary" role="button">
                             <i class="bi bi-recycle"></i> Trash
                         </a>
                     </div>
                     <div class="card-body">
-                        <table class="table table-hover table-bordered" id="data-table">
+                    <table id="example2" class="table table-hover table-bordered" id="data-table">
                             <thead>
                                 <tr>
                                     <th>No.</th>
