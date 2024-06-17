@@ -50,46 +50,30 @@ class ProfileController extends Controller
             'phone' => 'required|string|max:255',
             'address' => 'required|string|max:255',
         ]);
-
-        // dd($request);
+    
         $user->name = $request->name;
         $user->email = $request->email;
         $user->username = $request->username;
         $user->phone = $request->phone;
         $user->address = $request->address;
-
+    
         if ($request->password) {
             $user->password = Hash::make($request->password);
         }
-
+    
         if ($request->hasFile('img')) {
-
-            $img = $request->file('img');
-            $img->storeAs('profile-image', $img->hashName());
-
-            Storage::delete('profile-image/' . $user->img);
-
-            $user->update([
-                'img'     => $img->hashName(),
-                'name'   => $request->name,
-                'phone'   => $request->phone,
-                'address'   => $request->address,
-            ]);
-
-        } else {
-
-            $user->update([
-                'name'   => $request->name,
-                'phone'   => $request->phone,
-                'address'   => $request->address,
-            ]);
-
+            $image = $request->file('img');
+            $folderPath = 'profile-image';
+            $imagePath = $image->store($folderPath, 'public');
+            $user->img = 'storage/' . $imagePath;
         }
-
+    
         $user->save();
-
+    
         return redirect()->route('myprofile.edit')->with('success', 'Profile updated successfully');
     }
+    
+
 
     public function destroy()
     {
