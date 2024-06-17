@@ -19,6 +19,8 @@ use App\Http\Controllers\ReviewsController;
 
 use App\Http\Controllers\ProductController;
 
+use App\Http\Controllers\BooktableController;
+
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\Users\AboutUsController;
 
@@ -40,6 +42,8 @@ use App\Http\Controllers\Users\OurMenuController;
 
 Route::get('/', [WebController::class, 'index'])->name('home');
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('aboutUsers');
+
+Route::get('/book-table', [BooktableController::class, 'index'])->name('book-table');
 
 Route::get('/our-menu', [OurMenuController::class, 'index'])->name('menuUsers');
 

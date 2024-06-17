@@ -27,16 +27,21 @@
                             <a class="nav-link" href="{{ route('aboutUsers') }}">About</a>
                         </li>
 
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('book-table') }}">Book A Table</a>
+                        </li>
+
                         {{-- <li class="nav-item">
-                <a class="nav-link" href="{{ route('product-list') }}">Product</a>
-              </li> --}}
+                        <a class="nav-link" href="{{ route('product-list') }}">Product</a>
+                        </li> --}}
                         <!-- <li class="nav-item">
-                <a class="nav-link" href="book.html">Book Table</a>
-              </li> -->
+                        <a class="nav-link" href="book.html">Book Table</a>
+                        </li> -->
               
-                 <li class="nav-item">
-                                <a class="nav-link" href="{{ route('reviewUsers') }}">Ulasan</a>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('reviewUsers') }}">Review</a>
+                        </li>
 
 
                     </ul>
