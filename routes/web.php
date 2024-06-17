@@ -27,6 +27,7 @@ use App\Http\Controllers\Users\AboutUsController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\Users\OurMenuController;
+use App\Http\Controllers\Auth\GoogleController;
 
 
 /*
@@ -39,7 +40,11 @@ use App\Http\Controllers\Users\OurMenuController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::middleware('guest')->group(function () {
+    // ...
+    Route::get('login/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
+    Route::get('login/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+});
 Route::get('/', [WebController::class, 'index'])->name('home');
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('aboutUsers');
 
