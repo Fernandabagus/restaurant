@@ -41,28 +41,38 @@
                     </a>
                 </div>
                 <div class="card-body">
-                    <table class="table table-hover table-bordered" id="data-table">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse ($users as $user)
-                                <tr>
-                                    <td>{{ $loop->index + 1 }}</td>
-                                    <td>
-                                        @if($user->image)
-                                            <img src="{{ asset($user->image) }}" alt="{{ $user->name }}" width="100">
-                                        @endif
-                                    </td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>
+          <table id="example2" class="table table-bordered table-hover">
+
+
+            <thead class= "bg-dark">
+              <tr>
+                <th>No.</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Role</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              @forelse ($users as $user)
+                <tr class= "bg-dark">
+                  <td>{{ $loop->index + 1 }}</td>
+                  <td>
+                    @if ($user->img)
+                      <img src="{{ asset($user->img) }}" alt="{{ $user->name }}" width="100">
+                    @endif
+                  </td>
+                  <td>{{ $user->name }}</td>
+                  <td>{{ $user->username }}</td>
+                  <td>{{ $user->email }}</td>
+                  <td>{{ $user->phone }}</td>
+                  <td>{{ $user->address }}</td>
+                  <td>{{ $user->role }}</td>
+                  <td>
                                         <form action="{{ route('users.restore', $user->id) }}" method="POST" style="display:inline;">
                                             @csrf
                                             <button type="submit" class="btn btn-success btn-sm">
