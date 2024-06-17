@@ -78,9 +78,9 @@ class UserController extends Controller
 
         if ($request->hasFile('img')) {
             $image = $request->file('img');
-            $folderPath = 'profile-image' . date('Y') . '/' . date('m');
+            $folderPath = 'profile-image';
             $imagePath = $image->store($folderPath, 'public');
-            $validatedData['img'] = 'profile-image' . $imagePath;
+            $validatedData['img'] = 'storage/' . $imagePath;
         }
 
         $user->update([
