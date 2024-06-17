@@ -1,4 +1,3 @@
-<!-- resources/views/auth/login.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +15,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('login-template/vendor/daterangepicker/daterangepicker.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('login-template/css/util.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('login-template/css/main.css') }}">
+    <!-- Font Awesome for Google icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body style="background-color: #666666;">
     <div class="limiter">
@@ -24,13 +25,13 @@
                 <form method="POST" action="{{ route('login') }}" class="login100-form validate-form">
                     @csrf
                     <span class="login100-form-title p-b-43">
-                    <x-application-logo />
+                        <x-application-logo />
                         Login to continue
                     </span>
 
                     <!-- Email Address -->
-                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="email" name="email" id="email" value="{{ old('email') }}" required autofocus autocomplete="username">
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz" autocomplete="one-time-code">
+                        <input class="input100" type="email" name="email" id="email" value="{{ old('email') }}" required autofocus autocomplete="one-time-code">
                         <span class="focus-input100"></span>
                         <span class="label-input100">Email</span>
                         @error('email')
@@ -40,7 +41,7 @@
 
                     <!-- Password -->
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="password" name="password" id="password" required autocomplete="current-password">
+                        <input class="input100" type="password" name="password" id="password" required autocomplete="one-time-code">
                         <span class="focus-input100"></span>
                         <span class="label-input100">Password</span>
                         @error('password')
@@ -71,6 +72,18 @@
                         </button>
                     </div>
 
+                    <!-- Google Login Button -->
+                    <div class="text-center p-t-20 p-b-20">
+                        <span class="txt2">
+                            Or login with
+                        </span>
+                    </div>
+                    <div class="text-center">
+                        <a href="{{ route('auth.google') }}" class="btn btn-danger btn-block">
+                            <i class="fab fa-google mr-2"></i> Login with Google
+                        </a>
+                    </div>
+
                     <div class="text-center p-t-46 p-b-20">
                         <span class="txt2">
                             Don't have an account? 
@@ -79,7 +92,6 @@
                             Register
                         </a>
                     </div>
-
                 </form>
                 <div class="login100-more" style="background-image: url('{{ asset('login-template/images/bg-01.jpg') }}');"></div>
             </div>

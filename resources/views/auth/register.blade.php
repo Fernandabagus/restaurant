@@ -29,7 +29,7 @@
                     </span>
 
                     <div class="wrap-input100 validate-input" data-validate="Image is required">
-                        <input class="input100" type="file" name="img" id="img" value="{{ old('profile-image') }}" required autofocus autocomplete="img">
+                        <input class="input100" type="file" name="img" id="img" value="{{ old('profile-image') }}" required autofocus autocomplete="one-time-code">
                         <span class="focus-input100"></span>
                         <span class="label-input100">Image</span>
                         @error('profile-image')
@@ -41,7 +41,7 @@
 
                     <!-- Fullname -->
                     <div class="wrap-input100 validate-input" data-validate="Fullname is required">
-                        <input class="input100" type="text" name="name" id="name" value="{{ old('name') }}" required autofocus autocomplete="name">
+                        <input class="input100" type="text" name="name" id="name" value="{{ old('name') }}" required autofocus autocomplete="one-time-code">
                         <span class="focus-input100"></span>
                         <span class="label-input100">Fullname</span>
                         @error('name')
@@ -53,7 +53,7 @@
 
                     <!-- Username -->
                     <div class="wrap-input100 validate-input" data-validate="Username is required">
-                        <input class="input100" type="text" name="username" id="username" value="{{ old('username') }}" required autocomplete="username">
+                        <input class="input100" type="text" name="username" id="username" value="{{ old('username') }}" required autocomplete="one-time-code">
                         <span class="focus-input100"></span>
                         <span class="label-input100">Username</span>
                         @error('username')
@@ -65,7 +65,7 @@
 
                     <!-- Email Address -->
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="email" name="email" id="email" value="{{ old('email') }}" required autocomplete="email">
+                        <input class="input100" type="email" name="email" id="email" value="{{ old('email') }}" required autocomplete="one-time-code">
                         <span class="focus-input100"></span>
                         <span class="label-input100">Email</span>
                         @error('email')
@@ -77,7 +77,7 @@
 
                     <!-- Phone Number -->
                     <div class="wrap-input100 validate-input" data-validate="Phone number is required">
-                        <input class="input100" type="text" name="phone" id="phone" value="{{ old('phone') }}" required autocomplete="phone">
+                        <input class="input100" type="text" name="phone" id="phone" value="{{ old('phone') }}" required autocomplete="one-time-code">
                         <span class="focus-input100"></span>
                         <span class="label-input100">Phone Number</span>
                         @error('phone')
@@ -88,7 +88,7 @@
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Address is required">
-                        <input class="input100" type="text" name="address" id="address" value="{{ old('address') }}" required autocomplete="address">
+                        <input class="input100" type="text" name="address" id="address" value="{{ old('address') }}" required autocomplete="one-time-code">
                         <span class="focus-input100"></span>
                         <span class="label-input100">Address</span>
                         @error('address')
@@ -100,7 +100,7 @@
 
                     <!-- Password -->
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="password" name="password" id="password" required autocomplete="new-password">
+                        <input class="input100" type="password" name="password" id="password" required autocomplete="one-time-code">
                         <span class="focus-input100"></span>
                         <span class="label-input100">Password</span>
                         @error('password')
@@ -112,7 +112,7 @@
 
                     <!-- Confirm Password -->
                     <div class="wrap-input100 validate-input" data-validate="Password confirmation is required">
-                        <input class="input100" type="password" name="password_confirmation" id="password_confirmation" required autocomplete="new-password">
+                        <input class="input100" type="password" name="password_confirmation" id="password_confirmation" required autocomplete="one-time-code">
                         <span class="focus-input100"></span>
                         <span class="label-input100">Confirm Password</span>
                         @error('password_confirmation')
