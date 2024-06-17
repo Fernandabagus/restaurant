@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Edit product</h1>
+                        <h1 class="m-0">Edit products</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">edit product</li>
+                            <li class="breadcrumb-item active">edit products</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -30,7 +30,7 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="img">product Image</label>
+                                <label for="img">products Image</label>
                                 <input type="file" class="form-control" name="img" onchange="loadFile(event)">
                                 @if ($product->img)
                                                 <img src="{{ asset($product->img) }}" alt="{{ $product->nama }}"
@@ -39,15 +39,15 @@
                                 <img id="output" class="img-fluid mt-2 mb-4" width="100" />
                             </div>
                             <div class="form-group">
-                                <label for="food_name">product Name</label>
+                                <label for="food_name">products Name</label>
                                 <input type="text" class="form-control" name="nama" id="food_name"
-                                    required="required" value="{{ old('nama', $product->nama) }}" placeholder="Input food nama here"
+                                    required="required" value="{{ old('nama', $product->nama) }}" placeholder="Input products nama here"
                                     >
                             </div>
                             <div class="form-group">
-                                <label for="food_price_display">Harga</label>
+                                <label for="food_price_display">Price</label>
                                 <input type="text" id="food_price_display" class="form-control"
-                                    required="required" value="{{ old('harga', number_format($product->harga, 0, ',', '.')) }}" placeholder="Input food price here">
+                                    required="required" value="{{ old('harga', number_format($product->harga, 0, ',', '.')) }}" placeholder="Input products price here">
                                 <input type="hidden" name="harga" id="harga" value="{{ old('harga', $product->harga) }}">
 
                                 <!-- Error Message -->
@@ -57,13 +57,13 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="exampleFormControlInput1" class="form-label">Kategori</label>
+                                <label for="exampleFormControlInput1" class="form-label">Category</label>
                                 <select name="kategori" class="form-control" aria-label="Default select example">
                                     <option disabled selected value>
                                         <- Choose ->
                                     </option>
-                                    <option value="Makanan">Makanan</option>
-                                    <option value="Minuman">Minuman</option>
+                                    <option value="foods">Foods</option>
+                                    <option value="drinks">Drinks</option>
                                 </select>
                             </div>
 
@@ -78,8 +78,8 @@
                                 @enderror
                             </div>
                             <a href="{{ route('product-admin') }}" class="btn btn-outline-secondary mr-2"
-                                role="button">Batal</a>
-                            <button type="submit" class="btn btn-primary">SIMPAN</button>
+                                role="button">CANCEL</a>
+                            <button type="submit" class="btn btn-primary">SAVE</button>
                         </form>
                     </div>
                 </div>

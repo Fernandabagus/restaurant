@@ -25,7 +25,7 @@
             <div class="container mt-5">
                 <div class="card">
                     <div class="card-header text-right">
-                        <form action="{{ route('foods.forceDeleteAll') }}" method="POST" style="display:inline;" onclick="return confirm('Are you sure you want to delete all foods? This action cannot be undone.')">
+                        <form action="{{ route('foods.forceDeleteAll') }}" method="POST" style="display:inline;" onclick="return confirm('Are you sure you want to delete all products? This action cannot be undone.')">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger">
@@ -73,7 +73,7 @@
                                                     <i class="bi bi-recycle"></i> Restore
                                                 </button>
                                             </form>
-                                            <form action="{{ route('foods.forceDelete', $food->id) }}" method="POST" style="display:inline;" onclick="return confirm('Are you sure you want to permanently delete this food?')">
+                                            <form action="{{ route('foods.forceDelete', $food->id) }}" method="POST" style="display:inline;" onclick="return confirm('Are you sure you want to permanently delete this products?')">
                                                 @method('delete')
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger btn-sm">
@@ -84,7 +84,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="6" class="text-center">There is no data of food.</td>
+                                        <td colspan="6" class="text-center">There is no data of products.</td>
                                     </tr>
                                 @endforelse
                             </tbody>

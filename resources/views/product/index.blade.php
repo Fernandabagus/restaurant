@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">product List</h1>
+                        <h1 class="m-0">products List</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                            <li class="breadcrumb-item active">product</li>
+                            <li class="breadcrumb-item active">products</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -63,7 +63,7 @@
                                         <td>
                                             <a href="{{ route('edit-product', $item->id) }}" class="btn btn-warning btn-sm"
                                                 role="button">
-                                                <i class="bi bi-pencil-square"></i> Edit
+                                                <i class="bi bi-pencil-square"></i> Create
                                             </a>
                                             <!-- Button triger modal -->
                                             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
@@ -95,7 +95,7 @@
                                                                 @method('DELETE')
 
                                                                 <button type="submit" class="btn btn-danger btn-sm"
-                                                                    role="button">Hapus</button>
+                                                                    role="button">Delete</button>
                                                             </form> --}}
                                                             <form action="{{ route('delete-product', $item->id) }}"
                                                               method="POST">
@@ -108,7 +108,7 @@
                                     </tr>
                                 @empty
                                     <div class="alert alert-danger">
-                                        There no data of food.
+                                        There no data of products.
                                     </div>
 
                             </tbody>
