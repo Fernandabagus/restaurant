@@ -36,8 +36,12 @@ class AdminOrderController extends Controller
         return redirect()->route('order-list');
     }
 
-    public function destroy(Order $order)
+    public function destroy($id)
     {
+        $order = Order::findOrFail($id);
+        if ($order->img && file_exists(public_path($order->img))) {
+            unlink(public_path($order->img));
+        }
         $order->delete();
         FacadesAlert::success('Success', 'Order deleted successfully!');
         return redirect()->route('order-list')->with('success', 'Order deleted successfully');
@@ -56,9 +60,10 @@ class AdminOrderController extends Controller
         FacadesAlert::success('Success', 'Order restored successfully!');
         return redirect()->route('order.trash');
     }
-    
+
     public function forceDelete($id)
     {
+        // dd($id);
         $order = Order::onlyTrashed()->findOrFail($id);
         $order->forceDelete();
         FacadesAlert::success('Success', 'Order deleted successfully!');
@@ -71,9 +76,10 @@ class AdminOrderController extends Controller
         return redirect()->route('order.trash');
     }
 
-    public function forceDeleteAll()
+    public function hapusSemua()
     {
         $orders = Order::onlyTrashed()->get();
+        // dd($orders);
         foreach ($orders as $order) {
             $order->forceDelete();
         }
