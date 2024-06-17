@@ -43,8 +43,8 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <table class="table table-hover table-bordered" id="data-table">
-                            <thead>
+                    <table id="example1" class="table table-bordered table-hover">
+                            <thead class="bg-dark">
                                 <tr>
                                     <th>No.</th>
                                     <th>Image</th>
@@ -56,7 +56,7 @@
                             </thead>
                             <tbody>
                                 @forelse ($foods as $food)
-                                    <tr>
+                                    <tr class="bg-dark">
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>
                                             @if ($food->img_url)
