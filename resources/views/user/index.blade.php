@@ -30,7 +30,7 @@
           </a>
         </div>
         <div class="card-body">
-          <table id="example2" class="table table-hover table-bordered" id="data-table">
+          <table class="table table-hover table-bordered" id="data-table">
             <thead class="bg-dark">
               <tr>
                 <th>No.</th>

@@ -152,6 +152,8 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::post('drinks/restore-all', [DrinksController::class, 'restoreAll'])->name('drinks.restoreAll');
     Route::delete('drinks/force-delete-all', [DrinksController::class, 'forceDeleteAll'])->name('drinks.forceDeleteAll');
 
+
+
     Route::get('/user', [UserController::class, 'index'])->name('daftarUsers');
     // Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('deleteUsers');
     Route::get('/user/delete/{id}', [UserController::class, 'destroy'])->name('deleteUsers');
