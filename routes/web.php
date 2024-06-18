@@ -152,6 +152,8 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::post('drinks/restore-all', [DrinksController::class, 'restoreAll'])->name('drinks.restoreAll');
     Route::delete('drinks/force-delete-all', [DrinksController::class, 'forceDeleteAll'])->name('drinks.forceDeleteAll');
 
+
+
     Route::get('/user', [UserController::class, 'index'])->name('daftarUsers');
     // Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('deleteUsers');
     Route::get('/user/delete/{id}', [UserController::class, 'destroy'])->name('deleteUsers');
@@ -164,6 +166,9 @@ Route::middleware(['auth', 'sa'])->group(function () {
     // Route::resource('/orders', OrderController::class);
 });
 
+Route::get('/admin/reviews', [ReviewsController::class, 'reviewsAdmin'])->name('tableReviews');
+
+
 // Rute otentikasi
 require __DIR__ . '/auth.php';
 
@@ -175,4 +180,3 @@ Route::middleware('guest')->group(function () {
     Route::get('login/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
     Route::get('login/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 });
-
