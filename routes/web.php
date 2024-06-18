@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DrinksController;
 use App\Http\Controllers\FoodController;
+use App\Http\Controllers\Auth\GoogleController;
 
 use App\Http\Controllers\MenuController;
 
@@ -168,4 +169,10 @@ require __DIR__ . '/auth.php';
 
 // Rute resource
 Route::resource('/drinks', DrinksController::class);
+
+Route::middleware('guest')->group(function () {
+    // ...
+    Route::get('login/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
+    Route::get('login/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+});
 
