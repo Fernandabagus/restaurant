@@ -44,19 +44,6 @@ class AdminProductController extends Controller
         return redirect()->route('product-admin');
     }
 
-    public function destroy($id)
-    {
-        $product = Product::find($id);
-        // dd($product);      
-        try {
-            $product->delete();
-            FacadesAlert::success('Berhasil', 'Product berhasil dihapus');
-            return redirect()->back();
-        } catch (\Throwable $th) {
-            return redirect()->back()->with('errorr', 'Gagal');
-        }
-    }
-
     public function edit($id)
     {
         $product = Product::findOrFail($id);
@@ -127,5 +114,21 @@ class AdminProductController extends Controller
         $item->update($data);
         FacadesAlert::success('Berhasil', 'Product Berhasil Diubah');
         return redirect()->route('product-admin');
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $product = Product::find($id);
+            if ($product->img && file_exists(public_path($product->img))) {
+                unlink(public_path($product->img));
+            }
+            $product->delete();
+            FacadesAlert::success('Berhasil', 'Product berhasil dihapus');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            FacadesAlert::error('Gagal', 'Gagal menghapus data product');
+            return redirect()->back();
+        }
     }
 }
