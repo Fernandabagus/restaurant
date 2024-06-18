@@ -111,6 +111,11 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::get('order/{order}/edit', [AdminOrderController::class, 'edit'])->name('orders.edit');
     Route::put('order/{order}', [AdminOrderController::class, 'update'])->name('orders.update');
     Route::delete('order/{order}', [AdminOrderController::class, 'destroy'])->name('orders.delete');
+    Route::get('/order/trash', [AdminOrderController::class, 'trash'])->name('order.trash');
+    Route::post('/order/restore/{id}', [AdminOrderController::class, 'restore'])->name('order.restore');
+    Route::delete('/order/force-delete/{id}', [AdminOrderController::class, 'forceDelete'])->name('order.forceDelete');
+    Route::post('/order/restore-all', [AdminOrderController::class, 'restoreAll'])->name('order.restoreAll');
+    Route::delete('/order/force-delete-all', [AdminOrderController::class, 'forceDeleteAll'])->name('order.forceDeleteAll');
     
 
 
@@ -161,10 +166,19 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::post('/user/edit/{id}', [UserController::class, 'update'])->name('updateUsers');
     Route::get('/user/create', [UserController::class, 'create'])->name('createUsers');
     Route::post('/user/create', [UserController::class, 'store'])->name('storeUsers');
+    Route::get('/users/trash', [UserController::class, 'trash'])->name('user.trash');
+    Route::post('/users/restore/{id}', [UserController::class, 'restore'])->name('users.restore');
+    Route::delete('/users/force-delete/{id}', [UserController::class, 'forceDelete'])->name('users.forceDelete');
+    Route::post('/users/restore-all', [UserController::class, 'restoreAll'])->name('users.restoreAll');
+    Route::delete('/users/force-delete-all', [UserController::class, 'forceDeleteAll'])->name('users.forceDeleteAll');
+    });
 
     // Rute untuk Orders
     // Route::resource('/orders', OrderController::class);
-});
+
+
+Route::get('/admin/reviews', [ReviewsController::class, 'reviewsAdmin'])->name('tableReviews');
+
 
 // Rute otentikasi
 require __DIR__ . '/auth.php';
@@ -177,4 +191,3 @@ Route::middleware('guest')->group(function () {
     Route::get('login/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
     Route::get('login/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 });
-
