@@ -18,14 +18,21 @@
             </div>
           </div>
         </div>
-        <div class="carousel-item">
-          <div class="img-box" style="background-image: url('image/slider/slider-2.jpg');"></div>
-          <div class="container ">
-            <div class="row">
-              <div class="col-md-7 col-lg-6 ">
-                <div class="detail-box">
-                  <h1>Perfect Morning Coffee</h1>
-                  <p>Start your day with our freshly brewed coffee, made from the finest beans for a perfect pick-me-up.</p>
+
+      </div>
+      <div class="carousel-item">
+        <div class="img-box" style="background-image: url('image/slider/slider-2.jpg');"></div>
+        <div class="container ">
+          <div class="row">
+            <div class="col-md-7 col-lg-6 ">
+              <div class="detail-box">
+                <h1>Family Restaurant</h1>
+                <p>Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam
+                  quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil
+                  jdjdjdjdjkjdkdjds.</p>
+                <div class="btn-box">
+                  <a href="" class="btn1">Order Now</a>
+
                 </div>
               </div>
             </div>

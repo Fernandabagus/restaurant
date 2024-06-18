@@ -31,6 +31,6 @@ class WebController extends Controller
         ];
 
         return view('users.layouts.wrapper', $data);
-
+        // a
     }
 }

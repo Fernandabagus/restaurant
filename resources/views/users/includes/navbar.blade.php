@@ -23,7 +23,10 @@
                         <a class="nav-link" href="{{ route('product-list') }}">Product</a>
                     </li> -->
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Ulasan</a>
+                            <a class="nav-link" href="{{ route('book-table') }}">Book A Table</a>
+                        </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ route('reviewUsers') }}">Ulasan</a>
 
                     </li>
                 </ul>
