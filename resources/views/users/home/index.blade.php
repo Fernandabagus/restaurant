@@ -30,7 +30,7 @@
                 <h1>Family Restaurant</h1>
                 <p>Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam
                   quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil
-                  ducimus libero ipsam.</p>
+                  jdjdjdjdjkjdkdjds.</p>
                 <div class="btn-box">
                   <a href="" class="btn1">Order Now</a>
                 </div>
@@ -141,14 +141,14 @@
           <div class="box ">
 
             <div class="img-box">
-             
+              <img src="{{ $foodTop->img_url }}" alt="">
             </div>
             <div class="detail-box">
               <h5>
-               
+                {{ $foodTop->name }}
               </h5>
               <h6>
-               
+                <span>@currency($foodTop->price)</span>
               </h6>
 
               <a href="">
