@@ -1,1 +1,0 @@
-{"version":1,"defects":{"Tests\\Feature\\ProfileTest::test_email_verification_status_is_unchanged_when_the_email_address_is_unchanged":8},"times":{"Tests\\Feature\\ProfileTest::test_email_verification_status_is_unchanged_when_the_email_address_is_unchanged":3.7}}
