@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">halo List</h1>
+                        <h1 class="m-0">Menu List</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Foods</li>
+                            <li class="breadcrumb-item active">Menu</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -29,9 +29,9 @@
                         <a href="{{ route('create-product') }}" class="btn btn-primary" role="button">
                             <i class="bi bi-file-earmark-plus"></i> Add
                         </a>
-                        <a href="{{ route('foods.trash') }}" class="btn btn-primary" role="button">
+                        <!-- <a href="{{ route('foods.trash') }}" class="btn btn-primary" role="button">
                             <i class="bi bi-recycle"></i> Trash
-                        </a>
+                        </a> -->
                     </div>
                     <div class="card-body">
                         <table class="table table-hover table-bordered" id="example1">

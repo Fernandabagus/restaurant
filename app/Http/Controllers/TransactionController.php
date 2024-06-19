@@ -2,15 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\Transactions;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
 
 class TransactionController extends Controller
 {
-    public function index()
+    // public function index()
+    // {
+    //     $transactions = Transactions::all();
+    //     return view('mytransaction.index', compact('transactions'));
+    // }
+    public function tblTransaction()
     {
-        $transactions = Transaction::all();
-        return view('mytransaction.index', compact('transactions'));
+        $orders = Order::orderBy('created_at', 'asc')->get();
+        // $transactions = Transactions::get(); // Mengambil semua produk (tidak digunakan di view yang diberikan)
+        return view('mytransaction.tblTransaction', compact('orders'));
     }
 
     public function store(Request $request)
@@ -24,7 +32,7 @@ class TransactionController extends Controller
             'status' => 'required|string|max:255',
         ]);
 
-        Transaction::create($request->all());
+        Transactions::create($request->all());
 
         return redirect()->route('mytransaction.index')
                          ->with('success', 'Transaction created successfully.');

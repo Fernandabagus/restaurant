@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Edit Foods</h1>
+                        <h1 class="m-0">Edit Menu</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Add Foods</li>
+                            <li class="breadcrumb-item active">Edit Menu</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -39,7 +39,7 @@
                                 </div>
                             @endif
                             <div class="form-group">
-                                <label for="img">Food Image</label>
+                                <label for="img">Menu Image</label>
                                 <input type="file" class="form-control" name="img" onchange="loadFile(event)">
                                 @if ($product->img)
                                     <img src="{{ asset('storage/' . $product->img) }}" alt="{{ $product->nama }}"
@@ -48,7 +48,7 @@
                                 <img id="output" class="img-fluid mt-2 mb-4" width="100" />
                             </div>
                             <div class="form-group">
-                                <label for="food_name">Food Name</label>
+                                <label for="food_name">Menu Name</label>
                                 <input type="text" class="form-control" name="nama" id="food_name" required="required"
                                     value="{{ old('nama', $product->nama) }}" placeholder="Input food nama here">
                             </div>
@@ -78,7 +78,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="deskripsi">Description</label>
+                                <label for="deskripsi">Deskripsi</label>
                                 <textarea class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi" rows="3"
                                     placeholder="Input food deskripsi here">{{ old('deskripsi', $product->deskripsi) }}</textarea>
 

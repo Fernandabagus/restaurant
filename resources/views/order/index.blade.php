@@ -33,9 +33,10 @@
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Nama Menu</th>
-                                    <th>Harga</th>
                                     <th>Pemesan</th>
+                                    <th>Nama Menu</th>
+                                    <th>Harga/Item</th>
+                                    <th>Jumlah Pesanan</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -44,9 +45,10 @@
                                 @forelse ($orders as $item)
                                     <tr class="bg-dark">
                                         <td>{{ $loop->index + 1 }}</td>
+                                        <td>{{ $item->user->name ?? 'Default Name'}}</td>
                                         <td>{{ $item->product->nama }}</td>
                                         <td>@currency($item->product->harga)</td>
-                                        <td>{{ $item->user->name }}</td>
+                                        <td>{{ $item->quantity}}</td>
                                         <td>{{ $item->status }}</td>
                                         <td>
                                             <a href="{{ route('orders.edit', ['order' => $item->id]) }}" class="btn btn-warning btn-sm" role="button">

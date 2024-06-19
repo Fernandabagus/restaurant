@@ -82,14 +82,14 @@
                 </li>
                 <li class="nav-item">
 
-                    <a href="{{ route('tblTransaction') }}" class="nav-link">
+                    <a href="{{ route('tblTransaction') }}" class="nav-link {{ request()->routeIs('tblTransaction') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-table"></i>
 
                         <p>Transaction</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('tableReviews') }}" class="nav-link">
+                    <a href="{{ route('tableReviews') }}" class="nav-link {{ request()->routeIs('tableReviews') ? 'active' : '' }}">
                         <i class="nav-icon fas fa fa-comments" aria-hidden="true"></i>
                         <p>Reviews</p>
                     </a>

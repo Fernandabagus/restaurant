@@ -55,7 +55,7 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-holder form-holder-2">
-                                        <label for="username">Nama Makanan :</label>
+                                        <label for="username">Nama Menu :</label>
                                         <input type="text" class="form-control" id="food-name" name="food"
                                             value="{{ $product->nama }}" disabled>
                                     </div>
@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-holder form-holder-2">
-                                        <label for="username">Jumlah :</label>
+                                        <label for="username">Jumlah Pesanan :</label>
                                         <input type="text" class="form-control" id="quantity" name="quantity"
                                             required>
                                     </div>
@@ -96,23 +96,23 @@
                                     <table class="table">
                                         <tbody>
                                             <tr class="space-row">
-                                                <th>Nama:</th>
+                                                <th>Nama :</th>
                                                 <td id="name-val"></td>
                                             </tr>
                                             <tr class="space-row">
-                                                <th>Nama Makanan:</th>
+                                                <th>Nama Menu:</th>
                                                 <td id="food-name-val"></td>
                                             </tr>
                                             <tr class="space-row">
-                                                <th>Harga Makanan:</th>
+                                                <th>Harga:</th>
                                                 <td id="food-price-val"></td>
                                             </tr>
                                             <tr class="space-row">
-                                                <th>Description :</th>
+                                                <th>Deskripsi :</th>
                                                 <td id="description-val"></td>
                                             </tr>
                                             <tr class="space-row">
-                                                <th>Jumlah: </th>
+                                                <th>Jumlah Pesanan: </th>
                                                 <td id="quantity-val"></td>
                                             </tr>
                                             <tr class="space-row">

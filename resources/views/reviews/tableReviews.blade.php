@@ -44,12 +44,12 @@
         <tr class="bg-dark">
                 <td>{{ $index + 1 }}</td>
                 <td>
-                                            @if ($review->user->img)
-                                                <img src="{{ asset($review->user->img) }}" alt="{{ $review->name }}"
+                                            @if ($review->user->img??  'default')
+                                                <img src="{{ asset($review->user->img ??  'default') }}" alt="{{ $review->name }}"
                                                     width="100">
                                             @endif
                                         </td>
-                <td>{{ $review->user->name }}</td>
+                <td>{{ $review->user->name ??  'default'}}</td>
                 <td>
                     @for ($i = 1; $i <= 5; $i++)
                         @if ($i <= $review->rating)

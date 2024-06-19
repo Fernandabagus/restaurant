@@ -15,10 +15,10 @@ class WebController extends Controller
     {
         $foods = Foods::all();
         $product = Product::where('kategori', 'makanan')->paginate(3);
-        $foodTop = Foods::first(); 
+        $foodTop = Foods::first();
         $drinks = Drinks::all();
-        $drinkTop = Drinks::first(); 
-        $reviews = Reviews::orderBy('created_at', 'desc')->take(5)->get(); 
+        $drinkTop = Drinks::first();
+        $reviews = Reviews::orderBy('created_at', 'desc')->take(5)->get();
 
         $data = [
             'content' => 'users/home/index',
@@ -31,6 +31,6 @@ class WebController extends Controller
         ];
 
         return view('users.layouts.wrapper', $data);
-
+        // a
     }
 }

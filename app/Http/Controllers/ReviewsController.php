@@ -14,23 +14,35 @@ use App\Models\Reviews;
 
 class ReviewsController extends Controller
 {
-    public function index($id)
+    public function index()
     {
-        $menu = Product::find($id);
+        $userAuth = Auth::user()->id;
+        $review = Reviews::where('user_id', $userAuth)->get();
+        // dd($menu);
         $user = Auth::user()->id;
         $data = [
             // 'title'     => 'Test',
             'user'      => $user,
-            'menu'      => $menu,
+            'reviews'      => $review,
             // 'reviews'   => $user->reviews,
-            'content'   => 'users/review/index'
+            'content'   => 'users/review/my-review'
         ];
         return view('users.layouts.wrapper', $data);
     }
 
-    public function store(Request $request)
+    public function create($id)
     {
-        // dd($request);
+        $menu = Product::find($id);
+        $data = [
+            'content'   => 'users/review/index',
+            'menu'      => $menu
+        ];
+        return view('users.layouts.wrapper', $data);
+    }
+
+    public function store(Request $request, $id)
+    {
+        // dd($id);
         $request->validate([
             'id_product' => 'required',
             'rating' => 'required',

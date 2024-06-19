@@ -16,4 +16,9 @@ class Product extends Model
         'img',
         'kategori'
     ];
+
+    public function review()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

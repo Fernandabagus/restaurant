@@ -8,6 +8,7 @@ use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert as FacadesAlert;
 
 class OrdersController extends Controller
 {
@@ -59,7 +60,7 @@ class OrdersController extends Controller
             'order_date' => $orderDate,
             'status' => $status
         ]);
-
+        FacadesAlert::success('Berhasil', 'Food added successfully!');
         // return view('users.order.detail', ['order' => $order], ['food' => $food]);
         return redirect()->route('our-menu');
     }
