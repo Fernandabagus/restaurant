@@ -26,7 +26,7 @@
                             </div> --}}
                             <div class="review-text">
                                 <h4 class="card-title">
-                                    {{ $review->product->nama }}
+                                    {{ $review->product->nama ?? 'default name'}}
                                 </h4>
                                 <div class="rating">
                                     @for ($i = 0; $i < $review->rating; $i++)
