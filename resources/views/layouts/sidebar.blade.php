@@ -89,6 +89,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+
+                    <a href="{{ route('table-booking-list') }}" class="nav-link {{ request()->routeIs('table-booking-list') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-calendar-check"></i>
+
+                        <p>Booking Table</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('tableReviews') }}" class="nav-link {{ request()->routeIs('tableReviews') ? 'active' : '' }}">
                         <i class="nav-icon fas fa fa-comments" aria-hidden="true"></i>
                         <p>Reviews</p>
