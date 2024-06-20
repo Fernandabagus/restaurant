@@ -4,6 +4,8 @@ use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Users\FoodUsController;
+use App\Http\Controllers\AdminBookingController;
+use App\Http\Controllers\BooktableController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DrinksController;
@@ -123,7 +125,16 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::post('/order/restore-all', [AdminOrderController::class, 'restoreAll'])->name('order.restoreAll');
     Route::delete('/order/force-delete-all', [AdminOrderController::class, 'forceDeleteAll'])->name('order.forceDeleteAll');
     
-
+// Book A Table
+    Route::get('booking-list', [AdminBookingController::class, 'index'])->name('booking-list');
+    Route::get('booking/{booking}/edit', [AdminBookingController::class, 'edit'])->name('booking.edit');
+    Route::put('booking/{booking}', [AdminBookingController::class, 'update'])->name('booking.update');
+    Route::delete('booking/{booking}', [AdminBookingController::class, 'destroy'])->name('booking.delete');
+    Route::get('/booking/trash', [AdminBookingController::class, 'trash'])->name('booking.trash');
+    Route::post('/booking/restore/{id}', [AdminBookingController::class, 'restore'])->name('booking.restore');
+    Route::delete('/booking/force-delete/{id}', [AdminBookingController::class, 'forceDelete'])->name('booking.forceDelete');
+    Route::post('/booking/restore-all', [AdminBookingController::class, 'restoreAll'])->name('booking.restoreAll');
+    Route::delete('/booking/force-delete-all', [AdminBookingController::class, 'forceDeleteAll'])->name('booking.forceDeleteAll');
 
     // Route::get('/dashboard', function () {
     //     return view('layouts.master');
@@ -132,6 +143,9 @@ Route::middleware(['auth', 'sa'])->group(function () {
     // tblTransaction
     Route::get('/tblTransaction', [TransactionController::class, 'tblTransaction'])->name('tblTransaction');
 
+      // tableBooking
+    Route::get('/table-booking-list', [AdminBookingController::class, 'index'])->name('table-booking-list');
+    
     // dashboard admin
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -147,6 +161,8 @@ Route::middleware(['auth', 'sa'])->group(function () {
     Route::delete('foods/force-delete/{id}', [FoodController::class, 'forceDelete'])->name('foods.forceDelete');
     Route::post('foods/restore-all', [FoodController::class, 'restoreAll'])->name('foods.restoreAll');
     Route::delete('foods/force-delete-all', [FoodController::class, 'forceDeleteAll'])->name('foods.forceDeleteAll');
+
+    
 
     // Rute untuk DrinksController
     Route::get('/drink', [DrinksController::class, 'index'])->name('daftarDrinks');
