@@ -1,85 +1,76 @@
   <!-- footer section -->
-  <footer class="footer_section">
-      <div class="container">
-          <div class="row">
-              <div class="col-md-4 footer-col">
-                  <div class="footer_contact">
-                      <h4>
-                          Contact Us
-                      </h4>
-                      <div class="contact_link_box">
-                          <a href="">
-                              <i class="fa fa-map-marker" aria-hidden="true"></i>
-                              <span>
-                                  Jl. Flamboyan, Kenteng - Tegalrejo, Kumpulrejo, Argomulyo, Salatiga 50733
-                              </span>
-                          </a>
-                          <a href="">
-                              <i class="fa fa-phone" aria-hidden="true"></i>
-                              <span>
-                                  0852 8080 0889
-                              </span>
-                          </a>
-                          <a href="">
-                              <i class="fa fa-instagram" aria-hidden="true"></i>
-                              <span>
-                                  prosperobarn
-                              </span>
-                          </a>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-4 footer-col">
-                  <div class="footer_detail">
-                      <a href="" class="footer-logo">
-                          Prospero Barn
-                      </a>
-                      <p>
-                          Stylish cafe serving Western & Asian fare in a contemporary building shaped like a barn.
-                      </p>
-                      <!-- <div class="footer_social">
-              <a href="">
-                <i class="fa fa-facebook" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-linkedin" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-instagram" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-pinterest" aria-hidden="true"></i>
-              </a>
-            </div> -->
-                  </div>
-              </div>
-              <div class="col-md-4 footer-col">
-                  <h4>
-                      Opening Hours
-                  </h4>
-                  <p>
-                      Everyday
-                  </p>
-                  <p>
-                      10.00 Am -10.00 Pm
-                  </p>
-              </div>
-          </div>
+  <!-- footer section -->
+<footer class="footer_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 footer-col">
+                <div class="footer_contact">
+                    <h4>
+                        Contact Us
+                    </h4>
+                    <div class="contact_link_box">
+                        <a href="https://maps.app.goo.gl/8FQgqfL3ocTaZEYt7" target="_blank">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>
+                                Jl. Flamboyan, Kenteng - Tegalrejo, Kumpulrejo, Argomulyo, Salatiga 50733
+                            </span>
+                        </a>
+                        <a href="https://wa.me/+6285280800889">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            <span>
+                                0852 8080 0889
+                            </span>
+                        </a>
+                        <a href="https://www.instagram.com/prosperobarn/" target="_blank">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                            <span>
+                                prosperobarn
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 footer-col">
+                <div class="footer_detail">
+                    <a href="" class="footer-logo">
+                        Prospero Barn
+                    </a>
+                    <p>
+                        Stylish cafe serving Western & Asian fare in a contemporary building shaped like a barn.
+                    </p>
 
-          <!-- <div class="footer-info">
-        <p>
-          &copy; <span id="displayYear"></span> All Rights Reserved By
-          <a href="https://html.design/">Free Html Templates</a><br><br>
-          &copy; <span id="displayYear"></span> Distributed By
-          <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
-        </p>
-      </div> -->
-      </div>
+                    
+                    <!-- Google Maps Iframe -->
+                    <div style="margin-top: 20px;">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.984356068169!2d110.49346547500056!3d-7.355649292653307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a7924d41d6329%3A0xff92ec1a01909ce9!2sProspero%20Barn%20%7C%20Cafe%20Salatiga!5e0!3m2!1sen!2sid!4v1718897267204!5m2!1sen!2sid"
+                            width="100%"
+                            height="150"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                        ></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 footer-col">
+                <h4>
+                    Opening Hours
+                </h4>
+                <p>
+                    Everyday
+                </p>
+                <p>
+                    10.00 AM - 10.00 PM
+                </p>
+                <p>
+                    Close Order at 09.30 PM
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
 
-  </footer>
   <!-- footer section -->
 
   <!-- script for isotope -->
