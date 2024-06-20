@@ -7,54 +7,25 @@
         </h2>
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="form_container">
-            <form action="">
+            <form action="{{ route('store-book-table') }}" method="POST" enctype="multipart/form-data">
+              @csrf
+              <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" />
               <div>
-                <input type="text" class="form-control" placeholder="Your Name" />
+                <input type="text" class="form-control" value="{{ Auth::user()->name }}" disabled />
               </div>
               <div>
-                <input type="text" class="form-control" placeholder="Phone Number" />
+                <input type="text" class="form-control" value="{{ Auth::user()->phone }}"  />
               </div>
               <div>
-                <input type="email" class="form-control" placeholder="Your Email" />
+                <input type="email" class="form-control" value="{{ Auth::user()->email }}" />
               </div>
               <div>
-                <select class="form-control nice-select wide">
-                  <option value="" disabled selected>
-                    How many persons?
-                  </option>
-                  <option value="">
-                    2
-                  </option>
-                  <option value="">
-                    3
-                  </option>
-                  <option value="">
-                    4
-                  </option>
-                  <option value="">
-                    5
-                  </option>
-                  <option value="">
-                    6
-                  </option>
-                  <option value="">
-                    7
-                  </option>
-                  <option value="">
-                    8
-                  </option>
-                  <option value="">
-                    9
-                  </option>
-                  <option value="">
-                    10
-                  </option>
-                </select>
+              <input type="number" class="form-control" name="many_person" placeholder="How many people ?" />
               </div>
               <div>
-                <input type="date" class="form-control">
+                <input type="date" name="book_date" class="form-control">
               </div>
               <div class="btn_box">
                 <button>
@@ -62,11 +33,6 @@
                 </button>
               </div>
             </form>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="map_container ">
-            <div id="googleMap"></div>
           </div>
         </div>
       </div>
