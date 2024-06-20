@@ -1,113 +1,108 @@
 <!-- slider section -->
-<!-- slider section -->
-<!-- slider section -->
-<!-- slider section -->
-<section class="slider_section ">
-    <div id="customCarousel1" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="img-box" style="background-image: url('image/slider/slider-1.jpg');"></div>
-          <div class="container ">
-            <div class="row">
-              <div class="col-md-7 col-lg-6 ">
-                <div class="detail-box">
-                  <h1>Welcome to <br/> Prospero Barn</h1>
-                  <p>A stylish and contemporary restaurant shaped like a barn, where elegance meets comfort.</p>
-                </div>
+<section class="slider_section">
+  <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="img-box" style="background-image: url('image/slider/slider-1.jpg');"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-7 col-lg-6">
+              <div class="detail-box">
+                <h1>Welcome to <br/> Prospero Barn</h1>
+                <p>A stylish and contemporary restaurant shaped like a barn, where elegance meets comfort.</p>
               </div>
             </div>
           </div>
         </div>
-
       </div>
+
       <div class="carousel-item">
         <div class="img-box" style="background-image: url('image/slider/slider-2.jpg');"></div>
-        <div class="container ">
+        <div class="container">
           <div class="row">
-            <div class="col-md-7 col-lg-6 ">
+            <div class="col-md-7 col-lg-6">
               <div class="detail-box">
-                <h1>Family Restaurant</h1>
-                <p>Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam
-                  quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil
-                  jdjdjdjdjkjdkdjds.</p>
-                <div class="btn-box">
-                  <a href="" class="btn1">Order Now</a>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="img-box" style="background-image: url('image/slider/slider-3.jpg');"></div>
-          <div class="container ">
-            <div class="row">
-              <div class="col-md-7 col-lg-6 ">
-                <div class="detail-box">
-                  <h1>Freshly Baked Croissants</h1>
-                  <p>Indulge in our flaky, buttery croissants, baked fresh daily to perfection.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="img-box" style="background-image: url('image/slider/slider-4.jpg');"></div>
-          <div class="container ">
-            <div class="row">
-              <div class="col-md-7 col-lg-6 ">
-                <div class="detail-box">
-                  <h1>Premium Tea Selection</h1>
-                  <p>Relax and unwind with our selection of premium teas, offering a moment of tranquility in every glass.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="img-box">
-            <video class="video-box" autoplay loop muted">
-              <source src="image/slider/slider-5.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="container ">
-            <div class="row">
-              <div class="col-md-7 col-lg-6 ">
-                <div class="detail-box">
-                  <h1>Grilled to Perfection: Steak</h1>
-                  <p>Savor the flavor of our perfectly grilled steak, cooked to your preference and served with delicious sides.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="img-box" style="background-image: url('image/slider/slider-6.jpg');"></div>
-          <div class="container ">
-            <div class="row">
-              <div class="col-md-7 col-lg-6 ">
-                <div class="detail-box">
-                  <h1>Succulent Chicken Dishes</h1>
-                  <p>Enjoy our succulent and tender chicken dishes, prepared with the finest ingredients for a memorable meal.</p>
-
-                </div>
+                <h1>Perfect Morning Coffee</h1>
+                <p>Start your day with our freshly brewed coffee, made from the finest beans for a perfect pick-me-up.</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="container">
-        <ol class="carousel-indicators">
-          <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
-          <li data-target="#customCarousel1" data-slide-to="1"></li>
-          <li data-target="#customCarousel1" data-slide-to="2"></li>
-          <li data-target="#customCarousel1" data-slide-to="3"></li>
-          <li data-target="#customCarousel1" data-slide-to="4"></li>
-          <li data-target="#customCarousel1" data-slide-to="5"></li>
-        </ol>
+
+      <div class="carousel-item">
+        <div class="img-box" style="background-image: url('image/slider/slider-3.jpg');"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-7 col-lg-6">
+              <div class="detail-box">
+                <h1>Freshly Baked Croissants</h1>
+                <p>Indulge in our flaky, buttery croissants, baked fresh daily to perfection.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="img-box" style="background-image: url('image/slider/slider-4.jpg');"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-7 col-lg-6">
+              <div class="detail-box">
+                <h1>Premium Tea Selection</h1>
+                <p>Relax and unwind with our selection of premium teas, offering a moment of tranquility in every glass.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="img-box">
+          <video class="video-box" autoplay loop muted>
+            <source src="image/slider/slider-5.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-7 col-lg-6">
+              <div class="detail-box">
+                <h1>Grilled to Perfection: Steak</h1>
+                <p>Savor the flavor of our perfectly grilled steak, cooked to your preference and served with delicious sides.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="img-box" style="background-image: url('image/slider/slider-6.jpg');"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-7 col-lg-6">
+              <div class="detail-box">
+                <h1>Succulent Chicken Dishes</h1>
+                <p>Enjoy our succulent and tender chicken dishes, prepared with the finest ingredients for a memorable meal.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+
+    <div class="container">
+      <ol class="carousel-indicators">
+        <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
+        <li data-target="#customCarousel1" data-slide-to="1"></li>
+        <li data-target="#customCarousel1" data-slide-to="2"></li>
+        <li data-target="#customCarousel1" data-slide-to="3"></li>
+        <li data-target="#customCarousel1" data-slide-to="4"></li>
+        <li data-target="#customCarousel1" data-slide-to="5"></li>
+      </ol>
+    </div>
+  </div>
+</section>
 
   <!-- end slider section -->
 

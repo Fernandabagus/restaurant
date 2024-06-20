@@ -264,9 +264,16 @@ a:focus {
   width: 100%;
   position: unset;
 }
+.slider_section .carousel-item {
+  height: 500px;
+  position: relative;
+}
 .slider_section .detail-box {
   color: #ffffff;
+  position: relative;
+  z-index: 1;
   margin-bottom: 250px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 .slider_section .detail-box h1 {
   font-size: 3.5rem;
@@ -290,7 +297,7 @@ a:focus {
 .slider_section .detail-box a:hover {
   background-color: #e69c00;
 }
-.slider_section .img-box {
+.slider_section .img-box, .slider_section .video-box {
   position: absolute;
   top: 0;
   left: 0;
@@ -301,16 +308,13 @@ a:focus {
   background-repeat: no-repeat;
   z-index: 0;
 }
-.slider_section .img-box img {
+.slider_section .img-box img, .slider_section .video-box img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.slider_section .img-box .video-box {
-  position: absolute;
-  top: 0;
-  left: 0;
+.slider_section .img-box video, .slider_section .video-box video {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;

@@ -333,9 +333,17 @@ a:focus {
     position: unset;
   }
 
+  .carousel-item {
+    height: 500px; // Set the height you prefer for the carousel items
+    position: relative;
+  }
+
   .detail-box {
     color: $white;
+    position: relative;
+    z-index: 1;
     margin-bottom: 250px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); // Add text shadow
 
     h1 {
       font-size: 3.5rem;
@@ -352,10 +360,9 @@ a:focus {
       @include hero_btn($primary1, $white, 10px, 45px, 45px);
       margin-top: 10px;
     }
-
   }
 
-  .img-box {
+  .img-box, .video-box {
     position: absolute;
     top: 0;
     left: 0;
@@ -372,17 +379,12 @@ a:focus {
       object-fit: cover;
     }
 
-    .video-box {
-      position: absolute;
-      top: 0;
-      left: 0;
+    video {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-
   }
-
 
   .carousel-indicators {
     position: absolute;
@@ -393,7 +395,6 @@ a:focus {
     justify-content: center;
     align-items: center;
     z-index: 2;
-
 
     li {
       background-color: $white;
@@ -410,6 +411,8 @@ a:focus {
     }
   }
 }
+
+
 
 // end slider section
 
